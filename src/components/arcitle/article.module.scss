@@ -1,0 +1,21 @@
+@import '../../modules/_colors.scss';
+@import '../../modules/_fonts.scss';
+@import '../../modules/_constants.scss';
+
+.termsList {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.main {
+    grid-area: main;
+    margin-bottom: 62px;
+    h2 {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: 0.1px;
+    }
+}

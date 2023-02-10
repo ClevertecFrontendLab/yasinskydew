@@ -1,0 +1,15 @@
+@import '../../modules/_colors.scss';
+@import '../../modules/_fonts.scss';
+@import '../../modules/_constants.scss';
+
+.gradeButton {
+    max-width: 350px;
+    margin: 32px 0;
+}
+
+@media (max-width: 768px) {
+    .gradeButton {
+        max-width: 100%;
+        margin: 42px 0 48px;
+    }
+}

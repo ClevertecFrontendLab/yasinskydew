@@ -1,0 +1,24 @@
+@import '../../modules/_colors.scss';
+@import '../../modules/_fonts.scss';
+@import '../../modules/_constants.scss';
+
+.bookPage {
+    font-family: $font-stack;
+    display: grid;
+    height: 100vh;
+    grid-template-areas:
+        "headerWrapper"
+        "breadcrumbs"
+        "main"
+        "footerWrapper";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    .headerWrapper {
+        grid-area: headerWrapper;
+        width: 100%;
+    }
+    .footerWrapper {
+        grid-area: footerWrapper;
+        width: 100%;
+    }
+}

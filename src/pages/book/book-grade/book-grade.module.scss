@@ -1,0 +1,26 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+
+.bookGrade {
+    display: flex;
+    flex-direction: column;
+    color: $main-dark-color;
+    margin-bottom: 62px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    h3 {
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $gray-black5-color;
+    }
+    div {
+        gap: 12px;
+    }
+}
+.score {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}

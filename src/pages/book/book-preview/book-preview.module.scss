@@ -1,0 +1,161 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+
+.bookPreview {
+    display: grid;
+    grid-template-areas:
+        "bookImage bookAuthor"
+        "bookImage bookDescription"
+    ;
+    grid-template-columns: min-content auto;
+    color: $main-dark-color;
+    gap: 30px;
+    margin-bottom: 42px;
+}
+
+.bookImage {
+    grid-area: bookImage;
+}
+
+.bookAuthor {
+    grid-area: bookAuthor;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 635px;
+    .bookingButton {
+        width: 100%;
+        max-width: 350px;
+    }
+    h2 {
+        color: $main-dark-color;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 24px;
+        word-wrap: break-word;
+    }
+    .author {
+        color: $gray-black40-color;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 32px;
+    }
+    .descriptionTitle {
+        color: $main-dark-color;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        min-width: 350px;
+        border-bottom: 1px solid $gray-black5-color;
+    }
+    .description {
+        color: $main-dark-color;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+}
+.bookDescription {
+    grid-area: bookDescription;
+    .descriptionTitle {
+        color: $main-dark-color;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $gray-black5-color;
+    }
+    .descriptionContent {
+        color: $main-dark-color;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media (max-width: 900px) {
+    .bookAuthor {
+        h2 {
+            font-size: 24px;
+            line-height: 30px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .bookPreview {
+        grid-template-areas:
+            "bookImage bookAuthor"
+            "bookDescription bookDescription"
+        ;
+    }
+    .bookAuthor {
+        .bookingButton {
+            max-width: 306px;
+            width: 100%;
+        }
+        h2 {
+            font-size: 24px;
+            line-height: 30px;
+        }
+        .author {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+    .bookDescription {
+        .descriptionTitle {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .bookPreview {
+        grid-template-areas:
+            "bookImage"
+            "bookAuthor"
+            "bookDescription"
+        ;
+        grid-template-columns: auto;
+        .bookImage {
+           margin: 0 auto;
+        }
+        .bookAuthor {
+            h2 {
+                font-size: 18px;
+                line-height: 28px;
+            }
+            .author {
+                font-weight: 400;
+                font-size: 12px;
+            }
+        }
+        .bookDescription {
+            .descriptionTitle {
+                font-size: 18px;
+                line-height: 28px;
+            }
+            .descriptionContent {
+                font-size: 12px;
+                line-height: 18px;
+            }
+
+        }
+    }
+}

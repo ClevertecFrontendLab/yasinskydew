@@ -1,0 +1,19 @@
+@import '../../modules/_colors.scss';
+@import '../../modules/_fonts.scss';
+@import '../../modules/_constants.scss';
+
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-top: 1px solid $gray-black20-color;
+    outline-offset: -1px;
+    grid-area: footer;
+}
+@media (max-width: 768px) {
+    .footer {
+      justify-content: center;
+      gap: 5px;
+    }
+}

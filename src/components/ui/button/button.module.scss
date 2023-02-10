@@ -1,0 +1,90 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+@import '../../../modules/_shadows.scss';
+
+.button {
+    font: $font-stack;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:not([disabled]):active {
+        box-shadow: 0 3px 4px rgba(222, 125, 11, 0.2), 0 1px 10px rgba(249, 89, 8, 0.2);
+    }
+}
+
+.primary {
+    border: none;
+    background: $main-orange-color;
+    color: $main-white-color;
+    &:not([disabled]):hover {
+        outline: 1px solid $secondary-orange-color;
+        outline-offset:-1px;
+    }
+}
+
+.secondary {
+    border: 1px solid $gray-black20-color;
+    color: $main-dark-color;
+    &:not([disabled]):hover {
+        outline: 1px solid $gray-black40-color;
+        outline-offset:-1px;
+    }
+}
+
+.primary_disabled {
+    background: $gray-black10-color;
+}
+
+.secondary_disabled {
+    border: 1px solid $gray-black20-color;
+    background: $gray-black5-color;
+    color: $gray-black40-color;
+    &:hover {
+        outline: 1px solid $gray-black20-color;
+        outline-offset:-1px;
+    }
+}
+
+.large {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 14px 27px;
+    border-radius: 30px;
+}
+
+.small {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 11px 23px;
+    border-radius: 20px;
+}
+
+.control {
+    border: none;
+    padding: 9px;
+    border-radius: 50%;
+    box-shadow: $button-shadow;
+    &:not([disabled]):hover {
+        outline: none;
+    }
+    background: $main-orange-color;
+}
+
+.controlActive {
+    background: $main-white-color;
+}
+
+@media (max-width: 320px) {
+    .large {
+        padding: 11px 25px;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .control {
+        padding: 7px;
+    }
+}

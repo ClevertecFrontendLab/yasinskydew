@@ -1,0 +1,47 @@
+@import '../../modules/_colors.scss';
+@import '../../modules/_fonts.scss';
+@import '../../modules/_constants.scss';
+
+.breadCrumbs {
+    font-family: $font-stack;
+    color: $gray-black40-color;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    padding-top: 20px;
+    padding-bottom: 23px;
+    img {
+        display: inline-block;
+        padding: 0 4px;
+        position: relative;
+        top: 5px;
+    }
+}
+
+.breadCrumbsWrapper {
+    grid-area: breadcrumbs;
+    background-color: $gray-black5-color;
+    margin-bottom: 42px;
+}
+
+@media (max-width: 768px) {
+    .breadCrumbs {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .breadCrumbsWrapper {
+        margin-bottom: 48px;
+    }
+}
+
+@media (max-width: 320px) {
+    .breadCrumbs {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .breadCrumbsWrapper {
+        margin-bottom: 20px;
+    }
+}

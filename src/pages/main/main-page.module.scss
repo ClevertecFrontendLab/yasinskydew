@@ -1,0 +1,31 @@
+@import '../../modules/_colors.scss';
+@import '../../modules/_fonts.scss';
+@import '../../modules/_constants.scss';
+
+
+.main {
+    grid-area: main;
+    margin-bottom: 62px;
+    .bookList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 21.5px;
+    }
+}
+
+@media (max-width: 892px) {
+    .bookList {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+    }
+}
+
+@media (max-width: 320px) {
+    .bookList {
+        justify-content: center;
+    }
+}
+
+
+

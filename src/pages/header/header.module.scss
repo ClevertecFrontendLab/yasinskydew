@@ -1,0 +1,111 @@
+@import '../../modules/_constants.scss';
+@import '../../modules/colors';
+
+.header {
+    grid-area: header;
+    display: grid;
+    grid-template-areas: "logo title account";
+    grid-template-columns: 279px 1fr 1fr;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    width: 100%;
+    .title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .account {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        justify-content: flex-end;
+        .accountAvatar {
+            max-width: 58px;
+        }
+        .accountGreeting {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 18px;
+        }
+    }
+    .burgerContainer {
+        display: none;
+    }
+}
+
+.burgerContainer {
+    align-items: center;
+    position: relative;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+    margin: 6px;
+    span,
+    span::before,
+    span::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        border-radius: 3px;
+        background-color: $main-dark-color;
+        transition-duration: .25s;
+    }
+    span::before {
+        content: '';
+        top: -8px;
+    }
+    span::after {
+        content: '';
+        top: 8px;
+    }
+}
+
+.burgerContainerChecked {
+    span {
+        background-color: $secondary-orange-color;
+        transform: rotate(45deg);
+    }
+    span::before {
+        top: 0;
+        transform: rotate(0);
+        background-color: $secondary-orange-color;
+    }
+    span::after {
+        top: 0;
+        transform: rotate(90deg);
+        background-color: $secondary-orange-color;
+    }
+}
+
+@media (max-width: 892px) {
+    .header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+        .logo {
+            display: none;
+        }
+        .account {
+            display: none;
+        }
+        .burgerContainer {
+            display: flex;
+            margin-right: 24px;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .header {
+        .title {
+            font-size: 18px;
+            line-height: 28px;
+        }
+    }
+}
