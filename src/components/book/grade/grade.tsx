@@ -6,13 +6,11 @@ import classes from './grade.module.scss';
 
 interface GradeProps {
     grade?: number;
-    hasGrade: boolean;
-
 }
 // GradeEl
-export const Grade:FC<GradeProps> = ({ grade = 0,hasGrade }) => {
+export const Grade:FC<GradeProps> = ({ grade }) => {
 
-    if (!hasGrade) {
+    if (!grade) {
        return (
         <p>ещё нет оценок</p>
        )

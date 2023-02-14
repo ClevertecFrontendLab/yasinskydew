@@ -8,7 +8,7 @@ import logo from './images/logo.svg';
 import { mock } from './mock/mock';
 
 import classes from './header.module.scss';
-import { LayoutState } from '../../layouts/main/main';
+import {LayoutState} from "../../layouts/main/main";
 
 interface HeaderProps {
   layoutState: LayoutState;

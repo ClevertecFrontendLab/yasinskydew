@@ -1,4 +1,3 @@
-import { IBookCardFull } from '../../../types/types';
 import React, { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
@@ -10,9 +9,10 @@ import { Pagination, Scrollbar, Thumbs } from 'swiper';
 import useSwiperRef from './useSwiperRef';
 import classNames from 'classnames';
 import { Image, ImageType } from '../../../components/ui/image/image';
+import {IBookDetail} from "../../../models/IBookDetail";
 
 export interface BookSliderProps {
-  bookItem: IBookCardFull;
+  bookItem: IBookDetail;
 }
 
 export const BookSlider: FC<BookSliderProps> = ({ bookItem }) => {
@@ -37,9 +37,9 @@ export const BookSlider: FC<BookSliderProps> = ({ bookItem }) => {
           slideThumbActiveClass: classNames(classes.thumbActive),
         }}
       >
-        {bookItem.imageUrls.map((i, index) => (
+        {bookItem.images.map((i, index) => (
           <SwiperSlide key={index + 1}>
-            <Image type={ImageType.preview} url={i} />
+            <Image type={ImageType.preview} url={i.url} />
           </SwiperSlide>
         ))}
         <div ref={paginationRef} className={classes.paginationContainer}></div>
@@ -56,9 +56,9 @@ export const BookSlider: FC<BookSliderProps> = ({ bookItem }) => {
               snapOnRelease: true,
           }}
         >
-          {bookItem.imageUrls.map((i, index) => (
+          {bookItem.images.map((i, index) => (
             <SwiperSlide className={classNames(classes.thumb)} key={index + 1} data-test-id='slide-mini'>
-              <Image type={ImageType.previewMini} url={i} />
+              <Image type={ImageType.previewMini} url={i.url} />
             </SwiperSlide>
           ))}
         </Swiper>

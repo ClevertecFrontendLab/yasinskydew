@@ -6,6 +6,7 @@ import {Image, ImageType} from '../../ui/image/image';
 import {Grade} from '../grade/grade';
 
 import classes from './book_card.module.scss';
+import {IBook} from "../../../models/IBook";
 
 export enum BookCardMode {
     grid = 'grid',
@@ -13,27 +14,27 @@ export enum BookCardMode {
 }
 
 export interface BookCardProps {
-    bookCard: IBookCard;
+    bookCard: IBook;
     viewCardMode: BookCardMode;
 }
 export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const link = `book/${bookCard.id}`;
+    const link = `books/all/${bookCard.id}`;
 
     if (viewCardMode === BookCardMode.grid) {
         return (
             <Link {...props} to={link} className={[classes.bookCard, classes[viewCardMode]].join(' ')}>
-                <Image url={bookCard.imageUrls[0]} type={ImageType.bookCard}/>
-                <Grade hasGrade={bookCard.hasGrade} grade={bookCard.grade}/>
+                <Image url={bookCard.image?.url} type={ImageType.bookCard}/>
+                <Grade grade={bookCard.rating}/>
                 <p className={classes.bookCardTitle}>{bookCard.title}</p>
-                <p>{bookCard.author}, {bookCard.year}</p>
+                <p>{bookCard.authors}, {bookCard.issueYear}</p>
                 <Button
                     size={ButtonSize.small}
-                    type={bookCard.ordered ? ButtonType.secondary : ButtonType.primary }
-                    disabled={!!bookCard.ordered}
+                    type={bookCard.booking?.order ? ButtonType.secondary : ButtonType.primary }
+                    disabled={bookCard.booking?.order}
                 >
-                    {bookCard.ordered ? bookCard.ordered : 'забронировать'}
+                    {bookCard.booking?.order ? bookCard.booking?.order : 'забронировать'}
                 </Button>
             </Link>
         )
@@ -41,20 +42,20 @@ export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }
 
     return (
         <Link {...props} to={link} className={[classes.bookCard, classes[viewCardMode]].join(' ')}>
-            <Image url={bookCard.imageUrls[0]} type={ImageType.bookList}/>
+            <Image url={bookCard.image?.url} type={ImageType.bookList}/>
             <div className={classes.bookListWrapper}>
                 <div className={classes.bookListDescription}>
                     <p className={classes.bookCardTitle}>{bookCard.title}</p>
-                    <p className={classes.bookCardAuthor}>{bookCard.author}, {bookCard.year}</p>
+                    <p className={classes.bookCardAuthor}>{bookCard.authors}, {bookCard.issueYear}</p>
                 </div>
                 <div className={classes.grade}>
-                    <Grade hasGrade={bookCard.hasGrade} grade={bookCard.grade}/>
+                    <Grade grade={bookCard.rating}/>
                     <Button
                         size={ButtonSize.large}
-                        type={bookCard.ordered ? ButtonType.secondary : ButtonType.primary }
-                        disabled={!!bookCard.ordered}
+                        type={bookCard.booking?.order ? ButtonType.secondary : ButtonType.primary }
+                        disabled={bookCard.booking?.order}
                     >
-                        {bookCard.ordered ? bookCard.ordered : 'забронировать'}
+                        {bookCard.booking?.order ? bookCard.booking?.order : 'забронировать'}
                     </Button>
                 </div>
             </div>

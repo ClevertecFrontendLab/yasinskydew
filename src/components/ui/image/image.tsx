@@ -1,9 +1,5 @@
 import {FC} from 'react';
-
-import imageDefault from './images/image-default.jpg';
-
 import classes from './image.module.scss';
-
 
 export enum ImageType {
     bookCard = 'bookCard',
@@ -23,7 +19,6 @@ export const Image: FC<ImageProps> = ({
     type= ImageType.bookCard,
 }) => {
     const className = [classes.image, classes[type]];
-
     if (!url) {
         return (
             <div className={className.join(' ')}>
@@ -31,11 +26,10 @@ export const Image: FC<ImageProps> = ({
             </div>
         );
     }
-
+    const baseUrl = 'https://strapi.cleverland.by';
     return (
         <div className={className.join(' ')}>
-            <img src={imageDefault} alt={alt} />
+            <img src={`${baseUrl}${url}`} alt={alt} />
         </div>
     )
-
 };

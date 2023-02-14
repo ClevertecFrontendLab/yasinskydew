@@ -2,13 +2,17 @@ import { createRef, FC, RefObject, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { getMock, getPagesMock } from './mock-data';
+import { getPagesMock } from './mock-data';
 import classes from './main-navigation.module.scss';
 import useOnClickOutside from '../../hooks/on-click-outside';
 import { dropDownHeaderRef } from '../../pages/header/header';
 import { LayoutState } from '../../layouts/main/main';
 import {MainNavigationPage} from "./main-navigation-page/main-navigation-page";
 import {MainNavigationCategory} from "./main-navigation-category/main-navigation-category";
+import {ICategory} from "../../models/ICategory";
+import {categoryAPI} from "../../services/category-service";
+import {Loader} from "../ui/loader/loader";
+import Error from "../ui/error/error";
 
 export interface NavItemInterface {
   id: number;
@@ -26,7 +30,8 @@ export interface MainNavigationProps {
 export const dropDownRef: RefObject<HTMLDivElement> = createRef();
 
 export const MainNavigation: FC<MainNavigationProps> = ({ layoutState, setLayoutState, navDisplayNone = false }) => {
-  const bookItems = getMock();
+  const {data: categories = [], error, isLoading} =  categoryAPI.useFetchAllCategoriesQuery();
+
   const pages = getPagesMock();
   const [search] = useSearchParams();
   const location = useLocation();
@@ -109,12 +114,21 @@ export const MainNavigation: FC<MainNavigationProps> = ({ layoutState, setLayout
                   Все книги
                 </NavLink>
               </li>
-              {bookItems.map((item: NavItemInterface) => <MainNavigationCategory  category={item} disableMenu={disableMenu} searchCategory={search.get('categoryId') || null}/>)}
+              {categories.map((item: ICategory, index) => <MainNavigationCategory
+                  key={index}
+                  category={item}
+                  disableMenu={disableMenu}
+                  searchCategory={search.get('categoryId') || null}
+              />)}
             </ul>
           }
         </li>
+        { isLoading && <Loader/> }
+        { error && <Error error={'Category error'} /> }
         {pages.map((item, index) => <MainNavigationPage
-            id={index} disableMenu={disableMenu}
+            key={index}
+            id={index}
+            disableMenu={disableMenu}
             setArrow={setArrow}
             disableBookNavList={disableBookNavList}
             hide={item.hide}

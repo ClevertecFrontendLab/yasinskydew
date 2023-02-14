@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 import classes from './main-navigation-category.module.scss';
 import { NavItemInterface } from '../main-navigation';
+import {ICategory} from "../../../models/ICategory";
 export interface MainNavigationCategoryProps {
-  category: NavItemInterface;
+  category: ICategory;
   searchCategory?: string | null;
   disableMenu: () => void;
 }
@@ -17,12 +18,12 @@ export const MainNavigationCategory: FC<MainNavigationCategoryProps> = ({ catego
     >
       <Link
         to={{
-          search: `?categoryId=${category.id}`,
+          search: `?categoryId=${category.path}`,
         }}
         onClick={disableMenu}
       >
-        {category.title}
-        <span className={classes.bookNavItemCount}>{category.count}</span>
+        {category.name}
+        <span className={classes.bookNavItemCount}>{1}</span>
       </Link>
     </li>
   );

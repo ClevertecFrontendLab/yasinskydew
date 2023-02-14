@@ -1,17 +1,14 @@
 import {FC} from 'react';
-
-import {IBookCardFull} from '../../../types/types';
-
 import {getDetailColumns} from './mock';
-
 import classes from './book-detail.module.scss';
+import {IBookDetail} from "../../../models/IBookDetail";
 
 export interface BookDetailProps {
-    bookItem: IBookCardFull,
+    bookItem: IBookDetail,
 }
 export const BookDetail:FC<BookDetailProps> = ({ bookItem }) => {
 
-    const [leftDetails, rightDetails] = getDetailColumns(bookItem.details);
+    const [leftDetails, rightDetails] = getDetailColumns(bookItem);
 
     return (
         <div className={classes.bookCardDetails}>

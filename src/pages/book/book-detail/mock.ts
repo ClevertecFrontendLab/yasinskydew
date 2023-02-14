@@ -1,49 +1,50 @@
 import {IBookCardDetail} from '../../../types/types';
+import {IBookDetail} from "../../../models/IBookDetail";
 
 
-export const getDetailColumns = (details: IBookCardDetail) => {
+export const getDetailColumns = (book: IBookDetail) => {
 
     const left = [
         {
             name: 'Издательство',
-            value: details.publishingHouse,
+            value: book.publish,
         },
         {
             name: 'Год издания',
-            value: details.publishingYear,
+            value: book.issueYear,
         },
         {
             name: 'Страниц',
-            value: details.letterCount,
+            value: book.pages,
         },
         {
             name: 'Переплёт',
-            value: details.binding,
+            value: book.cover,
         },
         {
             name: 'Формат',
-            value: details.format,
+            value: book.format,
         },
     ];
      const right = [
         {
             name: 'Жанр',
-            value: details.genre,
+            value: book.categories,
         },
 
         {
             name: 'Вес',
-            value: details.weight,
+            value: book.weight,
         },
 
         {
             name: 'ISBN',
-            value: details.ISBN,
+            value: book.ISBN,
         },
 
         {
             name: 'Изготовитель',
-            value: details.producer,
+            value: book.producer,
         },
 
     ];
