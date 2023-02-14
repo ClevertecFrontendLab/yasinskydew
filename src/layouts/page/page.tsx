@@ -9,7 +9,7 @@ import { MainNavigation } from '../../components/main-navigation/main-navigation
 
 export const PageLayout: FC<LayoutContextI> = ({ layoutState, setLayoutState }) => {
   return (
-    <>
+    <section className={classes.bookPage}>
       <div className={[classes.headerWrapper, classes.container, classes.wrapper].join(' ')}>
         <Header layoutState={layoutState} setLayoutState={setLayoutState} />
         <MainNavigation layoutState={layoutState} setLayoutState={setLayoutState} navDisplayNone={true} />
@@ -19,6 +19,6 @@ export const PageLayout: FC<LayoutContextI> = ({ layoutState, setLayoutState }) 
       <div className={[classes.footerWrapper, classes.container, classes.wrapper].join(' ')}>
         <Footer />
       </div>
-    </>
+    </section>
   );
 };

@@ -1,4 +1,4 @@
-import { createRef, FC, RefObject } from 'react';
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -15,8 +15,6 @@ export interface MainNavigationPageProps {
   setArrow: (value: boolean) => void;
   disableBookNavList: () => void;
 }
-
-export const dropDownRef: RefObject<HTMLDivElement> = createRef();
 
 export const MainNavigationPage: FC<MainNavigationPageProps> = ({
   id,

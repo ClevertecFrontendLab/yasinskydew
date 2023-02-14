@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './main-navigation-category.module.scss';
-import { NavItemInterface } from '../main-navigation';
 import {ICategory} from "../../../models/ICategory";
 export interface MainNavigationCategoryProps {
   category: ICategory;
@@ -11,10 +10,10 @@ export interface MainNavigationCategoryProps {
 }
 
 export const MainNavigationCategory: FC<MainNavigationCategoryProps> = ({ category, disableMenu, searchCategory }) => {
-  return (
+    return (
     <li
       key={category.id}
-      className={searchCategory === String(category.id) ? classes.navBookItemActive : classes.bookNavItem}
+      className={searchCategory === String(category.path) ? classes.navBookItemActive : classes.bookNavItem}
     >
       <Link
         to={{

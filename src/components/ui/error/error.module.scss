@@ -1,0 +1,69 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+@import '../../../modules/_constants.scss';
+
+
+.errorWrapper {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .errorContainer {
+        min-height: 80px;
+        width: 100%;
+        display: flex;
+        margin: 0 auto;
+        background-color: $negative-bgc;
+        border: 1.5px solid $negative;
+        border-radius: 5px;
+        padding: 32px 24px;
+        gap:24px;
+        align-items: center;
+    }
+}
+.errorIcon {
+    width: 32px;
+    height: 32px;
+}
+.errorDisabledButton {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+.errorContent {
+    flex-grow: 1;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    font-family: $font-stack;
+}
+
+@media (max-width: 768px) {
+    .errorContainer {
+        padding: 16px 24px;
+        gap:12px;
+    }
+    .errorIcon {
+        width: 24px;
+        height: 24px;
+        align-self: start;
+    }
+    .errorDisabledButton {
+        width: 16px;
+        height: 16px;
+        align-self: start;
+    }
+    .errorContent {
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: 320px) {
+    .errorContainer {
+        padding: 16px 12px;
+    }
+}

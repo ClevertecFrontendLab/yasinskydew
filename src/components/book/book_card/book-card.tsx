@@ -1,12 +1,12 @@
 import {FC} from 'react';
 import {Link} from 'react-router-dom';
-import {IBookCard} from '../../../types/types';
 import {Button, ButtonSize, ButtonType} from '../../ui/button/button';
 import {Image, ImageType} from '../../ui/image/image';
 import {Grade} from '../grade/grade';
 
 import classes from './book_card.module.scss';
 import {IBook} from "../../../models/IBook";
+import dayjs from "dayjs";
 
 export enum BookCardMode {
     grid = 'grid',
@@ -22,6 +22,7 @@ export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }
     // @ts-ignore
     const link = `books/all/${bookCard.id}`;
 
+    const getOrderContent = () => bookCard.booking?.order ? `занята до ${dayjs(bookCard.booking.dateOrder).format('DD.MM')}` : 'забронировать';
     if (viewCardMode === BookCardMode.grid) {
         return (
             <Link {...props} to={link} className={[classes.bookCard, classes[viewCardMode]].join(' ')}>
@@ -34,7 +35,7 @@ export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }
                     type={bookCard.booking?.order ? ButtonType.secondary : ButtonType.primary }
                     disabled={bookCard.booking?.order}
                 >
-                    {bookCard.booking?.order ? bookCard.booking?.order : 'забронировать'}
+                    {getOrderContent()}
                 </Button>
             </Link>
         )
@@ -55,7 +56,7 @@ export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }
                         type={bookCard.booking?.order ? ButtonType.secondary : ButtonType.primary }
                         disabled={bookCard.booking?.order}
                     >
-                        {bookCard.booking?.order ? bookCard.booking?.order : 'забронировать'}
+                        {getOrderContent()}
                     </Button>
                 </div>
             </div>
