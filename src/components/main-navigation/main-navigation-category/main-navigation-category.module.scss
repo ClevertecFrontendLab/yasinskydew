@@ -1,0 +1,27 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+
+.bookNavItem {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: $main-dark-color;
+}
+
+.navBookItemActive {
+    color: $main-orange-color;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.bookNavItemCount {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: $gray-black40-color;
+    margin-left: 6px;
+}

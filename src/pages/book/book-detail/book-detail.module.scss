@@ -1,0 +1,66 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+@import '../../../modules/_constants.scss';
+
+.bookCardDetails {
+    h3 {
+        color: $main-dark-color;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $gray-black5-color;
+    }
+    margin-bottom: 62px;
+}
+
+.detailsList {
+    display: grid;
+    grid-template-columns: min-content auto;
+    gap: 146px;
+}
+
+.detailsItem {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 24px;
+    .detailsItemName {
+        color: $gray-black40-color;
+        font-weight: 600;
+    }
+    .detailsItemValue {
+        font-style: normal;
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 778px) {
+    .detailsList {
+        gap: 30px;
+        .detailsItem {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            grid-template-columns: 138px 1fr;
+        }
+    }
+}
+
+@media (max-width: 520px) {
+    .detailsList {
+        grid-template-columns: 1fr;
+    }
+    .detailsItem {
+        grid-template-columns: 20px min-content;
+        font-size: 12px;
+        line-height: 16px;
+        .detailsItemName {
+            font-weight: 500;
+        }
+    }
+}
+

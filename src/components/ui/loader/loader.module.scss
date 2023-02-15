@@ -1,0 +1,27 @@
+.loaderWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(54, 54, 54, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ldsRing {
+    width: 150px;
+    height: 150px;
+    background: url('images/loader_ellipse.svg') no-repeat center;
+    animation: 1s linear 0s normal none infinite running ldsRing;
+}
+
+@keyframes ldsRing {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

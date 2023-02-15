@@ -1,0 +1,122 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+@import '../../../modules/_shadows.scss';
+
+.wrapper {
+    position: relative;
+}
+
+.input {
+    border-style: none;
+    cursor: pointer;
+    box-shadow: $button-shadow;
+    padding: 10px 16px 10px 40px;
+    color: $gray-black40-color;
+    font-family: $font-stack;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 599px;
+    height: 38px;
+    display: inline-block;
+    &:hover {
+        background-color:$gray-black10-color;
+    }
+    transition: width 200ms ease;
+}
+
+.isOpenInput {
+    display: none;
+}
+
+.searchPlug {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: none;
+    box-shadow: $button-shadow;
+    border-radius: 599px;
+}
+
+.input:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+.input::placeholder {
+    color: $gray-black40-color;
+    font-family: $font-stack;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.input::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+.input::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+.input:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+.input:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+.input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+.input:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+.input:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+.input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+
+.inputIcon {
+    background: url('images/search-icon.svg') no-repeat center;
+    position: absolute;
+    padding: 8px;
+    top: 11px;
+    left: 16px;
+}
+
+.closeButton {
+    background: url('images/close_button.svg') no-repeat center;
+    position: absolute;
+    padding: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 653px) {
+    .searchPlug {
+        display: block;
+    }
+    .searchPlugHide {
+        display: none;
+    }
+    .inputIcon {
+        top: 12px;
+        left: 11px;
+    }
+    .input::placeholder {
+        color: transparent;
+    }
+    .input {
+        display: none;
+        width: 100%;
+        padding: 10px 40px 10px 16px;
+    }
+    .isOpenInput {
+        display: block;
+    }
+    .isOpenInput::placeholder {
+        color: $gray-black40-color;
+    }
+}
+
+@media (max-width: 320px) {
+    .input {
+        width: 100%;
+        padding: 10px 40px 10px 16px;
+    }
+    .searchPlug {
+        width: 32px;
+        height: 32px;
+    }
+    .inputIcon {
+        top: 9px;
+        left: 8px;
+    }
+}

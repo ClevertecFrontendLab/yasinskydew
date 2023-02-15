@@ -1,0 +1,113 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+
+.bookCard {
+    font-family: $font-stack;
+    color: $grey-black70-color;
+    box-shadow: 0 2px 4px rgba(191, 196, 201, 0.2), 0 3px 4px rgba(191, 196, 201, 0.18), 0 1px 5px rgba(191, 196, 201, 0.24);
+}
+
+.grid {
+    max-width: 190px;
+    height: 470px;
+    padding: 8px 8px 16px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .bookCardTitle {
+        color: $main-dark-color;
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -moz-box;
+        -moz-box-orient: vertical;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        line-clamp: 4;
+        box-orient: vertical;
+    }
+}
+
+.list {
+    width: 100%;
+    padding: 24px 24px 24px 16px;
+    border-radius: 12px;
+    display: flex;
+    gap: 16px;
+    .bookListWrapper {
+        width: 100%;
+        max-width: 649px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .bookCardAuthor {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .bookCardTitle {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 32px;
+        color: $main-dark-color;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .grade {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (max-width: 460px) {
+    .list {
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width: 320px) {
+    .grid {
+        width: 288px;
+        padding: 8px 16px;
+        img:first-child {
+            align-self: center;
+        }
+        div:first-child {
+            align-self: center;
+        }
+    }
+    .list {
+        flex-wrap: nowrap;
+        padding: 8px 16px;
+        .bookListWrapper {
+            gap: 3px;
+            max-width: 186px;
+        }
+        .grade {
+            gap: 16px;
+        }
+        .bookCardAuthor {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .bookCardTitle {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+}
+
+

@@ -1,0 +1,79 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+@import '../../../modules/_constants.scss';
+
+.swiperThumbWrapper {
+    padding-bottom: 14px!important;
+    display: flex;
+    justify-content: center;
+}
+:global(.swiper-pagination-bullet) {
+    width: 7px;
+    height: 7px;
+    opacity: 1;
+    background-color: $gray-black20-color;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0;
+}
+
+.swiper {
+    max-width: 445px;
+    .bulletActive {
+        width: 9px;
+        height: 9px;
+        background-color: $main-dark-color;
+    }
+}
+
+.swiperThumb {
+    max-width: 445px;
+}
+.swiperThumb {
+    margin-top: 16px;
+    padding-bottom: 16px;
+}
+.thumb {
+    border: 1px solid $gray-black20-color;
+    border-radius: 3px;
+    box-sizing: content-box;
+    max-width: 65px;
+}
+
+.thumbActive {
+    border-color:$secondary-orange-color;
+}
+
+.paginationContainer {
+    display: none;
+}
+
+
+@media (max-width: 900px) {
+    .swiper, .swiperThumb {
+        max-width: 300px;
+    }
+    .swiperThumb {
+        display: none;
+    }
+    .paginationContainer {
+        padding-top: 24px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 780px) {
+    .swiper {
+        max-width: 136px;
+    }
+}
+
+@media (max-width: 320px) {
+    .swiper {
+        max-width: 188px;
+    }
+}

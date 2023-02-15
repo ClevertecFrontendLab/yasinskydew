@@ -1,0 +1,25 @@
+.grade {
+    display: flex;
+    gap: 6px;
+}
+
+.gradeItem {
+    width: 24px;
+    height: 24px;
+    background-color: gray;
+}
+
+.gradeFillBackground {
+    background: url('images/icon_star_fill.svg') no-repeat center;
+}
+
+.gradeEmptyBackground {
+    background: url('images/icon_star_empty.svg') no-repeat center;
+}
+
+@media (max-width: 320px) {
+    .gradeItem {
+        width: 16px;
+        height: 16px;
+    }
+}

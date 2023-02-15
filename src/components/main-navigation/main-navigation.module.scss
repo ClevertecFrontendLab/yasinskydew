@@ -1,0 +1,111 @@
+@import '../../modules/_colors.scss';
+@import '../../modules/_fonts.scss';
+
+.nav {
+    grid-area: nav;
+    align-self: start;
+    margin-right: 8px;
+    .navList {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 42px;
+        .navBookItemWrapper {
+            display: flex;
+        }
+        .bookNavListButton {
+            display: none;
+        }
+        .bookNavListButtonVisible {
+            transform: rotate(180deg);
+        }
+        .bookNavListToggleVisible {
+            content: '';
+            position: relative;
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            background-image: url(active-arrow.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            right: 20px;
+            top: 5px;
+        }
+        .navItem {
+            color: $main-dark-color;
+        }
+        .navItemHide {
+            display: none;
+        }
+        .navItemDivider {
+            border-top: 1px solid #BFC4C9;
+            margin: 0 -16px;
+        }
+    }
+}
+.navDisplayNone {
+    display: none;
+}
+
+.navItemActive {
+    color: $main-orange-color;
+    border-bottom: 1px solid;
+    border-color: $main-orange-color;
+    padding-bottom: 8px;
+    display: block;
+    width: 100%;
+}
+.navBookItemActive {
+    color: $main-orange-color;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+}
+.bookNavList {
+    margin-top: 16px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .bookNavItem {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: $main-dark-color;
+    }
+}
+
+.bookNavListClose {
+    display: none;
+}
+@media (max-width: 892px) {
+    .nav {
+        display: grid;
+        background: #F9F9FA;
+        margin: 0 auto;
+        top: 90px;
+        padding: 32px 16px 52px;
+        border-radius: 5px;
+        z-index: 2;
+        position: absolute;
+        .navList {
+            .navItemHide {
+                display: flex;
+            }
+        }
+    }
+    .navDisabled {
+        display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    .nav {
+        width: 90vw;
+    }
+}
+

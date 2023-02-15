@@ -1,0 +1,30 @@
+@import '../../modules/_colors.scss';
+@import '../../modules/_fonts.scss';
+@import '../../modules/_constants.scss';
+
+.mainLayout {
+  font-family: $font-stack;
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    'header header'
+    'nav main'
+    'footer  footer';
+  grid-template-columns: 279px 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+@media (max-width: 892px) {
+  .mainLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 64px;
+  }
+}
+
+@media (max-width: 320px) {
+  .mainLayout {
+    margin: 0 16px;
+  }
+}
