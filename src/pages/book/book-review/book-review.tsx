@@ -6,8 +6,8 @@ import reviewIcon from './review_icon.svg';
 
 import classes from './book-review.module.scss';
 import classNames from 'classnames';
-import { IBookComment } from '../../../models/IBookDetail';
 import dayjs from 'dayjs';
+import {IBookComment} from "../../../models/IBookDetail";
 
 export interface BookReviewProps {
     comments: IBookComment[];
@@ -35,7 +35,7 @@ export const BookReview: FC<BookReviewProps> = ({ comments, toggleReview, isOpen
             <div className={classes.reviewsControl}>
                 <h3 className={classes.reviewsTitle}>Отзывы</h3>
                 <span className={classes.reviewsCount}>{comments.length}</span>
-                {comments.length && (
+                {!!comments.length && (
                     <div
                         onClick={toggleReview}
                         className={classNames(classes.reviewsToggle, {
@@ -45,10 +45,11 @@ export const BookReview: FC<BookReviewProps> = ({ comments, toggleReview, isOpen
                     />
                 )}
             </div>
-
-            <ul className={classes.reviewList}>
-                {isOpenReview && comments.map((review: IBookComment) => createReview(review))}
-            </ul>
+            {!!comments.length &&
+                <ul className={classes.reviewList}>
+                    {isOpenReview && comments.map((review: IBookComment) => createReview(review))}
+                </ul>
+            }
         </div>
     );
 };
