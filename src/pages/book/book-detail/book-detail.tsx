@@ -1,13 +1,12 @@
-import {FC} from 'react';
-import {getDetailColumns} from './mock';
+import { FC } from 'react';
+import { getDetailColumns } from './mock';
 import classes from './book-detail.module.scss';
-import {IBookDetail} from "../../../models/IBookDetail";
+import { IBookDetail } from '../../../models/IBookDetail';
 
 export interface BookDetailProps {
-    bookItem: IBookDetail,
+    bookItem: IBookDetail;
 }
-export const BookDetail:FC<BookDetailProps> = ({ bookItem }) => {
-
+export const BookDetail: FC<BookDetailProps> = ({ bookItem }) => {
     const [leftDetails, rightDetails] = getDetailColumns(bookItem);
 
     return (
@@ -33,4 +32,4 @@ export const BookDetail:FC<BookDetailProps> = ({ bookItem }) => {
             </div>
         </div>
     );
-}
+};

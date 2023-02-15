@@ -1,5 +1,5 @@
 export interface IAddress {
-    street:string;
+    street: string;
     city: string;
     zipcode: string;
 }
@@ -38,7 +38,7 @@ export interface IBookCardDetail {
     genre: string;
     weight: string;
     ISBN: string;
-    producer: string
+    producer: string;
 }
 
 export interface IBookCardReview {

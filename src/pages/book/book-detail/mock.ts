@@ -1,9 +1,7 @@
-import {IBookCardDetail} from '../../../types/types';
-import {IBookDetail} from "../../../models/IBookDetail";
-
+import { IBookCardDetail } from '../../../types/types';
+import { IBookDetail } from '../../../models/IBookDetail';
 
 export const getDetailColumns = (book: IBookDetail) => {
-
     const left = [
         {
             name: 'Издательство',
@@ -26,7 +24,7 @@ export const getDetailColumns = (book: IBookDetail) => {
             value: book.format,
         },
     ];
-     const right = [
+    const right = [
         {
             name: 'Жанр',
             value: book.categories,
@@ -46,8 +44,7 @@ export const getDetailColumns = (book: IBookDetail) => {
             name: 'Изготовитель',
             value: book.producer,
         },
-
     ];
 
-     return [left, right];
-}
+    return [left, right];
+};

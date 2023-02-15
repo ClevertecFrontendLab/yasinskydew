@@ -3,9 +3,7 @@ export interface AppState {
     breadCrumbsPath: string[];
 }
 
-export type Action =
-    | { type: 'SET_MENU_OPEN', payload: boolean }
-    | { type: "SET_BREAD_CRUMBS", payload: string[] }
+export type Action = { type: 'SET_MENU_OPEN'; payload: boolean } | { type: 'SET_BREAD_CRUMBS'; payload: string[] };
 
 export const initialState: AppState = {
     isMenuOpen: false,
@@ -14,15 +12,15 @@ export const initialState: AppState = {
 
 export function reducer(state: AppState, action: Action): AppState {
     switch (action.type) {
-        case "SET_MENU_OPEN":
+        case 'SET_MENU_OPEN':
             return {
                 ...state,
-                isMenuOpen: action.payload
+                isMenuOpen: action.payload,
             };
-        case "SET_BREAD_CRUMBS":
+        case 'SET_BREAD_CRUMBS':
             return {
                 ...state,
-                breadCrumbsPath: action.payload
+                breadCrumbsPath: action.payload,
             };
         default:
             throw new Error();

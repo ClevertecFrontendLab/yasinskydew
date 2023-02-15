@@ -1,22 +1,24 @@
-import {createContext, FC, ReactNode, useContext, useMemo, useReducer} from "react";
-import { Action, AppState, initialState, reducer } from "./reducer";
-import { Dispatch } from "react";
+import { createContext, FC, ReactNode, useContext, useMemo, useReducer } from 'react';
+import { Action, AppState, initialState, reducer } from './reducer';
+import { Dispatch } from 'react';
 
-type StateContextType = { state: AppState, dispatch: Dispatch<Action> };
+type StateContextType = { state: AppState; dispatch: Dispatch<Action> };
 
 export const StateContext = createContext<StateContextType>({} as StateContextType);
 
 export const useAppState = (): AppState => useContext(StateContext).state;
 export const useAppDispatch = (): Dispatch<Action> => useContext(StateContext).dispatch;
 
-export const initialPrepopulatedState = Object.entries(initialState)
-    .reduce((acc, [key, value]) => ({
+export const initialPrepopulatedState = Object.entries(initialState).reduce(
+    (acc, [key, value]) => ({
         ...acc,
-        [key]: value
-    }), {}) as AppState;
+        [key]: value,
+    }),
+    {}
+) as AppState;
 
 interface AppStateProviderProps {
-    children: ReactNode,
+    children: ReactNode;
 }
 export const AppStateProvider: FC<AppStateProviderProps> = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialPrepopulatedState);
@@ -25,8 +27,5 @@ export const AppStateProvider: FC<AppStateProviderProps> = ({ children }) => {
         return { state, dispatch };
     }, [state, dispatch]);
 
-    return <StateContext.Provider value={contextValue}>
-        {children}
-        </StateContext.Provider>;
+    return <StateContext.Provider value={contextValue}>{children}</StateContext.Provider>;
 };
-

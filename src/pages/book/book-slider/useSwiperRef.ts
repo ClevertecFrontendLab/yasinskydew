@@ -8,10 +8,7 @@ const useSwiperRef = () => {
         setWrapper(ref.current);
     }, []);
 
-    return [
-        wrapper,
-        ref
-    ]
+    return [wrapper, ref];
 };
 
 export default useSwiperRef;

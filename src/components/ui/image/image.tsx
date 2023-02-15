@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import { FC } from 'react';
 import classes from './image.module.scss';
 
 export enum ImageType {
@@ -9,15 +9,11 @@ export enum ImageType {
 }
 
 interface ImageProps {
-    url?: string,
-    alt?: string,
-    type?: ImageType,
+    url?: string;
+    alt?: string;
+    type?: ImageType;
 }
-export const Image: FC<ImageProps> = ({
-    url,
-    alt= 'image description',
-    type= ImageType.bookCard,
-}) => {
+export const Image: FC<ImageProps> = ({ url, alt = 'image description', type = ImageType.bookCard }) => {
     const className = [classes.image, classes[type]];
     if (!url) {
         return (
@@ -31,5 +27,5 @@ export const Image: FC<ImageProps> = ({
         <div className={className.join(' ')}>
             <img src={`${baseUrl}${url}`} alt={alt} />
         </div>
-    )
+    );
 };

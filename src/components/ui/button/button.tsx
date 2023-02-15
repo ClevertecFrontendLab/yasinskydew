@@ -1,4 +1,4 @@
-import {FC, MouseEvent, ReactNode} from 'react';
+import { FC, MouseEvent, ReactNode } from 'react';
 
 import classes from './button.module.scss';
 
@@ -22,8 +22,6 @@ interface ButtonProps {
     dataTestId?: string;
     onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
     width?: string;
-
-
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -37,17 +35,13 @@ export const Button: FC<ButtonProps> = ({
     width,
     ...props
 }) => {
-    const className = [
-        classes.button,
-        classes[size],
-        classes[type],
-    ];
+    const className = [classes.button, classes[size], classes[type]];
 
-    if(disabled) {
-        if(type === ButtonType.primary) {
+    if (disabled) {
+        if (type === ButtonType.primary) {
             className.push(classes.primary_disabled);
         }
-        if(type === ButtonType.secondary) {
+        if (type === ButtonType.secondary) {
             className.push(classes.secondary_disabled);
         }
     }
@@ -57,9 +51,9 @@ export const Button: FC<ButtonProps> = ({
     };
 
     return (
-    // eslint-disable-next-line react/button-has-type
+        // eslint-disable-next-line react/button-has-type
         <button {...props} className={className.join(' ')} style={style} disabled={disabled} onClick={onClick}>
             {children}
         </button>
-    )
+    );
 };

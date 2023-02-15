@@ -5,14 +5,14 @@ import { Outlet } from 'react-router-dom';
 import classes from './main-layout.module.scss';
 import { FC } from 'react';
 export const MainLayout: FC = () => {
-  return (
-    <>
-      <section className={[classes.mainLayout, classes.container, classes.wrapper].join(' ')}>
-        <Header />
-        <MainNavigation />
-        <Outlet />
-        <Footer />
-      </section>
-    </>
-  );
+    return (
+        <>
+            <section className={[classes.mainLayout, classes.container, classes.wrapper].join(' ')}>
+                <Header />
+                <MainNavigation />
+                <Outlet />
+                <Footer />
+            </section>
+        </>
+    );
 };

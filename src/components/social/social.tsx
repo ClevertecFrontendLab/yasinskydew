@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import { FC } from 'react';
 
 import socialFacebook from './images/social-facebok.svg';
 import socialInst from './images/social-inst.svg';
@@ -32,7 +32,9 @@ const socialButtons: SocialItemProps[] = [
 ];
 
 export const Social: FC = () => (
-        <ul className={classes.social}>
-            {socialButtons.map(item => <SocialItem {...item} key={Math.random()} />)}
-        </ul>
-    )
+    <ul className={classes.social}>
+        {socialButtons.map((item) => (
+            <SocialItem {...item} key={Math.random()} />
+        ))}
+    </ul>
+);

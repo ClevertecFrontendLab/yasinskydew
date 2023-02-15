@@ -7,17 +7,17 @@ import { Breadcrumbs } from '../../components/breadcrums/breadcrumbs';
 import { MainNavigation } from '../../components/main-navigation/main-navigation';
 
 export const PageLayout: FC = () => {
-  return (
-    <section className={classes.bookPage}>
-      <div className={[classes.headerWrapper, classes.container, classes.wrapper].join(' ')}>
-        <Header />
-        <MainNavigation navDisplayNone={true} />
-      </div>
-      <Breadcrumbs />
-      <Outlet />
-      <div className={[classes.footerWrapper, classes.container, classes.wrapper].join(' ')}>
-        <Footer />
-      </div>
-    </section>
-  );
+    return (
+        <section className={classes.bookPage}>
+            <div className={[classes.headerWrapper, classes.container, classes.wrapper].join(' ')}>
+                <Header />
+                <MainNavigation navDisplayNone={true} />
+            </div>
+            <Breadcrumbs />
+            <Outlet />
+            <div className={[classes.footerWrapper, classes.container, classes.wrapper].join(' ')}>
+                <Footer />
+            </div>
+        </section>
+    );
 };

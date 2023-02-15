@@ -1,4 +1,4 @@
-import {IBookBooking, IBookDelivery, IBookImage} from "./IBook";
+import { IBookBooking, IBookDelivery, IBookImage } from './IBook';
 
 export interface IBookDetail {
     id: number;

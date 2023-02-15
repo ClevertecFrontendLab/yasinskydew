@@ -1,19 +1,19 @@
-import {FC} from 'react';
+import { FC } from 'react';
 
-import {Article} from '../../components/arcitle/article';
+import { Article } from '../../components/arcitle/article';
 
-import {useTermsMock} from './mock';
+import { useTermsMock } from './mock';
 
 import classes from './use-terms-page.module.scss';
 
 export interface PointI {
-    id: string,
+    id: string;
     text: string;
-    subItems?: PointI[],
+    subItems?: PointI[];
 }
 
-export const UseTermsPage:FC = () => (
-        <section className={[classes.useTermPage].join(' ')}>
-            <Article mock={useTermsMock} />
-        </section>
-    );
+export const UseTermsPage: FC = () => (
+    <section className={[classes.useTermPage].join(' ')}>
+        <Article mock={useTermsMock} />
+    </section>
+);

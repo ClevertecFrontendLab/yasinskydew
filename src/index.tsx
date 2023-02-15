@@ -19,28 +19,27 @@ const root = ReactDOM.createRoot(document.getElementById('root')!);
 const store = setupStore();
 
 const App = () => {
-
-  return (
-    // <React.StrictMode>
-    <Provider store={store}>
-      <AppStateProvider>
-        <HashRouter>
-          <Routes>
-            <Route element={<MainLayout />}>
-              <Route path='/' element={<MainPage />} />
-              <Route path='/terms' element={<UseTermsPage />} />
-              <Route path='/offer' element={<OfferPage />} />
-              <Route path='/account' element={<MainPage />} />
-            </Route>
-            <Route element={<PageLayout />}>
-              <Route path='/books/all/:id' element={<BookPage />} />
-            </Route>
-          </Routes>
-        </HashRouter>
-      </AppStateProvider>
-    </Provider>
-    // </React.StrictMode>
-  );
+    return (
+        // <React.StrictMode>
+        <Provider store={store}>
+            <AppStateProvider>
+                <HashRouter>
+                    <Routes>
+                        <Route element={<MainLayout />}>
+                            <Route path='/' element={<MainPage />} />
+                            <Route path='/terms' element={<UseTermsPage />} />
+                            <Route path='/offer' element={<OfferPage />} />
+                            <Route path='/account' element={<MainPage />} />
+                        </Route>
+                        <Route element={<PageLayout />}>
+                            <Route path='/books/all/:id' element={<BookPage />} />
+                        </Route>
+                    </Routes>
+                </HashRouter>
+            </AppStateProvider>
+        </Provider>
+        // </React.StrictMode>
+    );
 };
 
 root.render(<App />);
