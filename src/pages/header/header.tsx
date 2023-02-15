@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { createRef, FC, RefObject } from 'react';
+import { createRef, FC, RefObject, useContext } from 'react';
 
 import classNames from 'classnames';
 
@@ -8,21 +8,19 @@ import logo from './images/logo.svg';
 import { mock } from './mock/mock';
 
 import classes from './header.module.scss';
-import {LayoutState} from "../../layouts/main/main";
+import {useAppDispatch, useAppState} from "../../context";
 
-interface HeaderProps {
-  layoutState: LayoutState;
-  setLayoutState: (state: LayoutState) => void;
-}
 export const dropDownHeaderRef: RefObject<any> = createRef();
-export const Header: FC<HeaderProps> = ({ layoutState, setLayoutState }) => {
+export const Header: FC = () => {
   const { user, headerTitle } = mock();
+  const { isMenuOpen } = useAppState();
+  const dispatch = useAppDispatch();
 
   const toggleMenu = () => {
-    setLayoutState({
-      ...layoutState,
-      isMenuOpen: !layoutState.isMenuOpen,
-    });
+      dispatch({
+          type: 'SET_MENU_OPEN',
+          payload: !isMenuOpen,
+      });
   };
   return (
     <header className={[classes.header].join(' ')}>
@@ -32,7 +30,7 @@ export const Header: FC<HeaderProps> = ({ layoutState, setLayoutState }) => {
       <div
         data-test-id='button-burger'
         className={classNames(classes.burgerContainer, {
-          [classes.burgerContainerChecked]: layoutState.isMenuOpen,
+          [classes.burgerContainerChecked]: isMenuOpen,
         })}
         ref={dropDownHeaderRef}
         onClick={toggleMenu}
