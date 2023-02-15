@@ -1,4 +1,3 @@
-import { IBookCardDetail } from '../../../types/types';
 import { IBookDetail } from '../../../models/IBookDetail';
 
 export const getDetailColumns = (book: IBookDetail) => {
