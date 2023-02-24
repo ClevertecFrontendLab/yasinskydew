@@ -1,5 +1,5 @@
 import { createRef, FC, RefObject, useState } from 'react';
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { getPagesMock } from './mock-data';
@@ -33,11 +33,18 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
     const dispatch = useAppDispatch();
     const clearCategory = () => {
         dispatch({ type: 'SET_FILTER_CATEGORY', payload: '' });
+        dispatch({
+            type: 'SET_BREAD_CRUMBS',
+            payload: [
+                {
+                    path: 'all',
+                    label: 'Все книги',
+                },
+            ]
+        });
     };
     const pages = getPagesMock();
-    const [search] = useSearchParams();
     const location = useLocation();
-
     const [isCategoriesOpen, setIsCategoriesOpen] = useState<boolean>(true);
     const [isArrowVisible, setIsArrowVisible] = useState<boolean>(true);
 
@@ -77,12 +84,14 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                 <li className={classes.navItem}>
                     <div className={classes.navBookItemWrapper}>
                         <NavLink
-                            to='/'
+                            to='/books/all'
                             onClick={() => {
                                 setArrow(true);
                                 toggleBookNavList();
                             }}
-                            className={({ isActive }) => (isActive ? classes.navItemActive : undefined)}
+                            className={classNames({
+                                [classes.navItemActive]: location.pathname === '/' || location.pathname.includes('/books/')
+                            })}
                             data-test-id='navigation-showcase'
                         >
                             <h3 data-test-id='burger-showcase' className={classes.bookNavListTitle}>
@@ -104,9 +113,9 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                         >
                             <li data-test-id='navigation-books'>
                                 <NavLink
-                                    to='/'
+                                    to='/books/all'
                                     className={
-                                        location.pathname === '/' && location.search === ''
+                                        location.pathname === '/' || location.pathname === '/books/all'
                                             ? classes.navBookItemActive
                                             : classes.bookNavItem
                                     }
@@ -124,7 +133,6 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                                     key={index}
                                     category={item}
                                     disableMenu={disableMenu}
-                                    searchCategory={search.get('categoryId') || null}
                                 />
                             ))}
                         </ul>

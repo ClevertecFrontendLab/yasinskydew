@@ -16,7 +16,6 @@ export const Input: FC<InputProps> = ({ placeholder, closeSearchHandler, openSea
     const inputContainerRef = useRef(null);
     const inputItemRef = useRef<HTMLInputElement>(null);
     const dispatch = useAppDispatch();
-    const { query } = useAppState();
 
     const setSearchQuery = (query: string) => {
         dispatch({
