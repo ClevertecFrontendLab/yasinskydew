@@ -40,7 +40,7 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                     path: 'all',
                     label: 'Все книги',
                 },
-            ]
+            ],
         });
     };
     const pages = getPagesMock();
@@ -90,7 +90,8 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                                 toggleBookNavList();
                             }}
                             className={classNames({
-                                [classes.navItemActive]: location.pathname === '/' || location.pathname.includes('/books/')
+                                [classes.navItemActive]:
+                                    location.pathname === '/' || location.pathname.includes('/books/'),
                             })}
                             data-test-id='navigation-showcase'
                         >
@@ -129,11 +130,7 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                                 </NavLink>
                             </li>
                             {categories.map((item: ICategory, index) => (
-                                <MainNavigationCategory
-                                    key={index}
-                                    category={item}
-                                    disableMenu={disableMenu}
-                                />
+                                <MainNavigationCategory key={index} category={item} disableMenu={disableMenu} />
                             ))}
                         </ul>
                     }

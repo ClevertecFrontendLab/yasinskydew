@@ -11,7 +11,7 @@ import classes from './book-page.module.scss';
 import { bookAPI } from '../../services/book-service';
 import Error from '../../components/ui/error/error';
 import { Loader } from '../../components/ui/loader/loader';
-import {useAppDispatch, useAppState} from '../../context';
+import { useAppDispatch, useAppState } from '../../context';
 export const BookPage: FC = () => {
     const { id } = useParams();
     const { breadCrumbsPath } = useAppState();
@@ -29,9 +29,9 @@ export const BookPage: FC = () => {
                 ...breadCrumbsPath,
                 {
                     path: '',
-                    label:book.title,
+                    label: book.title,
                 },
-            ]
+            ],
         });
     }, [book]);
     if (isLoading) {

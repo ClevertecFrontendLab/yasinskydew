@@ -1,8 +1,8 @@
 import { SortEnum } from '../hooks/useBooks';
 
 export interface BreadCrumbsI {
-    path: string,
-    label: string,
+    path: string;
+    label: string;
 }
 export interface AppState {
     isMenuOpen: boolean;
@@ -23,10 +23,12 @@ export type Action =
 
 export const initialState: AppState = {
     isMenuOpen: false,
-    breadCrumbsPath: [{
-        path: 'all',
-        label: 'Все книги',
-    }],
+    breadCrumbsPath: [
+        {
+            path: 'all',
+            label: 'Все книги',
+        },
+    ],
     sort: SortEnum.rating,
     sortDirection: false,
     query: '',

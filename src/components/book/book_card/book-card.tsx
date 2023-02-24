@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import {Link, useLocation} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button, ButtonSize, ButtonType } from '../../ui/button/button';
 import { Image, ImageType } from '../../ui/image/image';
 import { Grade } from '../grade/grade';
@@ -22,9 +22,7 @@ export interface BookCardProps {
 export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }) => {
     const { query } = useAppState();
     const location = useLocation();
-    const link = location.pathname !== '/'
-        ? `${location.pathname}/${bookCard.id}`
-        : `books/all/${bookCard.id}`;
+    const link = location.pathname !== '/' ? `${location.pathname}/${bookCard.id}` : `books/all/${bookCard.id}`;
     const selectColor = (title: string) => {
         if (!query) return title;
         const firstPosition = title.toLowerCase().indexOf(query.toLowerCase());
