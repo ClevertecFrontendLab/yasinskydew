@@ -5,7 +5,7 @@ import { GradeEl } from './grade-el';
 import classes from './grade.module.scss';
 
 interface GradeProps {
-    grade?: number;
+    grade?: number | null;
 }
 // GradeEl
 export const Grade: FC<GradeProps> = ({ grade }) => {

@@ -1,8 +1,9 @@
-import { FC, MouseEvent, useEffect, useRef, useState } from 'react';
+import { FC, MouseEvent, useEffect, useRef } from 'react';
 
 import classes from './input.module.scss';
 import classNames from 'classnames';
 import useOnClickOutside from '../../../hooks/on-click-outside';
+import { useAppDispatch, useAppState } from '../../../context';
 
 export interface InputProps {
     type: string;
@@ -14,6 +15,15 @@ export interface InputProps {
 export const Input: FC<InputProps> = ({ placeholder, closeSearchHandler, openSearchHandler, isSearchOpen, type }) => {
     const inputContainerRef = useRef(null);
     const inputItemRef = useRef<HTMLInputElement>(null);
+    const dispatch = useAppDispatch();
+    const { query } = useAppState();
+
+    const setSearchQuery = (query: string) => {
+        dispatch({
+            type: 'SET_SEARCH_QUERY',
+            payload: query,
+        });
+    };
 
     useEffect(() => {
         if (!inputItemRef.current) {
@@ -34,7 +44,10 @@ export const Input: FC<InputProps> = ({ placeholder, closeSearchHandler, openSea
                 <i
                     className={classes.closeButton}
                     aria-hidden='true'
-                    onClick={closeSearchHandler}
+                    onClick={(e) => {
+                        closeSearchHandler(e);
+                        setSearchQuery('');
+                    }}
                     data-test-id='button-search-close'
                 />
             )}
@@ -46,6 +59,7 @@ export const Input: FC<InputProps> = ({ placeholder, closeSearchHandler, openSea
                 className={classNames(classes.input, {
                     [classes.isOpenInput]: isSearchOpen,
                 })}
+                onChange={(e) => setSearchQuery(e.target.value)}
             />
             <div
                 data-test-id='button-search-open'

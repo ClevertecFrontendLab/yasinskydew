@@ -31,7 +31,9 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
     const { data: categories = [], error, isLoading } = categoryAPI.useFetchAllCategoriesQuery();
     const { isMenuOpen } = useAppState();
     const dispatch = useAppDispatch();
-
+    const clearCategory = () => {
+        dispatch({ type: 'SET_FILTER_CATEGORY', payload: '' });
+    };
     const pages = getPagesMock();
     const [search] = useSearchParams();
     const location = useLocation();
@@ -109,7 +111,10 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                                             : classes.bookNavItem
                                     }
                                     data-test-id='burger-books'
-                                    onClick={disableMenu}
+                                    onClick={() => {
+                                        disableMenu();
+                                        clearCategory();
+                                    }}
                                 >
                                     Все книги
                                 </NavLink>

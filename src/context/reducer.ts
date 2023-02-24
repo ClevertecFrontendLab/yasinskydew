@@ -1,13 +1,29 @@
+import { SortEnum } from '../hooks/useBooks';
+
 export interface AppState {
     isMenuOpen: boolean;
     breadCrumbsPath: string[];
+    sort: SortEnum;
+    sortDirection: boolean;
+    query: string;
+    category: string;
 }
 
-export type Action = { type: 'SET_MENU_OPEN'; payload: boolean } | { type: 'SET_BREAD_CRUMBS'; payload: string[] };
+export type Action =
+    | { type: 'SET_MENU_OPEN'; payload: boolean }
+    | { type: 'SET_BREAD_CRUMBS'; payload: string[] }
+    | { type: 'SET_SORT'; payload: SortEnum }
+    | { type: 'SET_SORT_DIRECTION'; payload: boolean }
+    | { type: 'SET_SEARCH_QUERY'; payload: string }
+    | { type: 'SET_FILTER_CATEGORY'; payload: string };
 
 export const initialState: AppState = {
     isMenuOpen: false,
     breadCrumbsPath: ['Все книги'],
+    sort: SortEnum.rating,
+    sortDirection: false,
+    query: '',
+    category: '',
 };
 
 export function reducer(state: AppState, action: Action): AppState {
@@ -21,6 +37,26 @@ export function reducer(state: AppState, action: Action): AppState {
             return {
                 ...state,
                 breadCrumbsPath: action.payload,
+            };
+        case 'SET_SORT':
+            return {
+                ...state,
+                sort: action.payload,
+            };
+        case 'SET_SORT_DIRECTION':
+            return {
+                ...state,
+                sortDirection: action.payload,
+            };
+        case 'SET_SEARCH_QUERY':
+            return {
+                ...state,
+                query: action.payload,
+            };
+        case 'SET_FILTER_CATEGORY':
+            return {
+                ...state,
+                category: action.payload,
             };
         default:
             throw new Error();

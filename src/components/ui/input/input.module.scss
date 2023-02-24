@@ -69,17 +69,17 @@
     left: 16px;
 }
 
-.closeButton {
-    background: url('images/close_button.svg') no-repeat center;
-    position: absolute;
-    padding: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 16px;
-    cursor: pointer;
-}
 
 @media (max-width: 653px) {
+    .closeButton {
+        background: url('images/close_button.svg') no-repeat center;
+        position: absolute;
+        padding: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 16px;
+        cursor: pointer;
+    }
     .searchPlug {
         display: block;
     }
