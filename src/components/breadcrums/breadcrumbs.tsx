@@ -14,10 +14,11 @@ export const Breadcrumbs: FC = () => {
     breadCrumbsPath.forEach((i: BreadCrumbsI, index) => {
         breadCrumbsItems.push(
             !i.path ? (
-                <span>{i.label}</span>
+                <span data-test-id='book-name'>{i.label}</span>
             ) : (
                 <Link
                     to={'books/' + i.path}
+                    data-test-id='breadcrumbs-link'
                     onClick={() => {
                         dispatch({
                             type: 'SET_BREAD_CRUMBS',

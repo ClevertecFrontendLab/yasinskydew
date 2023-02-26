@@ -25,7 +25,7 @@ export const BookPreview: FC<BookPreviewProps> = ({ bookItem }) => {
                 <div className={classes.mySwiper2}></div>
             </div>
             <div className={classes.bookAuthor}>
-                <h2>{bookItem.title}</h2>
+                <h2 data-test-id='book-title'>{bookItem.title}</h2>
                 <p className={classes.author}>
                     {bookItem.authors}, {bookItem.issueYear}
                 </p>

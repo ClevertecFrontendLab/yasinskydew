@@ -48,23 +48,18 @@ export const Select: FC<SelectProps> = ({ defaultValue, options }) => {
 
     return (
         <div className={classes.wrapper}>
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-            <div className={classes.button}>
+            <div className={classes.button} data-test-id='sort-rating-button' onClick={toggleSortDirection}>
                 <div
                     className={classNames(classes.toggleSortDirection, {
                         [classes.toggleSortDirectionActive]: sortDirection,
                     })}
-                    onClick={toggleSortDirection}
                 >
                     <img src={selectIcon} alt='select icon' />
                 </div>
-                <div className={classes.text} onClick={() => onButton()}>
-                    {state.text}
-                </div>
+                <div className={classes.text}>{state.text}</div>
             </div>
             {state.open && (
                 <div className={classes.content}>
-                    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                     {options.map((i) => (
                         <div key={i.value} className={classes.contentItem} onClick={() => onOptionClick(i)}>
                             {i.text}

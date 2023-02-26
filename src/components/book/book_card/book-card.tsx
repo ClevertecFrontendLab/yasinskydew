@@ -29,7 +29,7 @@ export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }
         if (firstPosition === -1) return title;
         const lastPosition = firstPosition + query.length + 1;
         const newStr = title.split('');
-        newStr.splice(firstPosition, 0, '<span class="highlight">');
+        newStr.splice(firstPosition, 0, '<span class="highlight" data-test-id="highlight-matches">');
         newStr.splice(lastPosition, 0, '</span>');
         return <span dangerouslySetInnerHTML={{ __html: newStr.join('') }} />;
     };

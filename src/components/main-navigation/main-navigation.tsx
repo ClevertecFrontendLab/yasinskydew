@@ -9,26 +9,16 @@ import { dropDownHeaderRef } from '../../pages/header/header';
 import { MainNavigationPage } from './main-navigation-page/main-navigation-page';
 import { MainNavigationCategory } from './main-navigation-category/main-navigation-category';
 import { ICategory } from '../../models/ICategory';
-import { categoryAPI } from '../../services/category-service';
-import { Loader } from '../ui/loader/loader';
-import Error from '../ui/error/error';
 import { useAppDispatch, useAppState } from '../../context';
 
-export interface NavItemInterface {
-    id: number;
-    count: number;
-    title: string;
-    href: string;
-}
 export interface MainNavigationProps {
-    items?: NavItemInterface[];
     navDisplayNone?: boolean;
+    categories: ICategory[];
 }
 
 export const dropDownRef: RefObject<HTMLDivElement> = createRef();
 
-export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false }) => {
-    const { data: categories = [], error, isLoading } = categoryAPI.useFetchAllCategoriesQuery();
+export const MainNavigation: FC<MainNavigationProps> = ({ categories = [], navDisplayNone = false }) => {
     const { isMenuOpen } = useAppState();
     const dispatch = useAppDispatch();
     const clearCategory = () => {
@@ -135,8 +125,6 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                         </ul>
                     }
                 </li>
-                {isLoading && <Loader />}
-                {error && <Error error={'Category error'} />}
                 {pages.map((item, index) => (
                     <MainNavigationPage
                         key={index}

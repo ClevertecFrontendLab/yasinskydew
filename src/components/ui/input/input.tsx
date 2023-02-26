@@ -24,16 +24,16 @@ export const Input: FC<InputProps> = ({ placeholder, closeSearchHandler, openSea
         });
     };
 
-    useEffect(() => {
-        if (!inputItemRef.current) {
-            return;
-        }
-        if (!isSearchOpen) {
-            inputItemRef.current.value = '';
-        } else {
-            inputItemRef.current.focus();
-        }
-    }, [isSearchOpen]);
+    // useEffect(() => {
+    //     if (!inputItemRef.current) {
+    //         return;
+    //     }
+    //     if (!isSearchOpen) {
+    //         inputItemRef.current.value = '';
+    //     } else {
+    //         inputItemRef.current.focus();
+    //     }
+    // }, [isSearchOpen]);
     useOnClickOutside([inputContainerRef], closeSearchHandler);
 
     return (
@@ -45,7 +45,7 @@ export const Input: FC<InputProps> = ({ placeholder, closeSearchHandler, openSea
                     aria-hidden='true'
                     onClick={(e) => {
                         closeSearchHandler(e);
-                        setSearchQuery('');
+                        // setSearchQuery('');
                     }}
                     data-test-id='button-search-close'
                 />

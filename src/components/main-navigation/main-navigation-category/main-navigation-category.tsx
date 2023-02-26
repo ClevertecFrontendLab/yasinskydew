@@ -14,6 +14,10 @@ export const MainNavigationCategory: FC<MainNavigationCategoryProps> = ({ catego
     const dispatch = useAppDispatch();
     const location = useLocation();
     const path = `/books/${category.path}`;
+    const testId = `navigation-${category.path}`;
+    const testBurgerId = `burger-${category.path}`;
+    const testCountId = `navigation-book-count-for-${category.path}`;
+    const testBurgerCountId = `burger-book-count-for-${category.path}`;
     const setCategory = () => {
         dispatch({ type: 'SET_FILTER_CATEGORY', payload: category.name });
         dispatch({
@@ -40,8 +44,12 @@ export const MainNavigationCategory: FC<MainNavigationCategoryProps> = ({ catego
                     setCategory();
                 }}
             >
-                {category.name}
-                <span className={classes.bookNavItemCount}>{1}</span>
+                <span data-test-id={testId}>
+                    <span data-test-id={testBurgerId}>{category.name}</span>
+                </span>
+                <span className={classes.bookNavItemCount} data-test-id={testCountId}>
+                    <span data-test-id={testBurgerCountId}>{category.count}</span>
+                </span>
             </Link>
         </li>
     );
