@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button, ButtonSize, ButtonType } from '../../ui/button/button';
 import { Image, ImageType } from '../../ui/image/image';
 import { Grade } from '../grade/grade';
@@ -7,6 +7,7 @@ import { Grade } from '../grade/grade';
 import classes from './book_card.module.scss';
 import { IBook } from '../../../models/IBook';
 import dayjs from 'dayjs';
+import { useAppState } from '../../../context';
 
 export enum BookCardMode {
     grid = 'grid',
@@ -17,11 +18,21 @@ export interface BookCardProps {
     bookCard: IBook;
     viewCardMode: BookCardMode;
 }
-export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const link = `books/all/${bookCard.id}`;
 
+export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }) => {
+    const { query } = useAppState();
+    const location = useLocation();
+    const link = location.pathname !== '/' ? `${location.pathname}/${bookCard.id}` : `books/all/${bookCard.id}`;
+    const selectColor = (title: string) => {
+        if (!query) return title;
+        const firstPosition = title.toLowerCase().indexOf(query.toLowerCase());
+        if (firstPosition === -1) return title;
+        const lastPosition = firstPosition + query.length + 1;
+        const newStr = title.split('');
+        newStr.splice(firstPosition, 0, '<span class="highlight" data-test-id="highlight-matches">');
+        newStr.splice(lastPosition, 0, '</span>');
+        return <span dangerouslySetInnerHTML={{ __html: newStr.join('') }} />;
+    };
     const getOrderContent = () =>
         bookCard.booking?.order ? `занята до ${dayjs(bookCard.booking.dateOrder).format('DD.MM')}` : 'забронировать';
     if (viewCardMode === BookCardMode.grid) {
@@ -29,7 +40,7 @@ export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }
             <Link {...props} to={link} className={[classes.bookCard, classes[viewCardMode]].join(' ')}>
                 <Image url={bookCard.image?.url} type={ImageType.bookCard} />
                 <Grade grade={bookCard.rating} />
-                <p className={classes.bookCardTitle}>{bookCard.title}</p>
+                <p className={classes.bookCardTitle}>{query ? selectColor(bookCard.title) : bookCard.title}</p>
                 <p>
                     {bookCard.authors}, {bookCard.issueYear}
                 </p>
@@ -49,7 +60,7 @@ export const BookCard: FC<BookCardProps> = ({ bookCard, viewCardMode, ...props }
             <Image url={bookCard.image?.url} type={ImageType.bookList} />
             <div className={classes.bookListWrapper}>
                 <div className={classes.bookListDescription}>
-                    <p className={classes.bookCardTitle}>{bookCard.title}</p>
+                    <p className={classes.bookCardTitle}>{query ? selectColor(bookCard.title) : bookCard.title}</p>
                     <p className={classes.bookCardAuthor}>
                         {bookCard.authors}, {bookCard.issueYear}
                     </p>

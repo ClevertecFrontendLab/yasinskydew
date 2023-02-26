@@ -1,0 +1,33 @@
+@import '../../../modules/_colors.scss';
+@import '../../../modules/_fonts.scss';
+
+.emptyListContainer {
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+.emptyListTitle {
+    color: $gray-black40-color;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+}
+
+@media (max-width: 892px) {
+    .emptyListContainer {
+       flex-grow: 1;
+    }
+}
+
+
+@media (max-width: 320px) {
+    .emptyListContainer {
+        padding-top: 137px;
+    }
+    .emptyListTitle {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+

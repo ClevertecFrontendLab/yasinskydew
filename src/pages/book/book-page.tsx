@@ -11,9 +11,10 @@ import classes from './book-page.module.scss';
 import { bookAPI } from '../../services/book-service';
 import Error from '../../components/ui/error/error';
 import { Loader } from '../../components/ui/loader/loader';
-import { useAppDispatch } from '../../context';
+import { useAppDispatch, useAppState } from '../../context';
 export const BookPage: FC = () => {
     const { id } = useParams();
+    const { breadCrumbsPath } = useAppState();
     const { data: book, error, isLoading } = bookAPI.useFetchBookByIdQuery(Number(id));
     const dispatch = useAppDispatch();
 
@@ -21,11 +22,17 @@ export const BookPage: FC = () => {
     const toggleReview = () => setIsOpenReview(!isOpenReview);
     const closeReview = () => setIsOpenReview(false);
     useEffect(() => {
-        console.log(error);
-    }, [error]);
-    useEffect(() => {
         if (!book) return;
-        dispatch({ type: 'SET_BREAD_CRUMBS', payload: [book.categories[0], book.title] });
+        dispatch({
+            type: 'SET_BREAD_CRUMBS',
+            payload: [
+                ...breadCrumbsPath,
+                {
+                    path: '',
+                    label: book.title,
+                },
+            ],
+        });
     }, [book]);
     if (isLoading) {
         return <Loader />;

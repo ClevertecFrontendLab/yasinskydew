@@ -2,4 +2,5 @@ export interface ICategory {
     id: number;
     name: string;
     path: string;
+    count: number;
 }

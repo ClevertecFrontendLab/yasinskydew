@@ -1,6 +1,6 @@
 export interface IBook {
     id: number;
-    rating: number;
+    rating: number | null;
     title: string;
     authors: string[];
     image: IBookImage;

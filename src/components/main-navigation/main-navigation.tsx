@@ -1,5 +1,5 @@
 import { createRef, FC, RefObject, useState } from 'react';
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { getPagesMock } from './mock-data';
@@ -9,33 +9,32 @@ import { dropDownHeaderRef } from '../../pages/header/header';
 import { MainNavigationPage } from './main-navigation-page/main-navigation-page';
 import { MainNavigationCategory } from './main-navigation-category/main-navigation-category';
 import { ICategory } from '../../models/ICategory';
-import { categoryAPI } from '../../services/category-service';
-import { Loader } from '../ui/loader/loader';
-import Error from '../ui/error/error';
 import { useAppDispatch, useAppState } from '../../context';
 
-export interface NavItemInterface {
-    id: number;
-    count: number;
-    title: string;
-    href: string;
-}
 export interface MainNavigationProps {
-    items?: NavItemInterface[];
     navDisplayNone?: boolean;
+    categories: ICategory[];
 }
 
 export const dropDownRef: RefObject<HTMLDivElement> = createRef();
 
-export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false }) => {
-    const { data: categories = [], error, isLoading } = categoryAPI.useFetchAllCategoriesQuery();
+export const MainNavigation: FC<MainNavigationProps> = ({ categories = [], navDisplayNone = false }) => {
     const { isMenuOpen } = useAppState();
     const dispatch = useAppDispatch();
-
+    const clearCategory = () => {
+        dispatch({ type: 'SET_FILTER_CATEGORY', payload: '' });
+        dispatch({
+            type: 'SET_BREAD_CRUMBS',
+            payload: [
+                {
+                    path: 'all',
+                    label: 'Все книги',
+                },
+            ],
+        });
+    };
     const pages = getPagesMock();
-    const [search] = useSearchParams();
     const location = useLocation();
-
     const [isCategoriesOpen, setIsCategoriesOpen] = useState<boolean>(true);
     const [isArrowVisible, setIsArrowVisible] = useState<boolean>(true);
 
@@ -75,12 +74,15 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                 <li className={classes.navItem}>
                     <div className={classes.navBookItemWrapper}>
                         <NavLink
-                            to='/'
+                            to='/books/all'
                             onClick={() => {
                                 setArrow(true);
                                 toggleBookNavList();
                             }}
-                            className={({ isActive }) => (isActive ? classes.navItemActive : undefined)}
+                            className={classNames({
+                                [classes.navItemActive]:
+                                    location.pathname === '/' || location.pathname.includes('/books/'),
+                            })}
                             data-test-id='navigation-showcase'
                         >
                             <h3 data-test-id='burger-showcase' className={classes.bookNavListTitle}>
@@ -102,31 +104,27 @@ export const MainNavigation: FC<MainNavigationProps> = ({ navDisplayNone = false
                         >
                             <li data-test-id='navigation-books'>
                                 <NavLink
-                                    to='/'
+                                    to='/books/all'
                                     className={
-                                        location.pathname === '/' && location.search === ''
+                                        location.pathname === '/' || location.pathname === '/books/all'
                                             ? classes.navBookItemActive
                                             : classes.bookNavItem
                                     }
                                     data-test-id='burger-books'
-                                    onClick={disableMenu}
+                                    onClick={() => {
+                                        disableMenu();
+                                        clearCategory();
+                                    }}
                                 >
                                     Все книги
                                 </NavLink>
                             </li>
                             {categories.map((item: ICategory, index) => (
-                                <MainNavigationCategory
-                                    key={index}
-                                    category={item}
-                                    disableMenu={disableMenu}
-                                    searchCategory={search.get('categoryId') || null}
-                                />
+                                <MainNavigationCategory key={index} category={item} disableMenu={disableMenu} />
                             ))}
                         </ul>
                     }
                 </li>
-                {isLoading && <Loader />}
-                {error && <Error error={'Category error'} />}
                 {pages.map((item, index) => (
                     <MainNavigationPage
                         key={index}

@@ -17,8 +17,6 @@ interface MainControlsProps {
     setViewCardMode: (state: BookCardMode) => void;
 }
 export const MainControls: FC<MainControlsProps> = ({ viewCardMode, setViewCardMode }) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     const selectData: SelectProps = bookSelectMock();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const openSearchHandler = (e: MouseEvent<HTMLElement>): void => {
@@ -27,7 +25,7 @@ export const MainControls: FC<MainControlsProps> = ({ viewCardMode, setViewCardM
     };
 
     const closeSearchHandler = (e: MouseEvent<HTMLElement>) => {
-        e.stopPropagation();
+        e.preventDefault();
         setIsOpen(false);
     };
 

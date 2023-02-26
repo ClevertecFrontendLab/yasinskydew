@@ -1,3 +1,7 @@
+@import './modules/_colors.scss';
+@import './modules/_fonts.scss';
+@import './modules/_constants.scss';
+
 body {
   height: 100%;
   justify-content: center;
@@ -70,3 +74,7 @@ select {
   font: inherit;
 }
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+.highlight {
+    color: $other-text-select;
+}

@@ -27,12 +27,14 @@ const App = () => {
                     <Routes>
                         <Route element={<MainLayout />}>
                             <Route path='/' element={<MainPage />} />
+                            <Route path='/books' element={<MainPage />} />
+                            <Route path='/books/:category' element={<MainPage />} />
                             <Route path='/terms' element={<UseTermsPage />} />
                             <Route path='/offer' element={<OfferPage />} />
                             <Route path='/account' element={<MainPage />} />
                         </Route>
                         <Route element={<PageLayout />}>
-                            <Route path='/books/all/:id' element={<BookPage />} />
+                            <Route path='/books/:category/:id' element={<BookPage />} />
                         </Route>
                     </Routes>
                 </HashRouter>
