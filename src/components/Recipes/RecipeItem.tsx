@@ -1,9 +1,10 @@
 import { Box, Image, VStack } from '@chakra-ui/react';
 
+import { Recipe } from '~/store/recipe-slice';
+
 import { RecipeControl } from './RecipeControl';
 import { RecipeDescription } from './RecipeDescription';
 import { RecipeFooter } from './RecipeFooter';
-import { Recipe } from './RecipesData';
 import { RecipeTitle } from './RecipeTitle';
 import { MenuModeEnum } from './RecipeTypes';
 import { RecipeDisplayModeEnum } from './RecipeTypes';

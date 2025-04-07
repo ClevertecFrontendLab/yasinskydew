@@ -1,11 +1,13 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Box, Button, Heading, useBreakpointValue } from '@chakra-ui/react';
 
+import { useRecipes } from '~/store/hooks';
+
 import { RecipeItem } from './RecipeItem';
-import { recipes } from './RecipesData';
 import { MenuModeEnum, RecipeDisplayModeEnum } from './RecipeTypes';
 
 export const RecipeList = () => {
+    const { recipes } = useRecipes();
     const displayMode = useBreakpointValue<RecipeDisplayModeEnum>({
         base: RecipeDisplayModeEnum.COMPACT,
         sm: RecipeDisplayModeEnum.NORMAL,

@@ -1,36 +1,29 @@
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Box, Collapse, Flex, Text } from '@chakra-ui/react';
 
+import { useMainMenu } from '~/store/hooks';
+import { MenuCategory, SubCategory } from '~/store/menu-slice';
+
 import { CustomIcon } from '../Layout/CustomIcon';
-import { MenuCategory } from './MenuData';
+import { SubCategoryItem } from './SubCategoryItem';
 
 interface MenuItemProps extends MenuCategory {
     isExpanded: boolean;
-    selectedCategoryId: number | null;
-    selectedSubCategoryId: number | null;
-    onCategoryClick: (categoryId: number) => void;
-    onSubCategoryClick: (categoryId: number, subCategoryId: number) => void;
+    onCategoryClick: (category: MenuCategory) => void;
+    onSubCategoryClick: (category: MenuCategory, subCategory: SubCategory) => void;
 }
 
 export const MenuItem = (props: MenuItemProps) => {
-    const {
-        name,
-        icon,
-        id,
-        subCategories,
-        isExpanded,
-        selectedCategoryId,
-        selectedSubCategoryId,
-        onCategoryClick,
-        onSubCategoryClick,
-    } = props;
+    const { name, icon, id, subCategories, isExpanded, onCategoryClick, onSubCategoryClick } =
+        props;
+    const { selectedCategory, selectedSubCategory } = useMainMenu();
 
     const handleClick = () => {
-        onCategoryClick(id);
+        onCategoryClick(props);
     };
 
-    const handleSubCategoryClick = (subCategoryId: number) => {
-        onSubCategoryClick(id, subCategoryId);
+    const handleSubCategoryClick = (subCategory: SubCategory) => {
+        onSubCategoryClick(props, subCategory);
     };
 
     return (
@@ -44,7 +37,7 @@ export const MenuItem = (props: MenuItemProps) => {
                 justifyContent='space-between'
                 width='100%'
                 onClick={handleClick}
-                bg={selectedCategoryId === id ? 'var(--lime100-color)' : 'transparent'}
+                bg={selectedCategory?.id === id ? 'var(--lime100-color)' : 'transparent'}
             >
                 <Flex alignItems='center' gap={3}>
                     <CustomIcon src={icon} alt={name} />
@@ -62,29 +55,12 @@ export const MenuItem = (props: MenuItemProps) => {
             <Collapse in={isExpanded}>
                 <Box>
                     {subCategories.map((subCategory) => (
-                        <Box key={subCategory.id} position='relative' ml='40px' mt='4px'>
-                            <Text
-                                py='8px'
-                                px='16px'
-                                fontSize='16px'
-                                fontWeight={
-                                    selectedSubCategoryId === subCategory.id ? '700' : '500'
-                                }
-                                color='var(--text-color-secondary)'
-                                cursor='pointer'
-                                onClick={() => handleSubCategoryClick(subCategory.id)}
-                                textAlign='left'
-                                position='relative'
-                                left={selectedSubCategoryId === subCategory.id ? '-8px' : '0'}
-                                borderLeft={
-                                    selectedSubCategoryId === subCategory.id
-                                        ? '8px solid var(--lime100-color)'
-                                        : '1px solid var(--lime100-color)'
-                                }
-                            >
-                                {subCategory.name}
-                            </Text>
-                        </Box>
+                        <SubCategoryItem
+                            key={subCategory.id}
+                            subCategory={subCategory}
+                            isSelected={selectedSubCategory?.id === subCategory.id}
+                            onClick={handleSubCategoryClick}
+                        />
                     ))}
                 </Box>
             </Collapse>

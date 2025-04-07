@@ -11,18 +11,7 @@ import sauceIcon from '../../assets/MenuIcons/sauces.png';
 import secondDishIcon from '../../assets/MenuIcons/second-dish.png';
 import snackIcon from '../../assets/MenuIcons/snacks.png';
 import veganIcon from '../../assets/MenuIcons/vegan.png';
-
-export interface MenuCategory {
-    id: number;
-    name: string;
-    icon: string;
-    subCategories: SubCategory[];
-}
-
-export interface SubCategory {
-    id: number;
-    name: string;
-}
+import { MenuCategory } from '../menu-slice';
 
 const menuCategories: MenuCategory[] = [
     {

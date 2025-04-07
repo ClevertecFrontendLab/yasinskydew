@@ -1,7 +1,7 @@
 import { Box, Button, Text } from '@chakra-ui/react';
 
+import { Recipe } from '../../store/recipe-slice';
 import { CustomIcon } from '../Layout/CustomIcon';
-import { Recipe } from '../Recipes/RecipesData';
 
 export const RelevantKichenCard = (recipe: Recipe) => {
     const { name } = recipe;

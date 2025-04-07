@@ -1,19 +1,22 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 
-import { menuCategories, MenuCategory } from '../MenuList/MenuData';
+import { useMainMenu } from '~/store/hooks';
+
+import { MenuCategory } from '../../store/menu-slice';
+import { Recipe } from '../../store/recipe-slice';
 import { RecipeItem } from '../Recipes/RecipeItem';
-import { Recipe } from '../Recipes/RecipesData';
 import { MenuModeEnum, RecipeDisplayModeEnum } from '../Recipes/RecipeTypes';
 import { RelevantKichenCard } from './RelevantKichenCard';
 
 export const RelevantKichen = () => {
+    const { getMenuCategoryById } = useMainMenu();
     const recipes: Recipe[] = [
         {
             id: 1,
             name: 'Картошка, тушенная с болгарским перцем и фасолью в томатном соусе',
             description:
                 'Картошка, тушенная с болгарским перцем, фасолью, морковью и луком, -  вариант сытного блюда на каждый день. Фасоль в данном случае заменяет мясо, делая рагу сытным и питательным. Чтобы сократить время  приготовления, возьмём консервированную фасоль. Блюдо хоть и простое, но в полной мере наполнено ароматами и имеет выразительный вкус за счёт  добавления томатной пасты.',
-            menuItem: menuCategories.find((item) => item.id === 4) as MenuCategory,
+            menuItem: getMenuCategoryById(4) as MenuCategory,
             likes: 1,
             favorites: 1,
             image: '',
@@ -24,7 +27,7 @@ export const RelevantKichen = () => {
             name: 'Капустные котлеты',
             description:
                 'Интересны не только убеждённым вегетарианцам, но и тем, кто хочет  попробовать вегетарианскую диету и готовить вкусные  вегетарианские блюда.',
-            menuItem: menuCategories.find((item) => item.id === 4) as MenuCategory,
+            menuItem: getMenuCategoryById(4) as MenuCategory,
             likes: 1,
             favorites: 2,
             image: '',
@@ -44,7 +47,7 @@ export const RelevantKichen = () => {
             description:
                 'Интересны не только убеждённым вегетарианцам, но и тем, кто хочет  попробовать вегетарианскую диету и готовить вкусные  вегетарианские блюда.',
             image: '',
-            menuItem: menuCategories.find((item) => item.id === 4) as MenuCategory,
+            menuItem: getMenuCategoryById(4) as MenuCategory,
             likes: 1,
             favorites: 1,
             createdAt: new Date(),
@@ -55,7 +58,7 @@ export const RelevantKichen = () => {
             description:
                 'Интересны не только убеждённым вегетарианцам, но и тем, кто хочет  попробовать вегетарианскую диету и готовить вкусные  вегетарианские блюда.',
             image: '',
-            menuItem: menuCategories.find((item) => item.id === 4) as MenuCategory,
+            menuItem: getMenuCategoryById(4) as MenuCategory,
             likes: 1,
             favorites: 1,
             createdAt: new Date(),
@@ -66,7 +69,7 @@ export const RelevantKichen = () => {
             description:
                 'Интересны не только убеждённым вегетарианцам, но и тем, кто хочет  попробовать вегетарианскую диету и готовить вкусные  вегетарианские блюда.',
             image: '',
-            menuItem: menuCategories.find((item) => item.id === 3) as MenuCategory,
+            menuItem: getMenuCategoryById(3) as MenuCategory,
             likes: 1,
             favorites: 1,
             createdAt: new Date(),

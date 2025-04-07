@@ -1,38 +1,29 @@
 import { Box } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
 
-import { menuCategories } from './MenuData';
+import { useMainMenu } from '~/store/hooks';
+import { MenuCategory, SubCategory } from '~/store/menu-slice';
+
 import { MenuItem } from './MenuItem';
 
 export const MenuList = () => {
-    const [expandedCategoryId, setExpandedCategoryId] = useState<number | null>(null);
-    const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
-    const [selectedSubCategoryId, setSelectedSubCategoryId] = useState<number | null>(null);
+    const { categories, selectCategory, selectSubCategory, selectedCategory } = useMainMenu();
 
-    useEffect(() => {
-        console.log(expandedCategoryId, selectedCategoryId, selectedSubCategoryId);
-    }, [expandedCategoryId, selectedCategoryId, selectedSubCategoryId]);
-
-    const handleCategoryClick = (categoryId: number) => {
-        setExpandedCategoryId(expandedCategoryId === categoryId ? null : categoryId);
-        setSelectedCategoryId(categoryId);
-        setSelectedSubCategoryId(null);
+    const handleCategoryClick = (category: MenuCategory) => {
+        selectCategory(category.id === selectedCategory?.id ? null : category);
     };
 
-    const handleSubCategoryClick = (categoryId: number, subCategoryId: number) => {
-        setSelectedCategoryId(categoryId);
-        setSelectedSubCategoryId(subCategoryId);
+    const handleSubCategoryClick = (category: MenuCategory, subCategory: SubCategory) => {
+        selectCategory(category);
+        selectSubCategory(subCategory);
     };
 
     return (
         <Box>
-            {menuCategories.map((category) => (
+            {categories.map((category) => (
                 <MenuItem
                     key={category.id}
                     {...category}
-                    isExpanded={expandedCategoryId === category.id}
-                    selectedCategoryId={selectedCategoryId}
-                    selectedSubCategoryId={selectedSubCategoryId}
+                    isExpanded={selectedCategory?.id === category.id}
                     onCategoryClick={handleCategoryClick}
                     onSubCategoryClick={handleSubCategoryClick}
                 />

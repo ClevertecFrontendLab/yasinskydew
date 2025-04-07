@@ -6,9 +6,9 @@ interface BookmarkProps {
     count: number;
 }
 
-interface BookmarkLikeProps extends Omit<BookmarkProps, 'src'> {}
+interface BookmarkLikeProps extends Omit<BookmarkProps, 'icon'> {}
 
-interface BookmarkFavoriteProps extends Omit<BookmarkProps, 'src'> {}
+interface BookmarkFavoriteProps extends Omit<BookmarkProps, 'icon'> {}
 
 export const Bookmark = ({ icon, count }: BookmarkProps) => (
     <Box display='flex' alignItems='center' gap={2} justifyContent='space-between'>

@@ -2,8 +2,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 import { useState } from 'react';
 
+import { Recipe } from '~/store/recipe-slice';
+
 import { RecipeItem } from './RecipeItem';
-import { Recipe } from './RecipesData';
 import { RecipeDisplayModeEnum } from './RecipeTypes';
 
 interface RecipeCarouselProps {

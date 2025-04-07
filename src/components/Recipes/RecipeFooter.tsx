@@ -1,8 +1,8 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 
+import { MenuCategory } from '../../store/menu-slice';
 import { BookmarkFavorite, BookmarkLike } from '../Bookmark/Bookmark';
 import { CustomIcon } from '../Layout/CustomIcon';
-import { MenuCategory } from '../MenuList/MenuData';
 
 type Size = 'sm' | 'md' | 'lg';
 
@@ -61,8 +61,8 @@ export const RecipeFooter = ({
                 <Text fontSize='14px'>{menuItem.name}</Text>
             </Box>
             <Flex gap={size === 'sm' ? 1 : size === 'lg' ? 3 : 2}>
-                {likes && <BookmarkLike alt='like' count={likes} />}
-                {favorites && <BookmarkFavorite alt='favorite' count={favorites} />}
+                {likes && <BookmarkLike count={likes} />}
+                {favorites && <BookmarkFavorite count={favorites} />}
             </Flex>
         </Box>
     );

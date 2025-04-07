@@ -5,18 +5,9 @@ import potatoesIcon from '../../assets/Recipes/potato.jpg';
 import rollsIcon from '../../assets/Recipes/potato-rolls.jpg';
 import spaghettiIcon from '../../assets/Recipes/spaghetti.jpg';
 import tomYamIcon from '../../assets/Recipes/tom-yum.jpg';
-import { menuCategories, MenuCategory } from '../MenuList/MenuData';
-
-export interface Recipe {
-    id: number;
-    name: string;
-    description: string;
-    image: string;
-    menuItem: MenuCategory;
-    likes: number;
-    favorites: number;
-    createdAt: Date;
-}
+import { MenuCategory } from '../menu-slice';
+import { Recipe } from '../recipe-slice';
+import { menuCategories } from './MenuData';
 
 const recipes: Recipe[] = [
     {
@@ -108,7 +99,4 @@ const recipes: Recipe[] = [
         createdAt: new Date('2021-01-01'),
     },
 ];
-
-const getNewRecipes = () => recipes.filter((recipe) => recipe.createdAt > new Date('2024-01-01'));
-
-export { getNewRecipes, recipes };
+export { recipes };
