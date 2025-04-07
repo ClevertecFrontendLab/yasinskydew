@@ -1,12 +1,8 @@
 import { Box, Text } from '@chakra-ui/react';
-
-import bookmarkFavoriteIcon from '../../assets/BookmarkIcons/bookmark-favorite.png';
-import bookmarkLikeIcon from '../../assets/BookmarkIcons/bookmark-like.png';
-import { CustomIcon } from '../Layout/CustomIcon';
+import { BsBookmarkHeart, BsEmojiHeartEyes } from 'react-icons/bs';
 
 interface BookmarkProps {
-    src: string;
-    alt: string;
+    icon: React.ReactNode;
     count: number;
 }
 
@@ -14,17 +10,17 @@ interface BookmarkLikeProps extends Omit<BookmarkProps, 'src'> {}
 
 interface BookmarkFavoriteProps extends Omit<BookmarkProps, 'src'> {}
 
-export const Bookmark = ({ src, alt, count }: BookmarkProps) => (
+export const Bookmark = ({ icon, count }: BookmarkProps) => (
     <Box display='flex' alignItems='center' gap={2} justifyContent='space-between'>
-        <CustomIcon src={src} alt={alt} />
+        {icon}
         <Text color='var(--lime600-color)'>{count}</Text>
     </Box>
 );
 
-export const BookmarkLike = ({ alt, count }: BookmarkLikeProps) => (
-    <Bookmark src={bookmarkLikeIcon} alt={alt} count={count} />
+export const BookmarkLike = ({ count }: BookmarkLikeProps) => (
+    <Bookmark icon={<BsEmojiHeartEyes />} count={count} />
 );
 
-export const BookmarkFavorite = ({ alt, count }: BookmarkFavoriteProps) => (
-    <Bookmark src={bookmarkFavoriteIcon} alt={alt} count={count} />
+export const BookmarkFavorite = ({ count }: BookmarkFavoriteProps) => (
+    <Bookmark icon={<BsBookmarkHeart />} count={count} />
 );

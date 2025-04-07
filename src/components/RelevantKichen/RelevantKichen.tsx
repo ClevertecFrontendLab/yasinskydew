@@ -59,7 +59,7 @@ export const RelevantKichen = () => {
             likes: 1,
             favorites: 1,
             createdAt: new Date(),
-            id: 1,
+            id: 2,
         },
         {
             name: 'Сырный суп с лапшой и брокколи',
@@ -70,7 +70,7 @@ export const RelevantKichen = () => {
             likes: 1,
             favorites: 1,
             createdAt: new Date(),
-            id: 1,
+            id: 3,
         },
     ];
 
