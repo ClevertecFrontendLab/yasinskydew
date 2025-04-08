@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { MenuCategory } from './menu-slice';
+import { MenuCategory, SubCategory } from './menu-slice';
 import { recipes } from './MockData/RecipesData';
 
 export interface Recipe {
     id: number;
     name: string;
     description: string;
-    image: string;
-    menuItem: MenuCategory;
+    image: string | null;
+    menuCategory: MenuCategory;
+    subCategory?: SubCategory;
     likes: number;
     favorites: number;
     createdAt: Date;

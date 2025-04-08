@@ -3,7 +3,7 @@ import { Box, Button, Input, InputGroup, InputRightElement } from '@chakra-ui/re
 import { IoFilterSharp } from 'react-icons/io5';
 
 export const SearchBar = () => (
-    <Box display='flex' alignItems='center' justifyContent='space-between' gap={2}>
+    <Box display='flex' alignItems='center' justifyContent='space-between' gap={2} width='458px'>
         <Button variant='outline' colorScheme='gray' borderRadius='md' p={3} size='lg'>
             <IoFilterSharp />
         </Button>

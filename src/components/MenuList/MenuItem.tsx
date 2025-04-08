@@ -1,7 +1,8 @@
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Box, Collapse, Flex, Text } from '@chakra-ui/react';
+import { useNavigate } from 'react-router';
 
-import { useMainMenu } from '~/store/hooks';
+import { useBreadcrumbs, useMainMenu } from '~/store/hooks';
 import { MenuCategory, SubCategory } from '~/store/menu-slice';
 
 import { CustomIcon } from '../Layout/CustomIcon';
@@ -17,6 +18,8 @@ export const MenuItem = (props: MenuItemProps) => {
     const { name, icon, id, subCategories, isExpanded, onCategoryClick, onSubCategoryClick } =
         props;
     const { selectedCategory, selectedSubCategory } = useMainMenu();
+    const navigate = useNavigate();
+    const { setBreadcrumbItems } = useBreadcrumbs();
 
     const handleClick = () => {
         onCategoryClick(props);
@@ -24,6 +27,21 @@ export const MenuItem = (props: MenuItemProps) => {
 
     const handleSubCategoryClick = (subCategory: SubCategory) => {
         onSubCategoryClick(props, subCategory);
+        setBreadcrumbItems([
+            {
+                label: 'Главная',
+                path: '/',
+            },
+            {
+                label: selectedCategory?.name || '',
+                path: `/menu/${selectedCategory?.id}/1`,
+            },
+            {
+                label: subCategory.name,
+                path: `/menu/${id}/${subCategory.id}`,
+            },
+        ]);
+        navigate(`/menu/${id}/${subCategory.id}`);
     };
 
     return (

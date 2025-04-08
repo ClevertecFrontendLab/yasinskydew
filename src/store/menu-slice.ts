@@ -7,6 +7,7 @@ export interface MenuCategory {
     name: string;
     icon: string;
     subCategories: SubCategory[];
+    description?: string | null;
 }
 
 export interface SubCategory {

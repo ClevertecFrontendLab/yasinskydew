@@ -8,3 +8,8 @@ export enum MenuModeEnum {
     NORMAL = 'normal',
     SECONDARY = 'secondary',
 }
+
+export enum RecipeListMode {
+    PREVIEW = 'preview',
+    JUICIEST = 'juiciest',
+}

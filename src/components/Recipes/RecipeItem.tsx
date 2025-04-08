@@ -23,7 +23,7 @@ export const RecipeItem = ({
     menuMode = MenuModeEnum.NORMAL,
     ...recipe
 }: RecipeItemProps) => {
-    const { image, name, description, menuItem, likes, favorites } = recipe;
+    const { image, name, description, menuCategory, likes, favorites } = recipe;
 
     const getMenuColor = () => {
         if (menuMode === MenuModeEnum.SECONDARY) {
@@ -68,7 +68,7 @@ export const RecipeItem = ({
             >
                 {!noImage && (
                     <Image
-                        src={image}
+                        src={image || ''}
                         alt={name}
                         objectFit='cover'
                         height={currentStyle.imageHeight}
@@ -99,7 +99,7 @@ export const RecipeItem = ({
                     )}
                     <Box width='100%' order={!noControl ? 1 : 5}>
                         <RecipeFooter
-                            menuItem={menuItem}
+                            menuCategory={menuCategory}
                             likes={likes}
                             favorites={favorites}
                             bgColor={getMenuColor()}

@@ -84,12 +84,15 @@ export const useRecipes = () => {
         dispatch(addRecipe(recipe));
     };
 
-    const getRecipeByCategory = (id: number): MenuCategory | undefined =>
-        recipes.find((recipe) => recipe.menuItem.id === id)?.menuItem;
+    const getHomeRecipes = () => recipes.slice(0, 4);
+
+    const getRecipesByCategory = (id: number): Recipe[] =>
+        recipes.filter((recipe) => recipe.menuCategory.id === id);
 
     return {
         recipes,
         addRecipeItem,
-        getRecipeByCategory,
+        getRecipesByCategory,
+        getHomeRecipes,
     };
 };

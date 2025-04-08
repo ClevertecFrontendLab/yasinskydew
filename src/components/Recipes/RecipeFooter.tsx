@@ -7,7 +7,7 @@ import { CustomIcon } from '../Layout/CustomIcon';
 type Size = 'sm' | 'md' | 'lg';
 
 interface RecipeFooterProps {
-    menuItem: MenuCategory;
+    menuCategory: MenuCategory;
     likes?: number;
     favorites?: number;
     size?: Size;
@@ -15,7 +15,7 @@ interface RecipeFooterProps {
 }
 
 export const RecipeFooter = ({
-    menuItem,
+    menuCategory,
     likes,
     favorites,
     size = 'md',
@@ -53,12 +53,12 @@ export const RecipeFooter = ({
                 fontSize={currentStyle.fontSize}
             >
                 <CustomIcon
-                    src={menuItem.icon}
-                    alt={menuItem.name}
+                    src={menuCategory.icon}
+                    alt={menuCategory.name}
                     width={currentStyle.iconSize}
                     height={currentStyle.iconSize}
                 />
-                <Text fontSize='14px'>{menuItem.name}</Text>
+                <Text fontSize='14px'>{menuCategory.name}</Text>
             </Box>
             <Flex gap={size === 'sm' ? 1 : size === 'lg' ? 3 : 2}>
                 {likes && <BookmarkLike count={likes} />}

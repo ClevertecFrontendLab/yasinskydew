@@ -16,7 +16,7 @@ export const RelevantKichenCard = (recipe: Recipe) => {
             p='14px 24px'
         >
             <Box display='flex' alignItems='center' gap={2}>
-                <CustomIcon src={recipe.menuItem.icon} alt={recipe.menuItem.name} />
+                <CustomIcon src={recipe.menuCategory.icon} alt={recipe.menuCategory.name} />
                 <Text fontSize='20px' fontWeight='500' fontFamily='var(--font-family)'>
                     {name}
                 </Text>

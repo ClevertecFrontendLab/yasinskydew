@@ -1,41 +1,66 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import { Box, Button, Heading, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Button, Heading, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { useNavigate } from 'react-router';
 
-import { useRecipes } from '~/store/hooks';
+import { useBreadcrumbs } from '~/store/hooks';
+import { Recipe } from '~/store/recipe-slice';
 
 import { RecipeItem } from './RecipeItem';
-import { MenuModeEnum, RecipeDisplayModeEnum } from './RecipeTypes';
+import { MenuModeEnum, RecipeDisplayModeEnum, RecipeListMode } from './RecipeTypes';
 
-export const RecipeList = () => {
-    const { recipes } = useRecipes();
+interface RecipeListProps {
+    recipes: Recipe[];
+    mode: RecipeListMode;
+}
+
+export const RecipeList = (props: RecipeListProps) => {
+    const { recipes, mode } = props;
     const displayMode = useBreakpointValue<RecipeDisplayModeEnum>({
         base: RecipeDisplayModeEnum.COMPACT,
         sm: RecipeDisplayModeEnum.NORMAL,
         lg: RecipeDisplayModeEnum.DETAILED,
     });
 
+    const navigate = useNavigate();
+    const { setBreadcrumbItems } = useBreadcrumbs();
+
     return (
-        <Box width='100%'>
-            <Box
-                display='flex'
-                justifyContent='space-between'
-                alignItems='center'
-                width='100%'
-                mb={6}
-            >
-                <Heading textAlign='start' paddingLeft='10px'>
-                    Самое сочное
-                </Heading>
-                <Button
-                    bgColor='var(--lime400-color)'
-                    color='var(--text-color-secondary)'
-                    _hover={{ bgColor: 'var(--lime600-color)', color: 'var(--lime400-color)' }}
-                    alignSelf='flex-end'
-                    rightIcon={<ArrowForwardIcon />}
+        <VStack width='100%' spacing={5}>
+            {mode === RecipeListMode.PREVIEW && (
+                <Box
+                    display='flex'
+                    justifyContent='space-between'
+                    alignItems='center'
+                    width='100%'
+                    mb={6}
                 >
-                    Вся подборка
-                </Button>
-            </Box>
+                    <Heading textAlign='start' paddingLeft='10px'>
+                        Самое сочное
+                    </Heading>
+                    <Button
+                        bgColor='var(--lime400-color)'
+                        color='var(--text-color-secondary)'
+                        _hover={{ bgColor: 'var(--lime600-color)', color: 'var(--lime400-color)' }}
+                        alignSelf='flex-end'
+                        rightIcon={<ArrowForwardIcon />}
+                        onClick={() => {
+                            navigate('/juiciest');
+                            setBreadcrumbItems([
+                                {
+                                    label: 'Главная',
+                                    path: '/',
+                                },
+                                {
+                                    label: 'Самое сочное',
+                                    path: '/juiciest',
+                                },
+                            ]);
+                        }}
+                    >
+                        Вся подборка
+                    </Button>
+                </Box>
+            )}
             <Box
                 display='grid'
                 gridTemplateColumns={{
@@ -56,6 +81,18 @@ export const RecipeList = () => {
                     />
                 ))}
             </Box>
-        </Box>
+            {[RecipeListMode.JUICIEST].includes(mode) && (
+                <Button
+                    bgColor='var(--lime400-color)'
+                    color='var(--text-color-secondary)'
+                    alignSelf='center'
+                    onClick={() => {
+                        navigate('/juiciest');
+                    }}
+                >
+                    Загрузить ещё
+                </Button>
+            )}
+        </VStack>
     );
 };
