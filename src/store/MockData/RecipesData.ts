@@ -19,7 +19,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 4) as MenuCategory,
         favorites: 258,
         likes: 342,
-        createdAt: new Date('2025-01-01'),
+        createdAt: new Date('2025-01-01').toISOString(),
     },
     {
         id: 2,
@@ -30,7 +30,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 10) as MenuCategory,
         favorites: 124,
         likes: 324,
-        createdAt: new Date('2025-01-01'),
+        createdAt: new Date('2025-01-01').toISOString(),
     },
     {
         id: 3,
@@ -41,7 +41,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 4) as MenuCategory,
         favorites: 159,
         likes: 257,
-        createdAt: new Date('2025-01-01'),
+        createdAt: new Date('2025-01-01').toISOString(),
     },
     {
         id: 4,
@@ -52,7 +52,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 4) as MenuCategory,
         favorites: 124,
         likes: 231,
-        createdAt: new Date('2025-01-01'),
+        createdAt: new Date('2025-01-01').toISOString(),
     },
     {
         id: 5,
@@ -63,7 +63,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 4) as MenuCategory,
         favorites: 120,
         likes: 180,
-        createdAt: new Date('2021-01-01'),
+        createdAt: new Date('2021-01-01').toISOString(),
     },
     {
         id: 6,
@@ -74,7 +74,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 8) as MenuCategory,
         favorites: 85,
         likes: 180,
-        createdAt: new Date('2021-01-01'),
+        createdAt: new Date('2021-01-01').toISOString(),
     },
     {
         id: 7,
@@ -85,7 +85,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 6) as MenuCategory,
         favorites: 85,
         likes: 152,
-        createdAt: new Date('2021-01-01'),
+        createdAt: new Date('2021-01-01').toISOString(),
     },
     {
         id: 8,
@@ -96,7 +96,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 4) as MenuCategory,
         favorites: 85,
         likes: 150,
-        createdAt: new Date('2021-01-01'),
+        createdAt: new Date('2021-01-01').toISOString(),
     },
     {
         id: 9,
@@ -107,7 +107,7 @@ const recipes: Recipe[] = [
         likes: 152,
         favorites: 85,
         image: potatoesIcon,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
     },
     {
         id: 10,
@@ -118,7 +118,7 @@ const recipes: Recipe[] = [
         likes: 1,
         favorites: 2,
         image: lasagnaIcon,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
     },
     {
         name: 'Стейк для вегетарианцев',
@@ -128,7 +128,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 7) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 11,
     },
     {
@@ -139,7 +139,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 7) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 12,
     },
     {
@@ -150,7 +150,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 7) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 13,
     },
     {
@@ -161,7 +161,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 7) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 14,
     },
     {
@@ -172,7 +172,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 7) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 15,
     },
     {
@@ -183,7 +183,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 7) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 16,
     },
     {
@@ -194,7 +194,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 5) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 17,
     },
     {
@@ -205,7 +205,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 5) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 18,
     },
     {
@@ -216,7 +216,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 5) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 19,
     },
     {
@@ -227,7 +227,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 5) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 20,
     },
     {
@@ -238,7 +238,7 @@ const recipes: Recipe[] = [
         menuCategory: menuCategories.find((item) => item.id === 5) as MenuCategory,
         likes: 1,
         favorites: 1,
-        createdAt: new Date(),
+        createdAt: new Date('2021-01-01').toISOString(),
         id: 21,
     },
 ];

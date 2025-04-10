@@ -2,7 +2,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Box, Collapse, Flex, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
-import { useBreadcrumbs, useMainMenu } from '~/store/hooks';
+import { useMainMenu } from '~/store/hooks';
 import { MenuCategory, SubCategory } from '~/store/menu-slice';
 
 import { CustomIcon } from '../Layout/CustomIcon';
@@ -15,52 +15,36 @@ interface MenuItemProps extends MenuCategory {
 }
 
 export const MenuItem = (props: MenuItemProps) => {
-    const { name, icon, id, subCategories, isExpanded, onCategoryClick, onSubCategoryClick } =
-        props;
+    const { onCategoryClick, onSubCategoryClick, isExpanded, ...category } = props;
     const { selectedCategory, selectedSubCategory } = useMainMenu();
     const navigate = useNavigate();
-    const { setBreadcrumbItems } = useBreadcrumbs();
 
     const handleClick = () => {
-        onCategoryClick(props);
+        onCategoryClick(category);
+        navigate(`/menu/${category.id}`);
     };
 
     const handleSubCategoryClick = (subCategory: SubCategory) => {
-        onSubCategoryClick(props, subCategory);
-        setBreadcrumbItems([
-            {
-                label: 'Главная',
-                path: '/',
-            },
-            {
-                label: selectedCategory?.name || '',
-                path: `/menu/${selectedCategory?.id}/1`,
-            },
-            {
-                label: subCategory.name,
-                path: `/menu/${id}/${subCategory.id}`,
-            },
-        ]);
-        navigate(`/menu/${id}/${subCategory.id}`);
+        onSubCategoryClick(category, subCategory);
+        navigate(`/menu/${category.id}/${subCategory.id}`);
     };
 
     return (
-        <Box width='100%'>
+        <Box>
             <Box
-                key={id}
+                key={category.id}
                 padding='8px 16px'
                 display='flex'
                 alignItems='center'
                 cursor='pointer'
                 justifyContent='space-between'
-                width='100%'
                 onClick={handleClick}
-                bg={selectedCategory?.id === id ? 'var(--lime100-color)' : 'transparent'}
+                bg={selectedCategory?.id === category.id ? 'var(--lime100-color)' : 'transparent'}
             >
                 <Flex alignItems='center' gap={3}>
-                    <CustomIcon src={icon} alt={name} />
+                    <CustomIcon src={category.icon} alt={category.name} />
                     <Text fontSize='16px' fontWeight='500' color='var(--text-color-secondary)'>
-                        {name}
+                        {category.name}
                     </Text>
                 </Flex>
                 <ChevronDownIcon
@@ -72,7 +56,7 @@ export const MenuItem = (props: MenuItemProps) => {
             </Box>
             <Collapse in={isExpanded}>
                 <Box>
-                    {subCategories.map((subCategory) => (
+                    {category.subCategories.map((subCategory) => (
                         <SubCategoryItem
                             key={subCategory.id}
                             subCategory={subCategory}

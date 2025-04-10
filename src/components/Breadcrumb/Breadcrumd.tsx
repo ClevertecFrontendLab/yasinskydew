@@ -1,8 +1,9 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
+import { memo } from 'react';
 
 import { useBreadcrumbs } from '~/store/hooks';
 
-export const Breadcrumbs = () => {
+export const Breadcrumbs = memo(() => {
     const { breadcrumbs } = useBreadcrumbs();
 
     return (
@@ -23,4 +24,4 @@ export const Breadcrumbs = () => {
             ))}
         </Breadcrumb>
     );
-};
+});

@@ -87,7 +87,7 @@ export const RecipeList = (props: RecipeListProps) => {
                     color='var(--text-color-secondary)'
                     alignSelf='center'
                     onClick={() => {
-                        navigate('/juiciest');
+                        console.log('click');
                     }}
                 >
                     Загрузить ещё

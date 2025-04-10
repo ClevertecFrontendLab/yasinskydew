@@ -1,9 +1,9 @@
 import { VStack } from '@chakra-ui/react';
 
-import { MenuList } from '../MenuList/NemuList';
+import { MenuList } from '../MenuList/MenuList';
 import { LeftFooter } from './LeftFooter';
 
-const Sidebar = () => (
+const NavPanel = () => (
     <VStack
         align='stretch'
         height='100%'
@@ -16,4 +16,4 @@ const Sidebar = () => (
     </VStack>
 );
 
-export default Sidebar;
+export default NavPanel;

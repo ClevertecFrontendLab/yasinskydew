@@ -12,7 +12,7 @@ export interface Recipe {
     subCategory?: SubCategory;
     likes: number;
     favorites: number;
-    createdAt: Date;
+    createdAt: string;
 }
 
 export interface RecipeState {

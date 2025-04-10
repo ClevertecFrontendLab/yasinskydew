@@ -1,7 +1,7 @@
 import { Box, Grid, GridItem } from '@chakra-ui/react';
 
 import Header from '~/components/Header/Header';
-import Sidebar from '~/components/Layout/Sidebar';
+import NavPanel from '~/components/Layout/NavPanel';
 import RightPanel from '~/components/RightPanel/RightPanel';
 
 interface PageLayoutProps {
@@ -20,7 +20,7 @@ export const PageLayout = ({ children }: PageLayoutProps) => (
                 zIndex={1}
             >
                 <GridItem height='100%' overflow='hidden'>
-                    <Sidebar />
+                    <NavPanel />
                 </GridItem>
                 <GridItem height='100%' overflow='auto' pr={{ lg: '280px' }}>
                     {children}
