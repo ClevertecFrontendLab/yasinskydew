@@ -1,12 +1,12 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const breakpoints = {
-    base: '0px',
-    sm: '320px',
-    md: '768px',
-    lg: '960px',
-    xl: '1440px',
-    '2xl': '1536px',
+    base: '0px', // Mobile devices (default)
+    sm: '360px', // Small devices (phones)
+    md: '768px', // Tablets
+    lg: '1024px', // Laptops
+    xl: '1440px', // Desktops
+    '2xl': '1920px', // Large desktops
 };
 
 const colors = {

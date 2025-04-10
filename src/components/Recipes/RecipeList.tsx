@@ -24,6 +24,20 @@ export const RecipeList = (props: RecipeListProps) => {
     const navigate = useNavigate();
     const { setBreadcrumbItems } = useBreadcrumbs();
 
+    async function loadMoreRecipes() {
+        navigate('/juiciest');
+        setBreadcrumbItems([
+            {
+                label: 'Главная',
+                path: '/',
+            },
+            {
+                label: 'Самое сочное',
+                path: '/juiciest',
+            },
+        ]);
+    }
+
     return (
         <VStack width='100%' spacing={5}>
             {mode === RecipeListMode.PREVIEW && (
@@ -35,19 +49,7 @@ export const RecipeList = (props: RecipeListProps) => {
                         _hover={{ bgColor: 'var(--lime600-color)', color: 'var(--lime400-color)' }}
                         alignSelf='flex-end'
                         rightIcon={<ArrowForwardIcon />}
-                        onClick={() => {
-                            navigate('/juiciest');
-                            setBreadcrumbItems([
-                                {
-                                    label: 'Главная',
-                                    path: '/',
-                                },
-                                {
-                                    label: 'Самое сочное',
-                                    path: '/juiciest',
-                                },
-                            ]);
-                        }}
+                        onClick={loadMoreRecipes}
                     >
                         Вся подборка
                     </Button>
@@ -57,9 +59,9 @@ export const RecipeList = (props: RecipeListProps) => {
                 display='grid'
                 gridTemplateColumns={{
                     base: '1fr',
-                    sm: 'repeat(2, 1fr)',
                     md: 'repeat(2, 1fr)',
-                    lg: 'repeat(2, 1fr)',
+                    lg: '1fr',
+                    '2xl': 'repeat(2, 1fr)',
                 }}
                 gap={6}
             >

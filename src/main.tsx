@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router';
 
 import { store } from '~/store/configure-store.ts';
+import theme from '~/theme';
 
 import Home from './app/pages/Home/Home';
 import MenuRecipeList from './app/pages/MenuRecipeList/MenuRecipeList';
@@ -15,7 +16,7 @@ import { PageLayout } from './components/Layout/PageLayout';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
             <Provider store={store}>
                 <BrowserRouter>
                     <Routes>

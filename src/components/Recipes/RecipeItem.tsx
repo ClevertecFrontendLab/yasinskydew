@@ -1,4 +1,4 @@
-import { Card, Image, Stack } from '@chakra-ui/react';
+import { Card, Image, Stack, useBreakpointValue } from '@chakra-ui/react';
 
 import { Recipe } from '~/store/recipe-slice';
 
@@ -19,13 +19,26 @@ interface RecipeItemProps extends Recipe {
 export const RecipeItem = (props: RecipeItemProps) => {
     const { image, name, description, menuCategory, likes, favorites } = props;
 
+    const isMobile = useBreakpointValue({ base: true, lg: false });
+
     return (
-        <Card variant='outline' direction={{ base: 'column', sm: 'row' }}>
-            <Image src={image || ''} alt={name} objectFit='cover' />
-            <Stack p='20px 24px'>
-                <RecipeFooter menuCategory={menuCategory} likes={likes} favorites={favorites} />
+        <Card variant='outline' direction='row'>
+            <Image
+                src={image || ''}
+                alt={name}
+                objectFit='cover'
+                borderLeftRadius='inherit'
+                height={{ base: 128, lg: 244 }}
+            />
+            <Stack p={{ base: '4px 8px', lg: '20px 24px' }}>
+                <RecipeFooter
+                    menuCategory={menuCategory}
+                    likes={likes}
+                    favorites={favorites}
+                    bgColor='#ffffd3;'
+                />
                 <RecipeTitle>{name}</RecipeTitle>
-                <RecipeDescription description={description} />
+                {!isMobile && <RecipeDescription description={description} />}
                 <RecipeControl />
             </Stack>
         </Card>
