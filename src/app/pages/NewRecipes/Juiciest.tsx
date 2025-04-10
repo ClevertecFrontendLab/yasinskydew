@@ -1,7 +1,6 @@
 import { VStack } from '@chakra-ui/react';
 
 import { FilterContainer } from '~/components/Filter/FilterContainer';
-import { PageLayout } from '~/components/Layout/PageLayout';
 import { RecipeList } from '~/components/Recipes/RecipeList';
 import { RecipeListMode } from '~/components/Recipes/RecipeTypes';
 import { RelevantKichen } from '~/components/RelevantKichen/RelevantKichen';
@@ -17,12 +16,10 @@ export default function Juiciest() {
     const relevantRecipes = getRecipesByCategory(menuCategoryId);
 
     return (
-        <PageLayout>
-            <VStack spacing={6} maxW='1360px'>
-                <FilterContainer title='Самое сочное' />
-                <RecipeList recipes={recipes} mode={RecipeListMode.JUICIEST} />
-                <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />
-            </VStack>
-        </PageLayout>
+        <VStack spacing={6} maxW='1360px'>
+            <FilterContainer title='Самое сочное' />
+            <RecipeList recipes={recipes} mode={RecipeListMode.JUICIEST} />
+            <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />
+        </VStack>
     );
 }

@@ -27,16 +27,8 @@ export const RecipeList = (props: RecipeListProps) => {
     return (
         <VStack width='100%' spacing={5}>
             {mode === RecipeListMode.PREVIEW && (
-                <Box
-                    display='flex'
-                    justifyContent='space-between'
-                    alignItems='center'
-                    width='100%'
-                    mb={6}
-                >
-                    <Heading textAlign='start' paddingLeft='10px'>
-                        Самое сочное
-                    </Heading>
+                <Box display='flex' justifyContent='space-between' alignItems='center' width='100%'>
+                    <Heading textAlign='start'>Самое сочное</Heading>
                     <Button
                         bgColor='var(--lime400-color)'
                         color='var(--text-color-secondary)'
@@ -70,7 +62,6 @@ export const RecipeList = (props: RecipeListProps) => {
                     lg: 'repeat(2, 1fr)',
                 }}
                 gap={6}
-                px={2}
             >
                 {recipes.slice(0, 8).map((recipe) => (
                     <RecipeItem

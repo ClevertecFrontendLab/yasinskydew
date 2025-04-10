@@ -1,32 +1,28 @@
 import { Box, Grid, GridItem } from '@chakra-ui/react';
+import { Outlet } from 'react-router';
 
-import Header from '~/components/Header/Header';
-import NavPanel from '~/components/Layout/NavPanel';
-import RightPanel from '~/components/RightPanel/RightPanel';
+import Header from '../Header/Header';
+import RightPanel from '../RightPanel/RightPanel';
+import NavPanel from './NavPanel';
 
-interface PageLayoutProps {
-    children: React.ReactNode;
-}
-
-export const PageLayout = ({ children }: PageLayoutProps) => (
+export const PageLayout = () => (
     <Box minH='100vh'>
         <Header />
-        <Box overflow='hidden'>
-            <Grid
-                templateColumns={{ base: '1fr', md: '250px 1fr' }}
-                height='100%'
-                pt='80px'
-                position='relative'
-                zIndex={1}
-            >
-                <GridItem height='100%' overflow='hidden'>
-                    <NavPanel />
-                </GridItem>
-                <GridItem height='100%' overflow='auto' pr={{ lg: '280px' }}>
-                    {children}
-                </GridItem>
-            </Grid>
-            <RightPanel />
-        </Box>
+        <Grid
+            templateColumns={{ base: '1fr', lg: '250px 1fr 200px' }}
+            height='100%'
+            gap='24px'
+            pt='80px'
+        >
+            <GridItem height='100%' overflow='hidden' display={{ base: 'none', lg: 'block' }}>
+                <NavPanel />
+            </GridItem>
+            <GridItem height='100%' overflow='auto'>
+                <Outlet />
+            </GridItem>
+            <GridItem height='100%' overflow='hidden' display={{ base: 'none', lg: 'block' }}>
+                <RightPanel />
+            </GridItem>
+        </Grid>
     </Box>
 );

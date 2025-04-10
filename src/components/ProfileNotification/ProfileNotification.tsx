@@ -1,9 +1,11 @@
-import { Box, VStack } from '@chakra-ui/react';
+import { Box, useBreakpointValue } from '@chakra-ui/react';
 import { BsBookmarkHeart, BsEmojiHeartEyes, BsPeopleFill } from 'react-icons/bs';
 
 import ProfileNotificationCard from './ProfileNotificationCard';
 
 export default function ProfileNotification() {
+    const isMobile = useBreakpointValue({ base: true, md: false });
+
     const notifications = [
         {
             icon: <BsBookmarkHeart />,
@@ -24,11 +26,15 @@ export default function ProfileNotification() {
 
     return (
         <Box p={4}>
-            <VStack align='start' spacing='24px'>
+            <Box
+                display='flex'
+                flexDirection={isMobile ? 'row' : 'column'}
+                gap={isMobile ? 4 : '24px'}
+            >
                 {notifications.map((notification) => (
                     <ProfileNotificationCard key={notification.alt} {...notification} />
                 ))}
-            </VStack>
+            </Box>
         </Box>
     );
 }

@@ -1,8 +1,8 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 import { MenuCategory } from '../../store/menu-slice';
+import { CustomBadge } from '../Badge/Badge';
 import { BookmarkFavorite, BookmarkLike } from '../Bookmark/Bookmark';
-import { CustomIcon } from '../Layout/CustomIcon';
 
 type Size = 'sm' | 'md' | 'lg';
 
@@ -25,17 +25,20 @@ export const RecipeFooter = ({
         sm: {
             padding: '2px 6px',
             fontSize: 'sm',
-            iconSize: '14px',
+            iconSize: '18px',
+            bgColor: 'var(--lime150-color)',
         },
         md: {
             padding: '4px 8px',
             fontSize: 'md',
-            iconSize: '16px',
+            iconSize: '18px',
+            bgColor: 'var(--lime150-color)',
         },
         lg: {
             padding: '6px 10px',
             fontSize: 'lg',
             iconSize: '20px',
+            bgColor: 'var(--lime150-color)',
         },
     };
 
@@ -43,23 +46,14 @@ export const RecipeFooter = ({
 
     return (
         <Box display='flex' justifyContent='space-between' alignItems='center' width='100%'>
-            <Box
-                display='flex'
-                alignItems='center'
-                gap={size === 'sm' ? 1 : size === 'lg' ? 3 : 2}
+            <CustomBadge
                 bgColor={bgColor}
-                borderRadius={4}
-                p={currentStyle.padding}
+                icon={menuCategory.icon}
+                iconSize={currentStyle.iconSize}
                 fontSize={currentStyle.fontSize}
             >
-                <CustomIcon
-                    src={menuCategory.icon}
-                    alt={menuCategory.name}
-                    width={currentStyle.iconSize}
-                    height={currentStyle.iconSize}
-                />
-                <Text fontSize='14px'>{menuCategory.name}</Text>
-            </Box>
+                {menuCategory.name}
+            </CustomBadge>
             <Flex gap={size === 'sm' ? 1 : size === 'lg' ? 3 : 2}>
                 {likes && <BookmarkLike count={likes} />}
                 {favorites && <BookmarkFavorite count={favorites} />}

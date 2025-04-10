@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 
 import { FilterContainer } from '~/components/Filter/FilterContainer';
-import { PageLayout } from '~/components/Layout/PageLayout';
 import { SubMenuList } from '~/components/MenuList/SubMenuList';
 import { RecipeList } from '~/components/Recipes/RecipeList';
 import { RecipeListMode } from '~/components/Recipes/RecipeTypes';
@@ -43,16 +42,14 @@ export default function MenuRecipeList() {
     }, [categoryId, subCategoryId]);
 
     return (
-        <PageLayout>
-            <VStack spacing={6} maxW='1360px'>
-                <FilterContainer
-                    title={selectedCategory?.name || ''}
-                    description={selectedCategory?.description || ''}
-                />
-                <SubMenuList />
-                <RecipeList recipes={recipes} mode={RecipeListMode.JUICIEST} />
-                <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />
-            </VStack>
-        </PageLayout>
+        <VStack spacing={6} maxW='1360px'>
+            <FilterContainer
+                title={selectedCategory?.name || ''}
+                description={selectedCategory?.description || ''}
+            />
+            <SubMenuList />
+            <RecipeList recipes={recipes} mode={RecipeListMode.JUICIEST} />
+            <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />
+        </VStack>
     );
 }

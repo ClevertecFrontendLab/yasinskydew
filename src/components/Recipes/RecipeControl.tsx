@@ -1,9 +1,8 @@
-import { Button } from '@chakra-ui/react';
-import { Box } from '@chakra-ui/react';
+import { Button, ButtonGroup } from '@chakra-ui/react';
 import { BsBookmarkHeart } from 'react-icons/bs';
 
 export const RecipeControl = () => (
-    <Box display='flex' gap={2} width='100%' justifyContent='flex-end'>
+    <ButtonGroup display='flex' gap={2} width='100%' justifyContent='flex-end'>
         <Button
             className='recipe-markdown-button'
             variant='outline'
@@ -23,5 +22,5 @@ export const RecipeControl = () => (
         >
             Готовить
         </Button>
-    </Box>
+    </ButtonGroup>
 );

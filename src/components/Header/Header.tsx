@@ -1,11 +1,20 @@
-import { Box, Flex, Image as ChakraImage, useColorModeValue } from '@chakra-ui/react';
+import {
+    Box,
+    Flex,
+    Image as ChakraImage,
+    useBreakpointValue,
+    useColorModeValue,
+} from '@chakra-ui/react';
 
 import headerLogo from '../../assets/header-logo.svg';
 import { Breadcrumbs } from '../Breadcrumb/Breadcrumd';
 import HeaderProfile from '../HeaderProfile';
+import { BurgerMenu } from '../Layout/BurgerMenu';
+import ProfileNotification from '../ProfileNotification/ProfileNotification';
 
 const Header = () => {
     const bgColor = useColorModeValue('var(--header-bg-color)', 'gray.800');
+    const isMobile = useBreakpointValue({ base: true, md: false });
 
     return (
         <Box
@@ -24,9 +33,13 @@ const Header = () => {
                     <Box as='a' href='/'>
                         <ChakraImage src={headerLogo} alt='Logo' height='32px' width='136px' />
                     </Box>
-                    <Breadcrumbs />
+                    {!isMobile && <Breadcrumbs />}
                 </Flex>
-                <HeaderProfile />
+                <Flex align='center' gap={4}>
+                    {!isMobile && <HeaderProfile />}
+                    {isMobile && <ProfileNotification />}
+                    {isMobile && <BurgerMenu />}
+                </Flex>
             </Flex>
         </Box>
     );

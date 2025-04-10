@@ -19,9 +19,9 @@ export const MenuItem = (props: MenuItemProps) => {
     const { selectedCategory, selectedSubCategory } = useMainMenu();
     const navigate = useNavigate();
 
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
         onCategoryClick(category);
-        navigate(`/menu/${category.id}`);
     };
 
     const handleSubCategoryClick = (subCategory: SubCategory) => {
