@@ -1,6 +1,9 @@
 import { Box, useBreakpointValue } from '@chakra-ui/react';
-import { BsBookmarkHeart, BsEmojiHeartEyes, BsPeopleFill } from 'react-icons/bs';
 
+import BsBookmarkHeart from '../../assets/BookMark/BsBookmarkHeart.svg';
+import BsEmojiHeartEyes from '../../assets/BookMark/BsEmojiHeartEyes.svg';
+import BsPeopleFill from '../../assets/BookMark/BsPeopleFill.svg';
+import { CustomIcon } from '../Layout/CustomIcon';
 import ProfileNotificationCard from './ProfileNotificationCard';
 
 export default function ProfileNotification() {
@@ -8,17 +11,17 @@ export default function ProfileNotification() {
 
     const notifications = [
         {
-            icon: <BsBookmarkHeart />,
+            icon: <CustomIcon src={BsBookmarkHeart} alt='bookmarks' />,
             alt: 'bookmarks',
             count: 185,
         },
         {
-            icon: <BsPeopleFill />,
+            icon: <CustomIcon src={BsPeopleFill} alt='likes' />,
             alt: 'likes',
             count: 587,
         },
         {
-            icon: <BsEmojiHeartEyes />,
+            icon: <CustomIcon src={BsEmojiHeartEyes} alt='popularity' />,
             alt: 'popularity',
             count: 589,
         },

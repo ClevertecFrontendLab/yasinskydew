@@ -1,5 +1,7 @@
 import { Box, Text } from '@chakra-ui/react';
-import { TbLogout2 } from 'react-icons/tb';
+
+import LogoutIcon from '../../assets/Footer/logout-btn.svg';
+import { CustomIcon } from './CustomIcon';
 
 export const LeftFooter = () => (
     <Box display='flex' flexDirection='column' alignItems='flex-start' gap='16px' padding='0 24px'>
@@ -22,7 +24,7 @@ export const LeftFooter = () => (
             Все права защищены, ученический файл, ©Клевер Технолоджи, 2025
         </Text>
         <Box display='flex' alignItems='flex-start' gap='8px' cursor='pointer'>
-            <TbLogout2 />
+            <CustomIcon src={LogoutIcon} alt='logout' />
             <Text fontSize='12px' fontWeight='600' fontFamily='var(--font-family)'>
                 Выйти
             </Text>

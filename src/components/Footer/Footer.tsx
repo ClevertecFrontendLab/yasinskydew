@@ -1,8 +1,8 @@
 import { Box } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
+import search from '../../assets/Filter/search-btn.svg';
 import home from '../../assets/Footer/home-btn.svg';
-import search from '../../assets/Footer/search-btn.svg';
 import write from '../../assets/Footer/write-btn.svg';
 import profile from '../../assets/mock-avatar.jpg';
 import { FooterItem } from './FooterItem';

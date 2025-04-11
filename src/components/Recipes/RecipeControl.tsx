@@ -1,5 +1,7 @@
 import { Button, ButtonGroup, useBreakpointValue } from '@chakra-ui/react';
-import { BsBookmarkHeart } from 'react-icons/bs';
+
+import BsBookmarkHeart from '../../assets/BookMark/BsBookmarkHeart.svg';
+import { CustomIcon } from '../Layout/CustomIcon';
 
 export const RecipeControl = () => {
     const isMobile = useBreakpointValue({ base: true, lg: false });
@@ -10,7 +12,7 @@ export const RecipeControl = () => {
                 variant='outline'
                 size={{ base: 'sm', md: 'md' }}
                 fontSize='14px'
-                leftIcon={<BsBookmarkHeart />}
+                leftIcon={<CustomIcon src={BsBookmarkHeart} alt='bookmark' />}
                 iconSpacing={isMobile ? '0px' : '16px'}
             >
                 {!isMobile && 'Сохранить'}

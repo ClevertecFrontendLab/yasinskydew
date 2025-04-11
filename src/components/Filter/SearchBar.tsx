@@ -1,6 +1,8 @@
 import { SearchIcon } from '@chakra-ui/icons';
 import { Box, Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
-import { IoFilterSharp } from 'react-icons/io5';
+
+import IoFilterSharp from '../../assets/Filter/search-btn.svg';
+import { CustomIcon } from '../Layout/CustomIcon';
 
 export const SearchBar = () => (
     <Box
@@ -17,7 +19,7 @@ export const SearchBar = () => (
             p={3}
             size={{ base: 'md', md: 'lg' }}
         >
-            <IoFilterSharp />
+            <CustomIcon src={IoFilterSharp} alt='filter' />
         </Button>
         <InputGroup>
             <Input
