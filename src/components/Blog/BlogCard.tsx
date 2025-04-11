@@ -9,7 +9,7 @@ export const BlogCard = (blog: BlogData) => (
         flexDirection='column'
         gap={4}
         bgColor='white'
-        p='16px 24px'
+        p={{ base: '16px', lg: '16px 24px' }}
         borderRadius={5}
     >
         <Profile author={blog.author} />

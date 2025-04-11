@@ -56,6 +56,7 @@ export const RecipeList = (props: RecipeListProps) => {
                             alignSelf='center'
                             rightIcon={<ArrowForwardIcon />}
                             onClick={loadMoreRecipes}
+                            data-test-id='juiciest-link'
                         >
                             Вся подборка
                         </Button>
@@ -92,18 +93,18 @@ export const RecipeList = (props: RecipeListProps) => {
                     Загрузить ещё
                 </Button>
             )}
-            {mode === RecipeListMode.PREVIEW && isMobile && (
-                <Button
-                    bgColor='var(--lime400-color)'
-                    color='var(--text-color-secondary)'
-                    _hover={{ bgColor: 'var(--lime600-color)', color: 'var(--lime400-color)' }}
-                    alignSelf='center'
-                    rightIcon={<ArrowForwardIcon />}
-                    onClick={loadMoreRecipes}
-                >
-                    Вся подборка
-                </Button>
-            )}
+            <Button
+                bgColor='var(--lime400-color)'
+                color='var(--text-color-secondary)'
+                _hover={{ bgColor: 'var(--lime600-color)', color: 'var(--lime400-color)' }}
+                alignSelf='center'
+                display={mode === RecipeListMode.PREVIEW && isMobile ? 'flex' : 'none'}
+                rightIcon={<ArrowForwardIcon />}
+                onClick={loadMoreRecipes}
+                data-test-id='juiciest-link-mobile'
+            >
+                Вся подборка
+            </Button>
         </VStack>
     );
 };

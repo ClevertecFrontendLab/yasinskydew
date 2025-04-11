@@ -47,6 +47,7 @@ export const Footer = () => {
             alignItems='center'
             justifyContent='center'
             height='100px'
+            data-test-id='footer'
         >
             {footer.map((item) => (
                 <FooterItem key={item.label} {...item} />

@@ -22,6 +22,7 @@ export const MenuItem = (props: MenuItemProps) => {
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
         onCategoryClick(category);
+        navigate(`/menu/${category.id}`);
     };
 
     const handleSubCategoryClick = (subCategory: SubCategory) => {
@@ -30,7 +31,7 @@ export const MenuItem = (props: MenuItemProps) => {
     };
 
     return (
-        <Box>
+        <Box data-test-id={category.id === 7 ? 'vegan-cuisine' : null}>
             <Box
                 key={category.id}
                 padding='8px 16px'

@@ -29,6 +29,7 @@ const Header = () => {
             bg={bgColor}
             zIndex={1000}
             boxShadow='sm'
+            data-test-id='header'
         >
             <Flex mx='auto' px={4} h='100%' align='center' justify='space-between'>
                 <Flex align='center' gap={12}>
