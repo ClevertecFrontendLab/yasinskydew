@@ -1,10 +1,9 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 
 import { MenuCategory } from '../../store/menu-slice';
 import { Recipe } from '../../store/recipe-slice';
-import { RecipeItem } from '../Recipes/RecipeItem';
-import { MenuModeEnum, RecipeDisplayModeEnum } from '../Recipes/RecipeTypes';
 import { RelevantKichenCard } from './RelevantKichenCard';
+import { RelevantRecipeCard } from './RelevantRecipeCard';
 
 interface RelevantKichenProps {
     menuCategory: MenuCategory;
@@ -15,10 +14,29 @@ export const RelevantKichen = (props: RelevantKichenProps) => {
     const { menuCategory, recipes } = props;
 
     return (
-        <Box width='100%' borderTop='1px solid #E0E0E0' pt='24px'>
-            <Box display='grid' gridTemplateColumns='1fr 1fr' gap={4}>
+        <Box
+            width='100%'
+            borderTop='1px solid #E0E0E0'
+            pt='24px'
+            display='flex'
+            flexDirection='column'
+            gap={4}
+        >
+            <Box
+                display={{
+                    base: 'flex',
+                    md: 'grid',
+                }}
+                gridTemplateColumns={{
+                    md: '1fr 1fr',
+                    lg: '1fr 2fr',
+                    '2xl': '1fr 1fr',
+                }}
+                flexDirection={{ base: 'column' }}
+                gap={4}
+            >
                 <Heading
-                    fontSize='48px'
+                    fontSize={{ base: '24px', md: '36px', lg: '48px' }}
                     fontWeight='500'
                     fontFamily='var(--font-family)'
                     textAlign='left'
@@ -35,24 +53,40 @@ export const RelevantKichen = (props: RelevantKichenProps) => {
                     {menuCategory.description}
                 </Text>
             </Box>
-            <Box display='grid' gridTemplateColumns='1fr 1fr' gap={4}>
-                <Box display='flex' gap={4}>
+            <Box
+                display={{
+                    base: 'flex',
+                    md: 'grid',
+                    lg: 'flex',
+                    xl: 'grid',
+                }}
+                gridTemplateColumns={{
+                    md: '2fr 1fr',
+                    '2xl': '1fr 1fr',
+                }}
+                flexDirection='column'
+                gap={2}
+            >
+                <Box
+                    display={{
+                        base: 'flex',
+                        md: 'grid',
+                    }}
+                    gridTemplateColumns={{
+                        sm: '1fr 1fr',
+                    }}
+                    flexDirection='column'
+                    gap={2}
+                >
                     {recipes.slice(0, 2).map((recipe) => (
-                        <RecipeItem
-                            key={recipe.id}
-                            displayMode={RecipeDisplayModeEnum.NORMAL}
-                            noImage={true}
-                            noControl={true}
-                            menuMode={MenuModeEnum.SECONDARY}
-                            {...recipe}
-                        />
+                        <RelevantRecipeCard key={recipe.id} recipe={recipe} />
                     ))}
                 </Box>
-                <Flex gap={2} flexDirection='column'>
+                <Box display='flex' gap={2} flexDirection='column'>
                     {recipes.slice(2, 5).map((recipe) => (
                         <RelevantKichenCard key={recipe.id} {...recipe} />
                     ))}
-                </Flex>
+                </Box>
             </Box>
         </Box>
     );

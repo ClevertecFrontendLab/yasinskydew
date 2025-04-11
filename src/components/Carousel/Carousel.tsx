@@ -1,16 +1,15 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
+import { Box, IconButton } from '@chakra-ui/react';
 import { useState } from 'react';
 
 interface CarouselProps {
     children: React.ReactNode[];
-    slidesToShow?: number;
     gap?: number;
 }
 
 export const CustomCarousel = ({ children, gap = 24 }: CarouselProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const responsiveSlidesToShow = useBreakpointValue({ base: 1, md: 2, lg: 3, '2xl': 4 }) || 1;
+    const responsiveSlidesToShow = 4;
 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) =>

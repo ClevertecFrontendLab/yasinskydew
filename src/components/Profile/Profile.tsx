@@ -19,7 +19,7 @@ export const Profile = ({ author }: { author: Author }) => (
             height='48px'
         />
         <Flex flexDirection='column' align='flex-start'>
-            <Text fontSize='18px' fontWeight='500' fontFamily='var(--font-family)'>
+            <Text fontSize='18px' fontWeight='500' fontFamily='var(--font-family)' noOfLines={1}>
                 {author.firstName} {author.lastName}
             </Text>
             <Text fontSize='14px' fontWeight='400' fontFamily='var(--font-family)'>

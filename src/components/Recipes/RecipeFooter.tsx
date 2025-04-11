@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, useBreakpointValue } from '@chakra-ui/react';
 
 import { MenuCategory } from '../../store/menu-slice';
 import { CustomBadge } from '../Badge/Badge';
@@ -12,6 +12,8 @@ interface RecipeFooterProps {
     favorites?: number;
     size?: Size;
     bgColor?: string;
+    isRelevantKichen?: boolean;
+    isCarousel?: boolean;
 }
 
 export const RecipeFooter = ({
@@ -20,43 +22,26 @@ export const RecipeFooter = ({
     favorites,
     size = 'md',
     bgColor = 'var(--lime200-color)',
+    isRelevantKichen = false,
+    isCarousel = false,
 }: RecipeFooterProps) => {
-    const sizeStyles = {
-        sm: {
-            padding: '2px 6px',
-            fontSize: 'sm',
-            iconSize: '18px',
-            bgColor: 'var(--lime150-color)',
-        },
-        md: {
-            padding: '4px 8px',
-            fontSize: 'md',
-            iconSize: '18px',
-            bgColor: 'var(--lime150-color)',
-        },
-        lg: {
-            padding: '6px 10px',
-            fontSize: 'lg',
-            iconSize: '20px',
-            bgColor: 'var(--lime150-color)',
-        },
-    };
-
-    const currentStyle = sizeStyles[size];
+    const isMobile = useBreakpointValue({ base: true, lg: false });
 
     return (
         <Box display='flex' justifyContent='space-between' alignItems='center' width='100%'>
             <CustomBadge
                 bgColor={bgColor}
                 icon={menuCategory.icon}
-                iconSize={currentStyle.iconSize}
-                fontSize={currentStyle.fontSize}
+                display={(isMobile && !isRelevantKichen) || isCarousel ? 'none' : 'flex'}
+                position='relative'
+                top='0'
+                left='0'
             >
                 {menuCategory.name}
             </CustomBadge>
             <Flex gap={size === 'sm' ? 1 : size === 'lg' ? 3 : 2}>
-                {likes && <BookmarkLike count={likes} />}
                 {favorites && <BookmarkFavorite count={favorites} />}
+                {likes && <BookmarkLike count={likes} />}
             </Flex>
         </Box>
     );

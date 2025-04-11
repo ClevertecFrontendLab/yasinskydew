@@ -13,6 +13,8 @@ export const BlogCard = (blog: BlogData) => (
         borderRadius={5}
     >
         <Profile author={blog.author} />
-        <Text align='left'>{blog.text}</Text>
+        <Text align='left' noOfLines={3}>
+            {blog.text}
+        </Text>
     </Box>
 );

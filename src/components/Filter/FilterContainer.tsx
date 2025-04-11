@@ -11,9 +11,9 @@ interface FilterContainerProps {
 export const FilterContainer = (props: FilterContainerProps) => {
     const { title, description } = props;
     return (
-        <VStack className='filter-box' maxWidth='50%' width='100%' spacing={4}>
+        <VStack width={{ base: '95%', md: '50%' }} spacing={4}>
             <Heading
-                fontSize='48px'
+                fontSize={{ base: '24px', md: '48px' }}
                 fontWeight='700'
                 textAlign='center'
                 color='var(--text-color-secondary)'

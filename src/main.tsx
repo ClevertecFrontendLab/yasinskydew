@@ -23,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
                         <Route element={<PageLayout />}>
                             <Route path='/' element={<Home />} />
                             <Route path='/juiciest' element={<Juiciest />} />
+                            <Route path='/menu/:categoryId' element={<MenuRecipeList />} />
                             <Route
                                 path='/menu/:categoryId/:subCategoryId'
                                 element={<MenuRecipeList />}

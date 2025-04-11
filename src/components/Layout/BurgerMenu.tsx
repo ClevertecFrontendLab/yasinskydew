@@ -1,10 +1,12 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { Box, IconButton, useDisclosure, VStack } from '@chakra-ui/react';
+import { Box, IconButton, useBreakpointValue, useDisclosure, VStack } from '@chakra-ui/react';
 
+import { Breadcrumbs } from '../Breadcrumb/Breadcrumd';
 import { MenuList } from '../MenuList/MenuList';
 
 export const BurgerMenu = () => {
     const { isOpen, onToggle } = useDisclosure();
+    const isDesktop = useBreakpointValue({ base: true, lg: false });
 
     return (
         <Box>
@@ -33,6 +35,7 @@ export const BurgerMenu = () => {
                     overflowY='auto'
                     justifyContent='space-between'
                 >
+                    <Box m='16px 20px'>{isDesktop && <Breadcrumbs />}</Box>
                     <MenuList />
                 </VStack>
             </Box>

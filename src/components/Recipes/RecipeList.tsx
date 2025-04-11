@@ -6,7 +6,7 @@ import { useBreadcrumbs } from '~/store/hooks';
 import { Recipe } from '~/store/recipe-slice';
 
 import { RecipeItem } from './RecipeItem';
-import { MenuModeEnum, RecipeDisplayModeEnum, RecipeListMode } from './RecipeTypes';
+import { RecipeDisplayModeEnum, RecipeListMode } from './RecipeTypes';
 
 interface RecipeListProps {
     recipes: Recipe[];
@@ -38,21 +38,28 @@ export const RecipeList = (props: RecipeListProps) => {
         ]);
     }
 
+    const isMobile = useBreakpointValue({ base: true, lg: false });
+
     return (
-        <VStack width='100%' spacing={5}>
+        <VStack spacing={5}>
             {mode === RecipeListMode.PREVIEW && (
                 <Box display='flex' justifyContent='space-between' alignItems='center' width='100%'>
                     <Heading textAlign='start'>Самое сочное</Heading>
-                    <Button
-                        bgColor='var(--lime400-color)'
-                        color='var(--text-color-secondary)'
-                        _hover={{ bgColor: 'var(--lime600-color)', color: 'var(--lime400-color)' }}
-                        alignSelf='flex-end'
-                        rightIcon={<ArrowForwardIcon />}
-                        onClick={loadMoreRecipes}
-                    >
-                        Вся подборка
-                    </Button>
+                    {!isMobile && (
+                        <Button
+                            bgColor='var(--lime400-color)'
+                            color='var(--text-color-secondary)'
+                            _hover={{
+                                bgColor: 'var(--lime600-color)',
+                                color: 'var(--lime400-color)',
+                            }}
+                            alignSelf='center'
+                            rightIcon={<ArrowForwardIcon />}
+                            onClick={loadMoreRecipes}
+                        >
+                            Вся подборка
+                        </Button>
+                    )}
                 </Box>
             )}
             <Box
@@ -69,7 +76,6 @@ export const RecipeList = (props: RecipeListProps) => {
                     <RecipeItem
                         key={recipe.id}
                         {...recipe}
-                        menuMode={MenuModeEnum.SECONDARY}
                         displayMode={displayMode || RecipeDisplayModeEnum.NORMAL}
                     />
                 ))}
@@ -84,6 +90,18 @@ export const RecipeList = (props: RecipeListProps) => {
                     }}
                 >
                     Загрузить ещё
+                </Button>
+            )}
+            {mode === RecipeListMode.PREVIEW && isMobile && (
+                <Button
+                    bgColor='var(--lime400-color)'
+                    color='var(--text-color-secondary)'
+                    _hover={{ bgColor: 'var(--lime600-color)', color: 'var(--lime400-color)' }}
+                    alignSelf='center'
+                    rightIcon={<ArrowForwardIcon />}
+                    onClick={loadMoreRecipes}
+                >
+                    Вся подборка
                 </Button>
             )}
         </VStack>

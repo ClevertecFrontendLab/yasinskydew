@@ -16,7 +16,7 @@ const filterCollection = [
 ];
 
 export const FilterControls = () => (
-    <Box mt={4} display='flex' alignItems='center' gap={3}>
+    <Box mt={4} display={{ base: 'none', md: 'flex' }} alignItems='center' gap={3}>
         <FormControl display='flex' alignItems='center' justifyContent='space-between' gap={3}>
             <Box display='flex' alignItems='center'>
                 <FormLabel

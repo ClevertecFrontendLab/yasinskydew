@@ -6,7 +6,8 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react';
 
-import headerLogo from '../../assets/header-logo.svg';
+import headerLogo from '../../assets/Header/header-logo.svg';
+import headerLogoShort from '../../assets/Header/header-logo-short.svg';
 import { Breadcrumbs } from '../Breadcrumb/Breadcrumd';
 import HeaderProfile from '../HeaderProfile';
 import { BurgerMenu } from '../Layout/BurgerMenu';
@@ -15,6 +16,7 @@ import ProfileNotification from '../ProfileNotification/ProfileNotification';
 const Header = () => {
     const bgColor = useColorModeValue('var(--header-bg-color)', 'gray.800');
     const isMobile = useBreakpointValue({ base: true, md: false });
+    const isDesktop = useBreakpointValue({ base: true, lg: false });
 
     return (
         <Box
@@ -31,14 +33,19 @@ const Header = () => {
             <Flex mx='auto' px={4} h='100%' align='center' justify='space-between'>
                 <Flex align='center' gap={12}>
                     <Box as='a' href='/'>
-                        <ChakraImage src={headerLogo} alt='Logo' height='32px' width='136px' />
+                        <ChakraImage
+                            src={isMobile ? headerLogoShort : headerLogo}
+                            alt='Logo'
+                            height='32px'
+                            width='136px'
+                        />
                     </Box>
-                    {!isMobile && <Breadcrumbs />}
+                    {!isDesktop && <Breadcrumbs />}
                 </Flex>
                 <Flex align='center' gap={4}>
-                    {!isMobile && <HeaderProfile />}
-                    {isMobile && <ProfileNotification />}
-                    {isMobile && <BurgerMenu />}
+                    {!isDesktop && <HeaderProfile />}
+                    {isDesktop && <ProfileNotification />}
+                    {isDesktop && <BurgerMenu />}
                 </Flex>
             </Flex>
         </Box>

@@ -4,7 +4,7 @@ import { BsBookmarkHeart, BsEmojiHeartEyes, BsPeopleFill } from 'react-icons/bs'
 import ProfileNotificationCard from './ProfileNotificationCard';
 
 export default function ProfileNotification() {
-    const isMobile = useBreakpointValue({ base: true, md: false });
+    const isMobile = useBreakpointValue({ base: true, lg: false });
 
     const notifications = [
         {

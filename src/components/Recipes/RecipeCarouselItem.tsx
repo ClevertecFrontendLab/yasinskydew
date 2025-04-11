@@ -1,4 +1,4 @@
-import { Card, Image, VStack } from '@chakra-ui/react';
+import { Card, Image, useBreakpointValue, VStack } from '@chakra-ui/react';
 
 import { Recipe } from '~/store/recipe-slice';
 
@@ -18,20 +18,25 @@ interface RecipeItemProps {
 
 export const RecipeCarouselItem = (props: RecipeItemProps) => {
     const { image, name, description, menuCategory, likes, favorites } = props.recipe;
+    const isMobile = useBreakpointValue({ base: true, xl: false });
 
     return (
-        <Card variant='outline' direction='column' width={{ base: '100%', lg: '322px' }}>
-            <Image
-                borderTopRadius='inherit'
-                src={image || ''}
-                alt={name}
-                objectFit='cover'
-                height={{ base: '200px', md: '230px', lg: '230px' }}
-            />
+        <Card
+            variant='outline'
+            direction='column'
+            width={{ base: '158px', xl: '279px', '2xl': '322px' }}
+            minHeight={{ base: '220px', xl: '400px' }}
+        >
+            <Image borderTopRadius='inherit' src={image || ''} alt={name} objectFit='cover' />
             <VStack align='stretch' p='16px 24px'>
                 <RecipeTitle>{name}</RecipeTitle>
-                <RecipeDescription description={description} />
-                <RecipeFooter menuCategory={menuCategory} likes={likes} favorites={favorites} />
+                {!isMobile && <RecipeDescription description={description} />}
+                <RecipeFooter
+                    menuCategory={menuCategory}
+                    likes={likes}
+                    favorites={favorites}
+                    isCarousel={true}
+                />
             </VStack>
         </Card>
     );

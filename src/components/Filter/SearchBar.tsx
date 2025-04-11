@@ -3,12 +3,28 @@ import { Box, Button, Input, InputGroup, InputRightElement } from '@chakra-ui/re
 import { IoFilterSharp } from 'react-icons/io5';
 
 export const SearchBar = () => (
-    <Box display='flex' alignItems='center' justifyContent='space-between' gap={2} width='458px'>
-        <Button variant='outline' colorScheme='gray' borderRadius='md' p={3} size='lg'>
+    <Box
+        display='flex'
+        alignItems='center'
+        justifyContent='space-between'
+        gap={2}
+        width={{ base: '100%', md: '458px' }}
+    >
+        <Button
+            variant='outline'
+            colorScheme='gray'
+            borderRadius='md'
+            p={3}
+            size={{ base: 'md', md: 'lg' }}
+        >
             <IoFilterSharp />
         </Button>
         <InputGroup>
-            <Input placeholder='Название или ингредиент...' size='lg' borderRadius='md' />
+            <Input
+                placeholder='Название или ингредиент...'
+                size={{ base: 'md', md: 'lg' }}
+                borderRadius='md'
+            />
             <InputRightElement
                 pointerEvents='none'
                 height='100%'
