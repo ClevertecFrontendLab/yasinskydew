@@ -24,19 +24,14 @@ export const RecipeCarouselItem = (props: RecipeItemProps) => {
         <Card
             variant='outline'
             direction='column'
-            width={{ base: '158px', xl: '279px', '2xl': '322px' }}
-            minHeight={{ base: '220px', xl: '400px' }}
+            width={{ base: '158px', xl: '279px', '2xl': '324px' }}
+            minHeight={{ base: '220px', xl: '414px' }}
         >
-            <Image borderTopRadius='inherit' src={image || ''} alt={name} objectFit='cover' />
+            <Image borderTopRadius='inherit' src={image || ''} alt={name} objectFit='fill' />
             <VStack align='stretch' p='16px 24px'>
                 <RecipeTitle>{name}</RecipeTitle>
                 {!isMobile && <RecipeDescription description={description} />}
-                <RecipeFooter
-                    menuCategory={menuCategory}
-                    likes={likes}
-                    favorites={favorites}
-                    isCarousel={true}
-                />
+                <RecipeFooter menuCategory={menuCategory} likes={likes} favorites={favorites} />
             </VStack>
         </Card>
     );

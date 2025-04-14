@@ -9,7 +9,7 @@ import {
 import headerLogo from '../../assets/Header/header-logo.svg';
 import headerLogoShort from '../../assets/Header/header-logo-short.svg';
 import { Breadcrumbs } from '../Breadcrumb/Breadcrumd';
-import HeaderProfile from '../HeaderProfile';
+import HeaderProfile from '../HeaderProfile/HeaderProfile';
 import { BurgerMenu } from '../Layout/BurgerMenu';
 import ProfileNotification from '../ProfileNotification/ProfileNotification';
 
@@ -22,7 +22,7 @@ const Header = () => {
         <Box
             as='header'
             position='fixed'
-            height='70px'
+            height='80px'
             top={0}
             left={0}
             right={0}
@@ -31,20 +31,27 @@ const Header = () => {
             boxShadow='sm'
             data-test-id='header'
         >
-            <Flex mx='auto' px={4} h='100%' align='center' justify='space-between'>
+            <Flex mx='auto' h='100%' align='center' justify='space-between' px={4}>
                 <Flex align='center' gap={12}>
                     <Box as='a' href='/'>
                         <ChakraImage
                             src={isMobile ? headerLogoShort : headerLogo}
                             alt='Logo'
                             height='32px'
-                            width='136px'
                         />
                     </Box>
-                    {!isDesktop && <Breadcrumbs />}
+                    {!isDesktop && (
+                        <Box ml='83px'>
+                            <Breadcrumbs />
+                        </Box>
+                    )}
                 </Flex>
                 <Flex align='center' gap={4}>
-                    {!isDesktop && <HeaderProfile />}
+                    {!isDesktop && (
+                        <Box mr='46px'>
+                            <HeaderProfile />
+                        </Box>
+                    )}
                     {isDesktop && <ProfileNotification />}
                     {isDesktop && <BurgerMenu />}
                 </Flex>

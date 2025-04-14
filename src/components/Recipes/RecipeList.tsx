@@ -41,10 +41,24 @@ export const RecipeList = (props: RecipeListProps) => {
     const isMobile = useBreakpointValue({ base: true, lg: false });
 
     return (
-        <VStack spacing={5}>
+        <VStack spacing={5} mt={{ base: '16px', md: '20px' }}>
             {mode === RecipeListMode.PREVIEW && (
-                <Box display='flex' justifyContent='space-between' alignItems='center' width='100%'>
-                    <Heading textAlign='start'>Самое сочное</Heading>
+                <Box
+                    display='flex'
+                    justifyContent='space-between'
+                    alignItems='flex-end'
+                    width='100%'
+                >
+                    <Heading
+                        fontSize={{ base: '24px', md: '48px' }}
+                        fontWeight='700'
+                        textAlign='center'
+                        color='var(--text-color-secondary)'
+                        lineHeight='100%'
+                        fontFamily='var(--font-family)'
+                    >
+                        Самое сочное
+                    </Heading>
                     {!isMobile && (
                         <Button
                             bgColor='var(--lime400-color)'
@@ -56,7 +70,12 @@ export const RecipeList = (props: RecipeListProps) => {
                             alignSelf='center'
                             rightIcon={<ArrowForwardIcon />}
                             onClick={loadMoreRecipes}
+                            size='lg'
                             data-test-id='juiciest-link'
+                            fontFamily='var(--font-family)'
+                            fontWeight='600'
+                            fontSize='18px'
+                            lineHeight='156%'
                         >
                             Вся подборка
                         </Button>
@@ -102,6 +121,11 @@ export const RecipeList = (props: RecipeListProps) => {
                 rightIcon={<ArrowForwardIcon />}
                 onClick={loadMoreRecipes}
                 data-test-id='juiciest-link-mobile'
+                size='lg'
+                fontFamily='var(--font-family)'
+                fontWeight='600'
+                fontSize='18px'
+                lineHeight='156%'
             >
                 Вся подборка
             </Button>

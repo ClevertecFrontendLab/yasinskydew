@@ -9,7 +9,7 @@ import NavPanel from './NavPanel';
 export const PageLayout = () => (
     <Box minH='100vh'>
         <Header />
-        <Grid templateColumns={{ base: '1fr', lg: '250px 1fr 200px' }} height='100%' pt='80px'>
+        <Grid templateColumns={{ base: '1fr', lg: '256px 1fr 200px' }} height='100%' pt='80px'>
             <GridItem height='100%' overflow='hidden' display={{ base: 'none', lg: 'block' }}>
                 <NavPanel />
             </GridItem>
@@ -17,7 +17,7 @@ export const PageLayout = () => (
                 height='100%'
                 overflow='auto'
                 ml={{ base: 0, lg: '24px' }}
-                m={{ base: '8px' }}
+                m={{ base: '10px' }}
             >
                 <Outlet />
             </GridItem>

@@ -4,10 +4,10 @@ import { Profile } from '../Profile/Profile';
 const HeaderProfile = () => {
     const user = {
         id: 1,
-        firstName: 'Владимир',
-        lastName: 'Ясинский',
+        firstName: 'Екатерина',
+        lastName: 'Константинопольская',
         avatar: avatarImage,
-        link: '@vladimir_yasinskiy',
+        link: '@bake_and_pie',
     };
 
     return <Profile author={user} />;

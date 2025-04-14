@@ -9,6 +9,7 @@ export const Blog = () => {
         <Box
             bgColor='var(--lime300-color)'
             color='var(--text-color-secondary)'
+            m='15px 0'
             p='24px'
             borderRadius='lg'
             width='100%'
@@ -22,8 +23,14 @@ export const Blog = () => {
                 alignItems='center'
                 fontFamily='var(--font-family)'
                 width='100%'
+                mb={{ base: '8px', md: '12px', lg: '16px', '2xl': '30px' }}
             >
-                <Heading fontSize={{ base: '24px', md: '36px' }} fontWeight='500'>
+                <Heading
+                    fontSize={{ base: '24px', md: '30px', lg: '36px' }}
+                    fontWeight={{ base: '500', lg: '400' }}
+                    lineHeight='111%'
+                    fontFamily='var(--font-family)'
+                >
                     Кулинарные блоги
                 </Heading>
                 <BlogAuthorLink isMobile={!!isMobile} />

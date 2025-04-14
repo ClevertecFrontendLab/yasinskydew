@@ -1,13 +1,17 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { Box, IconButton } from '@chakra-ui/react';
+import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 import { useState } from 'react';
+
+import ArrowLeftIcon from '../../assets/Caroucell/BsArrowLeft.svg';
+import ArrowRightIcon from '../../assets/Caroucell/BsArrowRight.svg';
+import { CustomIcon } from '../Layout/CustomIcon';
 
 interface CarouselProps {
     children: React.ReactNode[];
     gap?: number;
+    [key: string]: unknown;
 }
 
-export const CustomCarousel = ({ children, gap = 24 }: CarouselProps) => {
+export const CustomCarousel = ({ children, gap = 24, ...props }: CarouselProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const responsiveSlidesToShow = 4;
 
@@ -27,8 +31,10 @@ export const CustomCarousel = ({ children, gap = 24 }: CarouselProps) => {
         );
     };
 
+    const isMobile = useBreakpointValue({ base: true, lg: false });
+
     return (
-        <Box position='relative' overflow='hidden' maxW='1360px'>
+        <Box position='relative' overflow='hidden' maxW='1360px' {...props}>
             <Box
                 display='flex'
                 transition='transform 0.5s ease'
@@ -40,34 +46,50 @@ export const CustomCarousel = ({ children, gap = 24 }: CarouselProps) => {
                     <Box key={index}>{child}</Box>
                 ))}
             </Box>
-            <IconButton
-                aria-label='Previous slide'
-                icon={<ChevronLeftIcon color='white' />}
-                transform='translateY(-50%)'
-                onClick={prevSlide}
-                zIndex={1}
-                bg='black'
-                _hover={{ bg: 'gray.100' }}
-                boxShadow='md'
-                size={{ base: 'sm', md: 'md' }}
-                position='absolute'
-                left='0'
-                top='50%'
-            />
-            <IconButton
-                aria-label='Next slide'
-                icon={<ChevronRightIcon color='white' />}
-                transform='translateY(-50%)'
-                onClick={nextSlide}
-                zIndex={1}
-                bg='black'
-                _hover={{ bg: 'gray.100' }}
-                boxShadow='md'
-                size={{ base: 'sm', md: 'md' }}
-                position='absolute'
-                right='0'
-                top='50%'
-            />
+            {!isMobile && (
+                <IconButton
+                    aria-label='Previous slide'
+                    transform='translateY(-50%)'
+                    onClick={prevSlide}
+                    icon={
+                        <CustomIcon
+                            src={ArrowLeftIcon}
+                            width='24px'
+                            height='24px'
+                            alt='arrow-left'
+                        />
+                    }
+                    zIndex={1}
+                    bg='black'
+                    position='absolute'
+                    padding='24px 12px'
+                    left='0'
+                    top='42%'
+                />
+            )}
+            {!isMobile && (
+                <IconButton
+                    aria-label='Next slide'
+                    icon={
+                        <CustomIcon
+                            src={ArrowRightIcon}
+                            width='24px'
+                            height='24px'
+                            alt='arrow-right'
+                        />
+                    }
+                    transform='translateY(-50%)'
+                    onClick={nextSlide}
+                    zIndex={1}
+                    bg='black'
+                    _hover={{ bg: 'gray.100' }}
+                    boxShadow='md'
+                    padding='24px 12px'
+                    position='absolute'
+                    right='0'
+                    top='42%'
+                />
+            )}
         </Box>
     );
 };

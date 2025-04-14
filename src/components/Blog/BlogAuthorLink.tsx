@@ -8,9 +8,13 @@ interface BlogAuthorLinkProps {
 export const BlogAuthorLink = (props: BlogAuthorLinkProps) => (
     <Link
         href='/blog'
-        fontSize='14px'
-        fontWeight='bold'
+        fontSize={{ base: '16px', lg: '18px' }}
+        fontFamily='var(--font-family)'
+        fontWeight='600'
+        lineHeight='156%'
         display={props.isMobile ? 'none' : 'block'}
+        mr={{ base: '0px', xl: '16px' }}
+        pt={{ base: '20px', lg: '0px' }}
     >
         Все авторы <ArrowForwardIcon />
     </Link>

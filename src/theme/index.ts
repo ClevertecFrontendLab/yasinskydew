@@ -9,7 +9,16 @@ const breakpoints = {
     '2xl': '1920px', // Large desktops
 };
 
-const colors = {};
+const colors = {
+    lime: {
+        50: '#ffffd3',
+        100: '#eaffc7',
+        200: '#d7ff94',
+        300: '#c4ff61',
+        400: '#b1ff2e',
+        600: '#2db100',
+    },
+};
 
 const components = {};
 

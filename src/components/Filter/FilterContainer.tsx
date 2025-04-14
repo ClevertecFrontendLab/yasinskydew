@@ -1,4 +1,4 @@
-import { Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Heading, Text, VStack } from '@chakra-ui/react';
 
 import { FilterControls } from './FilterControls';
 import { SearchBar } from './SearchBar';
@@ -17,6 +17,9 @@ export const FilterContainer = (props: FilterContainerProps) => {
                 fontWeight='700'
                 textAlign='center'
                 color='var(--text-color-secondary)'
+                lineHeight='100%'
+                mt={{ base: '16px', md: '24px' }}
+                fontFamily='var(--font-family)'
             >
                 {title}
             </Heading>
@@ -30,8 +33,10 @@ export const FilterContainer = (props: FilterContainerProps) => {
                     {description}
                 </Text>
             )}
-            <SearchBar />
-            <FilterControls />
+            <Box maxW='518px' width='100%' display='flex' flexDirection='column' gap={4} mb='24px'>
+                <SearchBar />
+                <FilterControls />
+            </Box>
         </VStack>
     );
 };

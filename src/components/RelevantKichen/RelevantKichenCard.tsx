@@ -13,13 +13,14 @@ export const RelevantKichenCard = (recipe: Recipe) => {
             alignItems='center'
             borderRadius='lg'
             border='1px solid #E0E0E0'
-            p={{ base: '12px 14px', xl: '14px 24px' }}
+            p={{ base: '12px 14px', xl: '12px 24px' }}
         >
             <Box display='flex' alignItems='center' gap={2}>
                 <CustomIcon src={recipe.menuCategory.icon} alt={recipe.menuCategory.name} />
                 <Text
-                    fontSize='20px'
+                    fontSize={{ base: '16px', lg: '20px' }}
                     fontWeight='500'
+                    lineHeight='140%'
                     fontFamily='var(--font-family)'
                     noOfLines={1}
                 >
@@ -31,6 +32,7 @@ export const RelevantKichenCard = (recipe: Recipe) => {
                 variant='outline'
                 borderColor='var(--lime600-color)'
                 color='var(--lime600-color)'
+                size='sm'
             >
                 Готовить
             </Button>

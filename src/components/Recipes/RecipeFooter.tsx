@@ -13,7 +13,6 @@ interface RecipeFooterProps {
     size?: Size;
     bgColor?: string;
     isRelevantKichen?: boolean;
-    isCarousel?: boolean;
 }
 
 export const RecipeFooter = ({
@@ -23,7 +22,6 @@ export const RecipeFooter = ({
     size = 'md',
     bgColor = 'var(--lime200-color)',
     isRelevantKichen = false,
-    isCarousel = false,
 }: RecipeFooterProps) => {
     const isMobile = useBreakpointValue({ base: true, lg: false });
 
@@ -32,7 +30,7 @@ export const RecipeFooter = ({
             <CustomBadge
                 bgColor={bgColor}
                 icon={menuCategory.icon}
-                display={(isMobile && !isRelevantKichen) || isCarousel ? 'none' : 'flex'}
+                display={isMobile && !isRelevantKichen ? 'none' : 'flex'}
                 position='relative'
                 top='0'
                 left='0'

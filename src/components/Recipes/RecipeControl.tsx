@@ -10,7 +10,7 @@ export const RecipeControl = () => {
             <Button
                 className='recipe-markdown-button'
                 variant='outline'
-                size={{ base: 'sm', md: 'md' }}
+                size='sm'
                 fontSize='14px'
                 leftIcon={<CustomIcon src={BsBookmarkHeart} alt='bookmark' />}
                 iconSpacing={isMobile ? '0px' : '16px'}
@@ -22,7 +22,7 @@ export const RecipeControl = () => {
                 colorScheme='var(--text-color)'
                 fontSize='14px'
                 bgColor='var(--bg-color)'
-                size={{ base: 'sm', md: 'md' }}
+                size='sm'
                 _hover={{ bgColor: 'gray.500' }}
             >
                 Готовить
