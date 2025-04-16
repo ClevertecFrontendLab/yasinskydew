@@ -24,7 +24,7 @@ export const Breadcrumbs = memo(() => {
                 <BreadcrumbItem key={index} isCurrentPage={index === breadcrumbs.length - 1}>
                     <BreadcrumbLink
                         href={item.path}
-                        fontSize={isMobile ? '12px' : '16px'}
+                        fontSize={isMobile ? '14px' : '16px'}
                         fontWeight='400'
                         fontFamily='var(--font-family)'
                         margin={0}

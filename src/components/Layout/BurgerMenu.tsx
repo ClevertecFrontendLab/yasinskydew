@@ -5,11 +5,11 @@ import { Breadcrumbs } from '../Breadcrumb/Breadcrumd';
 import { MenuList } from '../MenuList/MenuList';
 
 export const BurgerMenu = () => {
-    const { isOpen, onToggle } = useDisclosure();
+    const { isOpen, onToggle, onClose } = useDisclosure();
     const isDesktop = useBreakpointValue({ base: true, lg: false });
 
     return (
-        <Box>
+        <Box position='relative'>
             <IconButton
                 aria-label='Open menu'
                 icon={<HamburgerIcon />}
@@ -20,23 +20,18 @@ export const BurgerMenu = () => {
             <Box
                 position='fixed'
                 top='70px'
-                left={0}
-                width='250px'
-                height='calc(100vh - 70px)'
+                right='12px'
+                width='344px'
+                height='calc(100vh - 60px)'
                 bg='white'
-                transform={isOpen ? 'translateX(0)' : 'translateX(-100%)'}
+                borderRadius='16px'
+                transform={isOpen ? 'translateX(0)' : 'translateX(100%)'}
                 transition='transform 0.3s ease-in-out'
-                zIndex={999}
                 borderRight='1px solid #E0E0E0'
             >
-                <VStack
-                    align='stretch'
-                    height='100%'
-                    overflowY='auto'
-                    justifyContent='space-between'
-                >
+                <VStack align='stretch' height='100%' overflowY='auto'>
                     <Box m='16px 20px'>{isDesktop && <Breadcrumbs />}</Box>
-                    <MenuList />
+                    <MenuList onClose={onClose} />
                 </VStack>
             </Box>
         </Box>

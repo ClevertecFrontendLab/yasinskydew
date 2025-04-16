@@ -1,8 +1,7 @@
-import { VStack } from '@chakra-ui/react';
+import { Button, VStack } from '@chakra-ui/react';
 
 import { FilterContainer } from '~/components/Filter/FilterContainer';
 import { RecipeList } from '~/components/Recipes/RecipeList';
-import { RecipeListMode } from '~/components/Recipes/RecipeTypes';
 import { RelevantKichen } from '~/components/RelevantKichen/RelevantKichen';
 import { useMainMenu, useRecipes } from '~/store/hooks';
 import { MenuCategory } from '~/store/menu-slice';
@@ -18,7 +17,17 @@ export default function Juiciest() {
     return (
         <VStack spacing={6} maxW='1360px'>
             <FilterContainer title='Самое сочное' />
-            <RecipeList recipes={recipes} mode={RecipeListMode.JUICIEST} />
+            <RecipeList>{recipes}</RecipeList>
+            <Button
+                bgColor='var(--lime400-color)'
+                color='var(--text-color-secondary)'
+                alignSelf='center'
+                onClick={() => {
+                    console.log('click');
+                }}
+            >
+                Загрузить ещё
+            </Button>
             <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />
         </VStack>
     );

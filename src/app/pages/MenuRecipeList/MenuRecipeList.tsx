@@ -5,7 +5,6 @@ import { useParams } from 'react-router';
 import { FilterContainer } from '~/components/Filter/FilterContainer';
 import { SubMenuList } from '~/components/MenuList/SubMenuList';
 import { RecipeList } from '~/components/Recipes/RecipeList';
-import { RecipeListMode } from '~/components/Recipes/RecipeTypes';
 import { RelevantKichen } from '~/components/RelevantKichen/RelevantKichen';
 import { useBreadcrumbs, useMainMenu, useRecipes } from '~/store/hooks';
 import { MenuCategory } from '~/store/menu-slice';
@@ -48,7 +47,7 @@ export default function MenuRecipeList() {
                 description={selectedCategory?.description || ''}
             />
             <SubMenuList />
-            <RecipeList recipes={recipes} mode={RecipeListMode.JUICIEST} />
+            <RecipeList>{recipes}</RecipeList>
             <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />
         </VStack>
     );

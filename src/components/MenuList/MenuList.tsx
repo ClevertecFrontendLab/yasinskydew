@@ -5,7 +5,11 @@ import { MenuCategory, SubCategory } from '~/store/menu-slice';
 
 import { MenuItem } from './MenuItem';
 
-export const MenuList = () => {
+interface MenuListProps {
+    onClose?: () => void;
+}
+
+export const MenuList = ({ onClose }: MenuListProps) => {
     const { categories, selectCategory, selectSubCategory, selectedCategory } = useMainMenu();
 
     const handleCategoryClick = (category: MenuCategory) => {
@@ -15,6 +19,9 @@ export const MenuList = () => {
     const handleSubCategoryClick = (category: MenuCategory, subCategory: SubCategory) => {
         selectCategory(category);
         selectSubCategory(subCategory);
+        if (onClose) {
+            onClose();
+        }
     };
 
     return (

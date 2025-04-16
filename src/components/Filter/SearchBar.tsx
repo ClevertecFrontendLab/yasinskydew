@@ -30,7 +30,10 @@ export const SearchBar = () => (
                 }}
             />
             <InputRightElement
-                pointerEvents='none'
+                onClick={() => {
+                    console.log('click');
+                }}
+                cursor='pointer'
                 height='100%'
                 children={<SearchIcon color='black' height='18px' width='18px' />}
             />
