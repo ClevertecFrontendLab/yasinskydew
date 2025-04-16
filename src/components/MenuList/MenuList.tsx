@@ -18,7 +18,7 @@ export const MenuList = () => {
     };
 
     return (
-        <Box as='nav' mt='38px' width='90%'>
+        <Box as='nav' mt={{ base: '16px', xl: '38px' }} width='90%'>
             {categories.map((category) => (
                 <MenuItem
                     key={category.id}
