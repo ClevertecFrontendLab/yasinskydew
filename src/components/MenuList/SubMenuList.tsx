@@ -1,9 +1,8 @@
-import { Stack, Text } from '@chakra-ui/react';
+import { Tab, TabList, Tabs } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
 import { useBreadcrumbs, useMainMenu } from '~/store/hooks';
 import { SubCategory } from '~/store/menu-slice';
-
 export const SubMenuList = () => {
     const navigate = useNavigate();
     const { selectedCategory, selectedSubCategory, selectSubCategory } = useMainMenu();
@@ -29,7 +28,6 @@ export const SubMenuList = () => {
     };
 
     const style = {
-        cursor: 'pointer',
         fontSize: '16px',
         fontWeight: '500',
         color: 'var(--text-color-secondary)',
@@ -49,16 +47,18 @@ export const SubMenuList = () => {
     });
 
     return (
-        <Stack direction='row' spacing={0} wrap='wrap' justifyContent='center'>
-            {selectedCategory?.subCategories.map((subCategory) => (
-                <Text
-                    key={subCategory.id}
-                    {...getStyles(subCategory)}
-                    onClick={() => handleSubCategoryClick(subCategory)}
-                >
-                    {subCategory.name}
-                </Text>
-            ))}
-        </Stack>
+        <Tabs>
+            <TabList>
+                {selectedCategory?.subCategories.map((subCategory) => (
+                    <Tab
+                        key={subCategory.id}
+                        {...getStyles(subCategory)}
+                        onClick={() => handleSubCategoryClick(subCategory)}
+                    >
+                        {subCategory.name}
+                    </Tab>
+                ))}
+            </TabList>
+        </Tabs>
     );
 };
