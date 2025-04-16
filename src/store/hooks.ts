@@ -35,7 +35,7 @@ export const useMainMenu = () => {
         dispatch(setSelectedSubCategory(subCategory));
     };
 
-    const getMenuCategoryById = (id: number): MenuCategory | undefined =>
+    const getMenuCategoryById = (id: string): MenuCategory | undefined =>
         categories.find((category) => category.id === id);
 
     return {
@@ -128,23 +128,36 @@ export const useBreadcrumbs = (): UseBreadcrumbsReturn => {
     };
 };
 
-export const useRecipes = () => {
+interface UseRecipesReturn {
+    recipes: Recipe[];
+    addRecipeItem: (recipe: Recipe) => void;
+    getNewRecipes: () => Recipe[];
+    getRecipesByCategory: (id: string) => Recipe[];
+    getRecipesBySubCategory: (categoryId: string, subCategoryId: string) => Recipe[];
+}
+
+export const useRecipes = (): UseRecipesReturn => {
     const dispatch = useAppDispatch();
     const recipes = useAppSelector((state) => state.recipe.recipes);
 
-    const addRecipeItem = (recipe: Recipe) => {
-        dispatch(addRecipe(recipe));
-    };
+    const addRecipeItem = (recipe: Recipe) => dispatch(addRecipe(recipe));
 
-    const getHomeRecipes = () => recipes.slice(0, 4);
+    const getNewRecipes = () => recipes;
 
-    const getRecipesByCategory = (id: number): Recipe[] =>
-        recipes.filter((recipe) => recipe.menuCategory.id === id);
+    const getRecipesByCategory = (id: string): Recipe[] =>
+        recipes.filter((recipe) => recipe.category.includes(id));
+
+    const getRecipesBySubCategory = (categoryId: string, subCategoryId: string): Recipe[] =>
+        recipes.filter(
+            (recipe) =>
+                recipe.subcategory.includes(subCategoryId) && recipe.category.includes(categoryId),
+        );
 
     return {
         recipes,
         addRecipeItem,
+        getNewRecipes,
         getRecipesByCategory,
-        getHomeRecipes,
+        getRecipesBySubCategory,
     };
 };

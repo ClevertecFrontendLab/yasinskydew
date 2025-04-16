@@ -11,7 +11,7 @@ export default function Juiciest() {
     const { recipes } = useRecipes();
     const { getRecipesByCategory } = useRecipes();
     const { getMenuCategoryById } = useMainMenu();
-    const menuCategoryId = 7;
+    const menuCategoryId = 'vegan';
     const menuCategory = getMenuCategoryById(menuCategoryId) as MenuCategory;
     const relevantRecipes = getRecipesByCategory(menuCategoryId);
 

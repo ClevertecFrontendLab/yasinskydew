@@ -31,7 +31,7 @@ export const MenuItem = (props: MenuItemProps) => {
     };
 
     return (
-        <Box data-test-id={category.id === 7 ? 'vegan-cuisine' : null}>
+        <Box data-test-id={category.id === 'vegan-cuisine' ? 'vegan-cuisine' : null}>
             <Box
                 key={category.id}
                 padding='12px 8px'

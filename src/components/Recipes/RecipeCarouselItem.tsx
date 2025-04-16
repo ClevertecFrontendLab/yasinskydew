@@ -1,5 +1,7 @@
 import { Card, Image, useBreakpointValue, VStack } from '@chakra-ui/react';
 
+import { useMainMenu } from '~/store/hooks';
+import { MenuCategory } from '~/store/menu-slice';
 import { Recipe } from '~/store/recipe-slice';
 
 import { RecipeDescription } from './RecipeDescription';
@@ -17,8 +19,10 @@ interface RecipeItemProps {
 }
 
 export const RecipeCarouselItem = (props: RecipeItemProps) => {
-    const { image, name, description, menuCategory, likes, favorites } = props.recipe;
+    const { image, title, description, category, likes, bookmarks } = props.recipe;
     const isMobile = useBreakpointValue({ base: true, xl: false });
+    const { getMenuCategoryById } = useMainMenu();
+    const menuCategory = getMenuCategoryById(category[0]) as MenuCategory;
 
     return (
         <Card
@@ -27,11 +31,11 @@ export const RecipeCarouselItem = (props: RecipeItemProps) => {
             width={{ base: '158px', xl: '279px', '2xl': '324px' }}
             minHeight={{ base: '220px', xl: '414px' }}
         >
-            <Image borderTopRadius='inherit' src={image || ''} alt={name} objectFit='fill' />
+            <Image borderTopRadius='inherit' src={image || ''} alt={title} objectFit='fill' />
             <VStack align='stretch' p='16px 24px'>
-                <RecipeTitle>{name}</RecipeTitle>
+                <RecipeTitle>{title}</RecipeTitle>
                 {!isMobile && <RecipeDescription description={description} />}
-                <RecipeFooter menuCategory={menuCategory} likes={likes} favorites={favorites} />
+                <RecipeFooter menuCategory={menuCategory} likes={likes} bookmarks={bookmarks} />
             </VStack>
         </Card>
     );

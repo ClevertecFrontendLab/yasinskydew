@@ -79,12 +79,16 @@ export const RelevantKichen = (props: RelevantKichenProps) => {
                     gap={2}
                 >
                     {recipes.slice(0, 2).map((recipe) => (
-                        <RelevantRecipeCard key={recipe.id} recipe={recipe} />
+                        <RelevantRecipeCard key={recipe.id} menuCategory={menuCategory}>
+                            {recipe}
+                        </RelevantRecipeCard>
                     ))}
                 </Box>
                 <Box display='flex' gap={2} flexDirection='column'>
                     {recipes.slice(2, 5).map((recipe) => (
-                        <RelevantKichenCard key={recipe.id} {...recipe} />
+                        <RelevantKichenCard key={recipe.id} menuCategory={menuCategory}>
+                            {recipe}
+                        </RelevantKichenCard>
                     ))}
                 </Box>
             </Box>

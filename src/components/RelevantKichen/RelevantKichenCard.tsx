@@ -1,10 +1,17 @@
 import { Box, Button, Text } from '@chakra-ui/react';
 
+import { MenuCategory } from '~/store/menu-slice';
+
 import { Recipe } from '../../store/recipe-slice';
 import { CustomIcon } from '../Layout/CustomIcon';
 
-export const RelevantKichenCard = (recipe: Recipe) => {
-    const { name } = recipe;
+interface RelevantKichenCardProps {
+    menuCategory: MenuCategory;
+    children: Recipe;
+}
+
+export const RelevantKichenCard = ({ menuCategory }: RelevantKichenCardProps) => {
+    const { name } = menuCategory;
 
     return (
         <Box
@@ -16,7 +23,7 @@ export const RelevantKichenCard = (recipe: Recipe) => {
             p={{ base: '12px 14px', xl: '12px 24px' }}
         >
             <Box display='flex' alignItems='center' gap={2}>
-                <CustomIcon src={recipe.menuCategory.icon} alt={recipe.menuCategory.name} />
+                <CustomIcon src={menuCategory.icon} alt={menuCategory.name} />
                 <Text
                     fontSize={{ base: '16px', lg: '20px' }}
                     fontWeight='500'

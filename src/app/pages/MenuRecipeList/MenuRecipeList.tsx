@@ -14,24 +14,24 @@ export default function MenuRecipeList() {
     const { selectedCategory } = useMainMenu();
     const { getRecipesByCategory } = useRecipes();
     const { getMenuCategoryById } = useMainMenu();
-    const menuCategoryId = 5;
+    const menuCategoryId = 'vegan';
     const menuCategory = getMenuCategoryById(menuCategoryId) as MenuCategory;
     const relevantRecipes = getRecipesByCategory(menuCategoryId);
     const { categoryId, subCategoryId } = useParams();
     const { setBreadcrumbItems } = useBreadcrumbs();
 
-    const recipes = getRecipesByCategory(selectedCategory?.id || 1);
+    const recipes = getRecipesByCategory(selectedCategory?.id || 'vegan');
 
     useEffect(() => {
         const breadcrumbItems = [{ label: 'Главная', path: '/' }];
         let category = null;
         if (categoryId) {
-            category = getMenuCategoryById(+categoryId) as MenuCategory;
+            category = getMenuCategoryById(categoryId) as MenuCategory;
             breadcrumbItems.push({ label: category.name, path: `/menu/${categoryId}` });
         }
         if (subCategoryId) {
             const subCategory = category?.subCategories.find(
-                (subCategory) => subCategory.id === +subCategoryId,
+                (subCategory) => subCategory.id === subCategoryId,
             );
             breadcrumbItems.push({
                 label: subCategory?.name || '',

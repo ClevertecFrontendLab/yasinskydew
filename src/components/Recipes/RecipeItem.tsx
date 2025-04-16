@@ -1,5 +1,7 @@
 import { Card, Image, Stack, useBreakpointValue } from '@chakra-ui/react';
 
+import { useMainMenu } from '~/store/hooks';
+import { MenuCategory } from '~/store/menu-slice';
 import { Recipe } from '~/store/recipe-slice';
 
 import { CustomBadge } from '../Badge/Badge';
@@ -14,15 +16,16 @@ interface RecipeItemProps extends Recipe {
 }
 
 export const RecipeItem = (props: RecipeItemProps) => {
-    const { image, name, description, menuCategory, likes, favorites } = props;
-
+    const { image, title, description, likes, bookmarks, category } = props;
+    const { getMenuCategoryById } = useMainMenu();
+    const menuCategory = getMenuCategoryById(category[0]) as MenuCategory;
     const isMobile = useBreakpointValue({ base: true, lg: false });
 
     return (
         <Card variant='outline' direction='row' position='relative'>
             <Image
                 src={image || ''}
-                alt={name}
+                alt={title}
                 objectFit='cover'
                 borderLeftRadius='inherit'
                 height={{ base: 128, lg: 244 }}
@@ -45,10 +48,10 @@ export const RecipeItem = (props: RecipeItemProps) => {
                 <RecipeFooter
                     menuCategory={menuCategory}
                     likes={likes}
-                    favorites={favorites}
+                    bookmarks={bookmarks}
                     bgColor='#ffffd3;'
                 />
-                <RecipeTitle>{name}</RecipeTitle>
+                <RecipeTitle>{title}</RecipeTitle>
                 {!isMobile && <RecipeDescription description={description} />}
                 <RecipeControl />
             </Stack>

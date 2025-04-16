@@ -7,22 +7,23 @@ import { BookmarkFavorite, BookmarkLike } from '../Bookmark/Bookmark';
 type Size = 'sm' | 'md' | 'lg';
 
 interface RecipeFooterProps {
-    menuCategory: MenuCategory;
     likes?: number;
-    favorites?: number;
+    bookmarks?: number;
     size?: Size;
     bgColor?: string;
     isRelevantKichen?: boolean;
+    menuCategory: MenuCategory;
 }
 
-export const RecipeFooter = ({
-    menuCategory,
-    likes,
-    favorites,
-    size = 'md',
-    bgColor = 'var(--lime200-color)',
-    isRelevantKichen = false,
-}: RecipeFooterProps) => {
+export const RecipeFooter = (props: RecipeFooterProps) => {
+    const {
+        menuCategory,
+        likes,
+        bookmarks,
+        size = 'md',
+        bgColor = 'var(--lime200-color)',
+        isRelevantKichen = false,
+    } = props;
     const isMobile = useBreakpointValue({ base: true, lg: false });
 
     return (
@@ -38,7 +39,7 @@ export const RecipeFooter = ({
                 {menuCategory.name}
             </CustomBadge>
             <Flex gap={size === 'sm' ? 1 : size === 'lg' ? 3 : 2}>
-                {favorites && <BookmarkFavorite count={favorites} />}
+                {bookmarks && <BookmarkFavorite count={bookmarks} />}
                 {likes && <BookmarkLike count={likes} />}
             </Flex>
         </Box>

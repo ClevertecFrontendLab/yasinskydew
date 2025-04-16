@@ -10,9 +10,10 @@ import { useMainMenu, useRecipes } from '~/store/hooks';
 import { MenuCategory } from '~/store/menu-slice';
 
 export default function Home() {
-    const { getHomeRecipes, getRecipesByCategory } = useRecipes();
+    const { getNewRecipes, getRecipesByCategory } = useRecipes();
     const { getMenuCategoryById } = useMainMenu();
-    const menuCategoryId = 7;
+
+    const menuCategoryId = 'vegan';
     const menuCategory = getMenuCategoryById(menuCategoryId) as MenuCategory;
     const relevantRecipes = getRecipesByCategory(menuCategoryId);
 
@@ -20,7 +21,7 @@ export default function Home() {
         <VStack spacing={6} maxW='1360px' position='relative' justifyContent='flex-start'>
             <FilterContainer title='Приятного аппетита!' />
             <RecipesCarouselContent />
-            <RecipeList recipes={getHomeRecipes()} mode={RecipeListMode.PREVIEW} />
+            <RecipeList recipes={getNewRecipes()} mode={RecipeListMode.PREVIEW} />
             <Blog />
             <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />
         </VStack>
