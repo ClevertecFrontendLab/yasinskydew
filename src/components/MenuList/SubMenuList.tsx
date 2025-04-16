@@ -11,7 +11,7 @@ export const SubMenuList = () => {
 
     const handleSubCategoryClick = (subCategory: SubCategory) => {
         selectSubCategory(subCategory);
-        navigate(`/menu/${selectedCategory?.id}/${subCategory.id}`);
+        navigate(`/${selectedCategory?.id}/${subCategory.id}`);
         setBreadcrumbItems([
             {
                 label: 'Главная',
@@ -19,11 +19,11 @@ export const SubMenuList = () => {
             },
             {
                 label: selectedCategory?.name || '',
-                path: `/menu/${selectedCategory?.id}/1`,
+                path: `/${selectedCategory?.id}/1`,
             },
             {
                 label: subCategory.name,
-                path: `/menu/${selectedCategory?.id}/${subCategory.id}`,
+                path: `/${selectedCategory?.id}/${subCategory.id}`,
             },
         ]);
     };

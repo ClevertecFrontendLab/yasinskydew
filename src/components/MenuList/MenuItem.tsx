@@ -22,12 +22,12 @@ export const MenuItem = (props: MenuItemProps) => {
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
         onCategoryClick(category);
-        navigate(`/menu/${category.id}`);
+        navigate(`/${category.id}`);
     };
 
     const handleSubCategoryClick = (subCategory: SubCategory) => {
         onSubCategoryClick(category, subCategory);
-        navigate(`/menu/${category.id}/${subCategory.id}`);
+        navigate(`/${category.id}/${subCategory.id}`);
     };
 
     return (

@@ -26,7 +26,7 @@ export default function MenuRecipeList() {
         let category = null;
         if (categoryId) {
             category = getMenuCategoryById(categoryId) as MenuCategory;
-            breadcrumbItems.push({ label: category.name, path: `/menu/${categoryId}` });
+            breadcrumbItems.push({ label: category.name, path: `/${categoryId}` });
         }
         if (subCategoryId) {
             const subCategory = category?.subCategories.find(
@@ -34,7 +34,7 @@ export default function MenuRecipeList() {
             );
             breadcrumbItems.push({
                 label: subCategory?.name || '',
-                path: `/menu/${categoryId}/${subCategoryId}`,
+                path: `/${categoryId}/${subCategoryId}`,
             });
         }
         setBreadcrumbItems(breadcrumbItems);
