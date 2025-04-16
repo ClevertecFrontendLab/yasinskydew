@@ -1,18 +1,43 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { MenuCategory, SubCategory } from './menu-slice';
 import { recipes } from './MockData/RecipesData';
 
-export interface Recipe {
-    id: number;
-    name: string;
+interface RecipeIngridient {
+    title: string;
+    count: string;
+    measureUnit: string;
+}
+
+interface RecipeStep {
+    stepNumber: number;
     description: string;
     image: string | null;
-    menuCategory: MenuCategory;
-    subCategory?: SubCategory;
+}
+
+interface NutritionValue {
+    calories: number;
+    proteins: number;
+    fats: number;
+    carbohydrates: number;
+}
+
+export interface Recipe {
+    id: string;
+    title: string;
+    description: string;
+    category: string[];
+    subcategory: string[];
+    image: string | undefined;
     likes: number;
-    favorites: number;
-    createdAt: string;
+    bookmarks: number;
+    date: string;
+    time: string;
+    ingredients: RecipeIngridient[];
+    steps: RecipeStep[];
+    meat?: string | undefined;
+    side?: string | undefined;
+    portions?: number | undefined;
+    nutritionValue: NutritionValue;
 }
 
 export interface RecipeState {

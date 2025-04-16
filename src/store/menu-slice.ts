@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { menuCategories } from './MockData/MenuData';
 
 export interface MenuCategory {
-    id: number;
+    id: string;
     name: string;
     icon: string;
     subCategories: SubCategory[];
@@ -11,7 +11,7 @@ export interface MenuCategory {
 }
 
 export interface SubCategory {
-    id: number;
+    id: string;
     name: string;
 }
 
