@@ -25,7 +25,9 @@ export default function Home() {
             <FilterContainer title='Приятного аппетита!' />
             <RecipesCarouselContent />
             <JuciestHeader />
-            <RecipeList>{getNewRecipes().slice(0, 4)}</RecipeList>
+            <RecipeList currentCategory='' currentSubCategory=''>
+                {getNewRecipes().slice(0, 4)}
+            </RecipeList>
             {isMobile && <JusiestLoadMoBtn />}
             <Blog />
             <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />

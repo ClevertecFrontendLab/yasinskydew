@@ -3,7 +3,8 @@ import { Button, VStack } from '@chakra-ui/react';
 import { FilterContainer } from '~/components/Filter/FilterContainer';
 import { RecipeList } from '~/components/Recipes/RecipeList';
 import { RelevantKichen } from '~/components/RelevantKichen/RelevantKichen';
-import { useMainMenu, useRecipes } from '~/store/hooks';
+import { useMainMenu } from '~/store/hooks';
+import { useRecipes } from '~/store/hooks';
 import { MenuCategory } from '~/store/menu-slice';
 
 export default function Juiciest() {

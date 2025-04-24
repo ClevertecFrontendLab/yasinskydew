@@ -7,10 +7,12 @@ import { RecipeDisplayModeEnum } from './RecipeTypes';
 
 interface RecipeListProps {
     children: Recipe[];
+    currentCategory: string;
+    currentSubCategory: string;
 }
 
 export const RecipeList = (props: RecipeListProps) => {
-    const { children } = props;
+    const { children, currentCategory, currentSubCategory } = props;
     const displayMode = useBreakpointValue<RecipeDisplayModeEnum>({
         base: RecipeDisplayModeEnum.COMPACT,
         sm: RecipeDisplayModeEnum.NORMAL,
@@ -33,6 +35,8 @@ export const RecipeList = (props: RecipeListProps) => {
                     key={recipe.id}
                     {...recipe}
                     displayMode={displayMode || RecipeDisplayModeEnum.NORMAL}
+                    currentCategory={currentCategory}
+                    currentSubCategory={currentSubCategory}
                 />
             ))}
         </Box>

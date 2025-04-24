@@ -34,22 +34,22 @@ const recipes: Recipe[] = [
             {
                 stepNumber: 1,
                 description: 'Нарезать картошку и перец.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
                 description: 'Обжарить лук до золотистого цвета.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 3,
                 description: 'Добавить картошку, перец и фасоль, залить соусом.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 4,
                 description: 'Тушить на медленном огне 30 минут.',
-                image: 'url',
+                image: rollsIcon,
             },
         ],
         meat: '',
@@ -79,17 +79,17 @@ const recipes: Recipe[] = [
             {
                 stepNumber: 1,
                 description: 'Отварить картошку и сделать пюре.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
                 description: 'Обжарить грибы до готовности.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 3,
                 description: 'Сформировать рулетики и обжарить.',
-                image: 'url',
+                image: rollsIcon,
             },
         ],
         side: 'potatoes',
@@ -118,17 +118,17 @@ const recipes: Recipe[] = [
             {
                 stepNumber: 1,
                 description: 'Приготовить соусы.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
                 description: 'Сложить слои лазаньи.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 3,
                 description: 'Запекать 30 минут.',
-                image: 'url',
+                image: rollsIcon,
             },
         ],
     },
@@ -156,17 +156,17 @@ const recipes: Recipe[] = [
             {
                 stepNumber: 1,
                 description: 'Смешать булгур и чечевицу.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
                 description: 'Сформировать тефтели и запечь.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 3,
                 description: 'Подавать с соусом.',
-                image: 'url',
+                image: rollsIcon,
             },
         ],
     },
@@ -194,17 +194,17 @@ const recipes: Recipe[] = [
             {
                 stepNumber: 1,
                 description: 'Очистить и нарезать картошку.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
                 description: 'Обжарить с чесноком.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 3,
                 description: 'Подавать горячей.',
-                image: 'url',
+                image: rollsIcon,
             },
         ],
         side: 'potatoes',
@@ -232,17 +232,17 @@ const recipes: Recipe[] = [
             {
                 stepNumber: 1,
                 description: 'Нарезать капусту и отварить.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
                 description: 'Смешать с мукой и сформировать котлеты.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 3,
                 description: 'Обжарить до золотистой корочки.',
-                image: 'url',
+                image: rollsIcon,
             },
         ],
     },
@@ -270,17 +270,17 @@ const recipes: Recipe[] = [
             {
                 stepNumber: 1,
                 description: 'Нарезать все овощи.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
                 description: 'Обжарить на сковороде.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 3,
                 description: 'Добавить специи и тушить до готовности.',
-                image: 'url',
+                image: rollsIcon,
             },
         ],
     },
@@ -289,7 +289,7 @@ const recipes: Recipe[] = [
         title: 'Лапша с курицей и шафраном',
         description: 'Ароматная лапша с курицей и шафраном, идеальное сочетание для сытного обеда.',
         category: ['second-dish'],
-        subcategory: ['poultry-dish'],
+        subcategory: ['poultry-dish', 'vegetables', 'snacks'],
         image: meatballsIcon,
         bookmarks: 258,
         likes: 1342,
@@ -302,22 +302,59 @@ const recipes: Recipe[] = [
             { title: 'курица', count: '300', measureUnit: 'г' },
             { title: 'шафран', count: '1', measureUnit: 'ч. л.' },
             { title: 'лук', count: '1', measureUnit: 'шт.' },
+            { title: 'лапша', count: '200', measureUnit: 'г' },
+            { title: 'курица', count: '300', measureUnit: 'г' },
+            { title: 'шафран', count: '1', measureUnit: 'ч. л.' },
+            { title: 'лук', count: '1', measureUnit: 'шт.' },
+            { title: 'лапша', count: '200', measureUnit: 'г' },
+            { title: 'курица', count: '300', measureUnit: 'г' },
+            { title: 'шафран', count: '1', measureUnit: 'ч. л.' },
+            { title: 'лук', count: '1', measureUnit: 'шт.' },
         ],
         steps: [
             {
                 stepNumber: 1,
-                description: 'Отварить лапшу.',
-                image: 'url',
+                description:
+                    'Зелёный лук нарезать на 1 см. кружочки. Лук и чеснок на мелкие кубики.  ',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
-                description: 'Обжарить курицу с луком и шафраном.',
-                image: 'url',
+                description:
+                    'Мясо помыть, высушить, нарезать на полосочки и обжарить на масле.  Посолить, поперчить и вынуть со сковороды.',
+                image: rollsIcon,
             },
             {
                 stepNumber: 3,
-                description: 'Смешать лапшу с курицей и подавать.',
-                image: 'url',
+                description: 'Спагетти отварить в течение  10 минут в подсоленной воде.',
+                image: meatballsIcon,
+            },
+            {
+                stepNumber: 4,
+                description:
+                    'В сковороде, на оставшемся жире поджарить лук до золотистого цвета, добавить чеснок и прожарить ещё около 1 минуты.',
+                image: meatballsIcon,
+            },
+            {
+                stepNumber: 5,
+                description: 'Всыпать шафран, корицу и муки, перемешать и коротко прожарить.',
+            },
+            {
+                stepNumber: 6,
+                description:
+                    'В сковороде, на оставшемся жире поджарить лук до золотистого цвета, добавить чеснок и прожарить ещё около 1 минуты.',
+                image: rollsIcon,
+            },
+            {
+                stepNumber: 7,
+                description:
+                    'Сливки смешать с бульоном, влить к луку и протушить на среднем огне около 10 минут.',
+            },
+            {
+                stepNumber: 8,
+                description:
+                    'Соус посолить, поперчить, вложить мясо, зелёный лук. Прогреть и осторожно смешать со спагетти. При подаче посыпать нарезанной петрушкой.',
+                image: rollsIcon,
             },
         ],
     },
@@ -343,12 +380,12 @@ const recipes: Recipe[] = [
             {
                 stepNumber: 1,
                 description: 'Обжарить овощи на гриле.',
-                image: 'url',
+                image: rollsIcon,
             },
             {
                 stepNumber: 2,
                 description: 'Смешать с заправкой и подавать.',
-                image: 'url',
+                image: rollsIcon,
             },
         ],
     },

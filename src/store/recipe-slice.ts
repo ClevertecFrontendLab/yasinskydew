@@ -2,19 +2,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { recipes } from './MockData/RecipesData';
 
-interface RecipeIngridient {
+export interface RecipeIngridient {
     title: string;
     count: string;
     measureUnit: string;
 }
 
-interface RecipeStep {
+export interface RecipeStep {
     stepNumber: number;
     description: string;
-    image: string | null;
+    image?: string | undefined;
 }
 
-interface NutritionValue {
+export interface NutritionValue {
     calories: number;
     proteins: number;
     fats: number;

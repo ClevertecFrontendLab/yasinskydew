@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 
 import { useBreadcrumbs, useMainMenu } from '~/store/hooks';
 import { SubCategory } from '~/store/menu-slice';
+
 export const SubMenuList = () => {
     const navigate = useNavigate();
     const { selectedCategory, selectedSubCategory, selectSubCategory } = useMainMenu();

@@ -3,7 +3,13 @@ import { Button, ButtonGroup, useBreakpointValue } from '@chakra-ui/react';
 import BsBookmarkHeart from '../../assets/BookMark/BsBookmarkHeart.svg';
 import { CustomIcon } from '../Layout/CustomIcon';
 
-export const RecipeControl = () => {
+interface RecipeControlProps {
+    onCookClick?: () => void;
+    onSaveClick?: () => void;
+}
+
+export const RecipeControl = (props: RecipeControlProps) => {
+    const { onCookClick, onSaveClick } = props;
     const isMobile = useBreakpointValue({ base: true, lg: false });
     return (
         <ButtonGroup display='flex' gap={2} width='100%' justifyContent='flex-end'>
@@ -14,6 +20,7 @@ export const RecipeControl = () => {
                 fontSize='14px'
                 leftIcon={<CustomIcon src={BsBookmarkHeart} alt='bookmark' />}
                 iconSpacing={isMobile ? '0px' : '16px'}
+                onClick={onSaveClick}
             >
                 {!isMobile && 'Сохранить'}
             </Button>
@@ -24,6 +31,7 @@ export const RecipeControl = () => {
                 bgColor='var(--bg-color)'
                 size='sm'
                 _hover={{ bgColor: 'gray.500' }}
+                onClick={onCookClick}
             >
                 Готовить
             </Button>

@@ -17,6 +17,7 @@ const colors = {
         300: '#c4ff61',
         400: '#b1ff2e',
         600: '#2db100',
+        800: '#244a10',
     },
 };
 
@@ -25,8 +26,8 @@ const components = {};
 const styles = {
     global: {
         body: {
-            bg: 'gray.50',
             color: 'gray.800',
+            fontFamily: 'var(--font-family)',
         },
     },
 };

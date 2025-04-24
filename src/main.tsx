@@ -12,6 +12,7 @@ import theme from '~/theme';
 import Home from './app/pages/Home/Home';
 import MenuRecipeList from './app/pages/MenuRecipeList/MenuRecipeList';
 import Juiciest from './app/pages/NewRecipes/Juiciest';
+import RecipeCard from './app/pages/RecipeCard/RecipeCard';
 import { PageLayout } from './components/Layout/PageLayout';
 
 createRoot(document.getElementById('root')!).render(
@@ -27,6 +28,10 @@ createRoot(document.getElementById('root')!).render(
                             <Route
                                 path='/:categoryId/:subCategoryId'
                                 element={<MenuRecipeList />}
+                            />
+                            <Route
+                                path='/:categoryId/:subCategoryId/:id'
+                                element={<RecipeCard />}
                             />
                         </Route>
                     </Routes>

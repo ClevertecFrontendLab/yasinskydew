@@ -47,7 +47,9 @@ export default function MenuRecipeList() {
                 description={selectedCategory?.description || ''}
             />
             <SubMenuList />
-            <RecipeList>{recipes}</RecipeList>
+            <RecipeList currentCategory={categoryId || ''} currentSubCategory={subCategoryId || ''}>
+                {recipes}
+            </RecipeList>
             <RelevantKichen menuCategory={menuCategory} recipes={relevantRecipes} />
         </VStack>
     );

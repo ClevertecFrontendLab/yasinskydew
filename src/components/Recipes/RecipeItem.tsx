@@ -1,4 +1,5 @@
 import { Card, Image, Stack, useBreakpointValue } from '@chakra-ui/react';
+import { useNavigate } from 'react-router';
 
 import { useMainMenu } from '~/store/hooks';
 import { MenuCategory } from '~/store/menu-slice';
@@ -13,13 +14,34 @@ import { RecipeDisplayModeEnum } from './RecipeTypes';
 
 interface RecipeItemProps extends Recipe {
     displayMode?: RecipeDisplayModeEnum;
+    currentCategory: string;
+    currentSubCategory: string;
 }
 
 export const RecipeItem = (props: RecipeItemProps) => {
-    const { image, title, description, likes, bookmarks, category } = props;
+    const {
+        image,
+        title,
+        description,
+        likes,
+        bookmarks,
+        category,
+        id,
+        currentCategory,
+        currentSubCategory,
+        subcategory,
+    } = props;
     const { getMenuCategoryById } = useMainMenu();
     const menuCategory = getMenuCategoryById(category[0]) as MenuCategory;
     const isMobile = useBreakpointValue({ base: true, lg: false });
+
+    const navigate = useNavigate();
+
+    const handleCookClick = () => {
+        navigate(
+            `/${currentCategory || category[0]}/${currentSubCategory || subcategory[0]}/${id}`,
+        );
+    };
 
     return (
         <Card variant='outline' direction='row' position='relative'>
@@ -53,7 +75,7 @@ export const RecipeItem = (props: RecipeItemProps) => {
                 />
                 <RecipeTitle>{title}</RecipeTitle>
                 {!isMobile && <RecipeDescription description={description} />}
-                <RecipeControl />
+                <RecipeControl onCookClick={handleCookClick} />
             </Stack>
         </Card>
     );
